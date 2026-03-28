@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Resume — Paola Jayme Romaguera</title>
   <meta name="description" content="Resume of Paola Jayme Romaguera — Climate Risk, GIS, Remote Sensing, and Geospatial Analytics." />
-
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Paola Jayme Romaguera" />
   <meta property="og:title" content="Resume — Paola Jayme Romaguera" />
@@ -14,695 +14,404 @@
   <meta property="og:image" content="https://pjmromaguera.github.io/assets/og-home.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-
   <link rel="stylesheet" href="style.css" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
-
   <style>
-    :root{
-      --bg:#080e1e;
-      --surface:rgba(13,22,42,.70);
-      --surface2:rgba(255,255,255,.03);
-      --line:rgba(255,255,255,.08);
-      --line2:rgba(255,255,255,.04);
-      --text:#e8eaf2;
-      --muted:#7e8ba8;
-      --accent:#22d3ee;
-      --accent2:#a78bfa;
-      --accent3:#34d399;
-      --radius:14px;
-      --shadow:0 8px 40px rgba(0,0,0,.45);
-    }
+    :root{--bg:#080e1e;--surface:rgba(13,22,42,.70);--surface2:rgba(255,255,255,.03);--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.04);--text:#e8eaf2;--muted:#7e8ba8;--accent:#22d3ee;--accent2:#a78bfa;--accent3:#34d399;--radius:14px;--shadow:0 8px 40px rgba(0,0,0,.45);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;scroll-padding-top:72px;background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-serif;font-size:15px;line-height:1.65;}
+    html,body{overflow-x:visible;}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.fade-in,.slide-up{animation:none!important;opacity:1!important;transform:none!important;}}
+    a{color:var(--accent);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    body{min-height:100vh;background:radial-gradient(ellipse 900px 500px at 15% 10%,rgba(34,211,238,.09),transparent 55%),radial-gradient(ellipse 700px 500px at 85% 80%,rgba(167,139,250,.08),transparent 55%),var(--bg);}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:0;}
+    .page-wrap{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 24px 80px;}
+    .wide{max-width:1200px;margin:0 auto;padding:0 20px;}
+    .nav{position:sticky;top:0;z-index:1000;background:rgba(11,16,32,0.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 0;}
+    .nav .wide{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+    .brand-name{display:flex;flex-direction:column;line-height:1.3;}
+    .brand-name strong{font-size:16px;font-weight:700;color:var(--text);letter-spacing:-.01em;}
+    .brand-name span{font-size:12px;color:var(--muted);}
+    .nav-links{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+    .pill{display:inline-flex;align-items:center;padding:6px 16px;border:1px solid var(--line);border-radius:999px;font-size:12px;font-weight:500;color:var(--muted);background:rgba(255,255,255,.03);transition:color .18s,border-color .18s,background .18s;text-decoration:none;cursor:pointer;font-family:inherit;}
+    .pill:hover{color:var(--text);border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.06);text-decoration:none;}
+    .pill.primary{color:var(--accent);border-color:rgba(34,211,238,.25);background:rgba(34,211,238,.06);}
+    .pill.primary:hover{background:rgba(34,211,238,.12);border-color:rgba(34,211,238,.4);}
+    .pill[aria-current="page"]{color:var(--text);border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.06);}
+    .resume-header{padding:64px 0 48px;border-bottom:1px solid var(--line);}
+    .header-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;}
+    .header-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--accent);opacity:.6;}
+    .resume-name{font-family:'DM Serif Display',serif;font-size:clamp(42px,7vw,72px);line-height:1.02;letter-spacing:-1px;color:var(--text);margin-bottom:10px;}
+    .resume-name em{font-style:italic;color:var(--accent2);}
+    .resume-title{font-size:15px;color:var(--muted);margin-bottom:28px;letter-spacing:.01em;}
+    .contact-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+    .contact-item{display:inline-flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);text-decoration:none;transition:color .18s;}
+    .contact-item:hover{color:var(--accent);text-decoration:none;}
+    .contact-item .icon{width:16px;height:16px;opacity:.55;flex-shrink:0;}
+    .contact-sep{color:var(--line);font-size:16px;}
+    .download-bar{display:flex;gap:10px;justify-content:flex-end;padding:20px 0 0;}
+    .summary-card{margin:40px 0;padding:24px 28px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);backdrop-filter:blur(10px);border-left:3px solid var(--accent);font-size:14.5px;line-height:1.75;color:rgba(232,234,242,.82);}
+    .resume-body{display:grid;grid-template-columns:1fr 280px;gap:0 40px;align-items:start;}
+    @media(max-width:720px){.resume-body{grid-template-columns:1fr;}.sidebar{order:-1;}}
+    .section{padding:36px 0;border-bottom:1px solid var(--line2);}
+    .section:last-child{border-bottom:none;}
+    .section-label{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;display:flex;align-items:center;gap:10px;}
+    .section-label::after{content:'';flex:1;height:1px;background:var(--line);}
 
-    *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+```
+/* ── Experience tabs ── */
+.exp-tabs{display:flex;gap:6px;margin-bottom:28px;}
+.exp-tab{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:7px 18px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:rgba(255,255,255,.03);cursor:pointer;transition:color .18s,border-color .18s,background .18s;}
+.exp-tab:hover{color:var(--text);border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.06);}
+.exp-tab[aria-selected="true"]{color:var(--accent);border-color:rgba(34,211,238,.35);background:rgba(34,211,238,.07);}
+.exp-panel{display:none;}
+.exp-panel.active{display:block;}
+@media print{.exp-tabs{display:none;}.exp-panel{display:block!important;}}
+.exp-entry{margin-bottom:32px;}
+.exp-entry:last-child{margin-bottom:0;}
+.exp-org{font-family:'DM Serif Display',serif;font-size:18px;letter-spacing:-.2px;color:var(--text);margin-bottom:2px;}
+.exp-meta{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin-bottom:12px;}
+.exp-role{font-weight:600;font-size:13.5px;color:var(--accent2);}
+.exp-period{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.04em;}
+.exp-group{margin-bottom:14px;}
+.exp-group-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent3);margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid var(--line2);}
+.exp-entry ul{list-style:none;padding:0;}
+.exp-entry ul li{position:relative;padding-left:16px;font-size:13.5px;color:rgba(232,234,242,.80);line-height:1.7;margin-bottom:5px;}
+.exp-entry ul li::before{content:'–';position:absolute;left:0;color:var(--accent);opacity:.5;}
+.sidebar{padding-top:36px;}
+.sidebar-section{margin-bottom:32px;}
+.sidebar-section:last-child{margin-bottom:0;}
+.sidebar-label{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.sidebar-label::after{content:'';flex:1;height:1px;background:var(--line);}
+.skill-group{margin-bottom:16px;}
+.skill-group-name{font-size:11px;font-weight:600;color:var(--muted);margin-bottom:6px;letter-spacing:.04em;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.skill-tag{font-family:'DM Mono',monospace;font-size:11px;padding:4px 9px;border:1px solid var(--line);border-radius:6px;color:var(--muted);background:var(--surface2);white-space:nowrap;}
+.skill-tag.hi{border-color:rgba(34,211,238,.22);color:rgba(34,211,238,.75);background:rgba(34,211,238,.05);}
+.edu-card{padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--surface2);}
+.edu-degree{font-family:'DM Serif Display',serif;font-size:15px;color:var(--text);margin-bottom:3px;}
+.edu-school{font-size:12px;color:var(--muted);}
+.fade-in{animation:fadeIn .7s ease both;}
+.slide-up{animation:slideUp .65s ease both;}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.delay-1{animation-delay:.08s;}.delay-2{animation-delay:.16s;}.delay-3{animation-delay:.24s;}.delay-4{animation-delay:.32s;}.delay-5{animation-delay:.40s;}
+@media print{body{background:#fff;color:#111;}body::before{display:none;}.nav,.download-bar{display:none;}.resume-name,.exp-org{color:#111;}.section-label,.sidebar-label,.header-eyebrow{color:#0077aa;}.exp-role{color:#6633aa;}.exp-period{color:#555;}.summary-card{border-color:#0077aa;background:#f5faff;color:#222;}a{color:inherit;}.page-wrap{padding:0 24px 40px;}}
+```
 
-    html{
-      scroll-behavior:smooth;
-      background:var(--bg);
-      color:var(--text);
-      font-family:'Instrument Sans',sans-serif;
-      font-size:15px;
-      line-height:1.65;
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      html{ scroll-behavior:auto; }
-      .fade-in,.slide-up{ animation:none !important; opacity:1 !important; transform:none !important; }
-    }
-
-    a{ color:var(--accent); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
-
-    body{
-      min-height:100vh;
-      background:
-        radial-gradient(ellipse 900px 500px at 15% 10%, rgba(34,211,238,.09), transparent 55%),
-        radial-gradient(ellipse 700px 500px at 85% 80%, rgba(167,139,250,.08), transparent 55%),
-        var(--bg);
-    }
-
-    body::before{
-      content:'';
-      position:fixed;
-      inset:0;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events:none;
-      z-index:0;
-    }
-
-    .page-wrap{
-      position:relative;
-      z-index:1;
-      max-width:900px;
-      margin:0 auto;
-      padding:0 24px 80px;
-    }
-
-    /* Nav matches index.html */
-    .wide{ max-width:1200px; margin:0 auto; padding:0 20px; }
-
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(11,16,32,0.72);
-      backdrop-filter:blur(14px);
-      -webkit-backdrop-filter:blur(14px);
-      border-bottom:1px solid var(--line);
-      padding:14px 0;
-      margin:0;
-    }
-	
-	    .nav .wide {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-    }
-
-
-
-    .brand-name{
-      display:flex;
-      flex-direction:column;
-      line-height:1.3;
-    }
-    .brand-name strong{
-      font-size:16px;
-      font-weight:700;
-      color:var(--text);
-      letter-spacing:-.01em;
-    }
-    .brand-name span {
-      font-size: 12px;
-      color: var(--muted);
-    }
-	
-	html, body{ overflow-x: visible; }
-
-    .nav-links{
-      display:flex;
-      gap:6px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      padding:6px 16px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      font-size:12px;
-      font-weight:500;
-      color:var(--muted);
-      background:rgba(255,255,255,.03);
-      transition:color .18s, border-color .18s, background .18s;
-      text-decoration:none;
-    }
-    .pill:hover{
-      color:var(--text);
-      border-color:rgba(255,255,255,.18);
-      background:rgba(255,255,255,.06);
-      text-decoration:none;
-    }
-    .pill.primary{
-      color:var(--accent);
-      border-color:rgba(34,211,238,.25);
-      background:rgba(34,211,238,.06);
-    }
-    .pill.primary:hover{
-      background:rgba(34,211,238,.12);
-      border-color:rgba(34,211,238,.4);
-    }
-    .pill[aria-current="page"]{
-      color:var(--text);
-      border-color:rgba(255,255,255,.18);
-      background:rgba(255,255,255,.06);
-    }
-
-    .resume-header{
-      padding:64px 0 48px;
-      border-bottom:1px solid var(--line);
-    }
-
-    .header-eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-family:'DM Mono', monospace;
-      font-size:11px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--accent);
-      margin-bottom:20px;
-    }
-    .header-eyebrow::before{
-      content:'';
-      display:inline-block;
-      width:24px;
-      height:1px;
-      background:var(--accent);
-      opacity:.6;
-    }
-
-    .resume-name{
-      font-family:'DM Serif Display', serif;
-      font-size:clamp(42px, 7vw, 72px);
-      line-height:1.02;
-      letter-spacing:-1px;
-      color:var(--text);
-      margin-bottom:10px;
-    }
-    .resume-name em{ font-style:italic; color:var(--accent2); }
-
-    .resume-title{
-      font-size:15px;
-      color:var(--muted);
-      margin-bottom:28px;
-      letter-spacing:.01em;
-    }
-
-    .contact-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      align-items:center;
-    }
-
-    .contact-item{
-      display:inline-flex;
-      align-items:center;
-      gap:7px;
-      font-family:'DM Mono', monospace;
-      font-size:12px;
-      color:var(--muted);
-      text-decoration:none;
-      transition:color .18s;
-    }
-    .contact-item:hover{ color:var(--accent); text-decoration:none; }
-
-    .contact-item .icon{
-      width:16px;
-      height:16px;
-      opacity:.55;
-      flex-shrink:0;
-    }
-
-    .contact-sep{ color:var(--line); font-size:16px; }
-
-    .download-bar{
-      display:flex;
-      gap:10px;
-      justify-content:flex-end;
-      padding:20px 0 0;
-    }
-
-    .summary-card{
-      margin:40px 0;
-      padding:24px 28px;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:var(--surface);
-      backdrop-filter:blur(10px);
-      border-left:3px solid var(--accent);
-      font-size:14.5px;
-      line-height:1.75;
-      color:rgba(232,234,242,.82);
-    }
-
-    .resume-body{
-      display:grid;
-      grid-template-columns:1fr 280px;
-      gap:0 40px;
-      align-items:start;
-    }
-    @media (max-width: 720px){
-      .resume-body{ grid-template-columns:1fr; }
-      .sidebar{ order:-1; }
-    }
-
-    .section{
-      padding:36px 0;
-      border-bottom:1px solid var(--line2);
-    }
-    .section:last-child{ border-bottom:none; }
-
-    .section-label{
-      font-family:'DM Mono', monospace;
-      font-size:10.5px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:var(--accent);
-      margin-bottom:22px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-    .section-label::after{
-      content:'';
-      flex:1;
-      height:1px;
-      background:var(--line);
-    }
-
-    .exp-entry{ margin-bottom:32px; }
-    .exp-entry:last-child{ margin-bottom:0; }
-
-    .exp-org{
-      font-family:'DM Serif Display', serif;
-      font-size:18px;
-      letter-spacing:-.2px;
-      color:var(--text);
-      margin-bottom:2px;
-    }
-
-    .exp-meta{
-      display:flex;
-      align-items:baseline;
-      flex-wrap:wrap;
-      gap:6px 12px;
-      margin-bottom:12px;
-    }
-
-    .exp-role{
-      font-weight:600;
-      font-size:13.5px;
-      color:var(--accent2);
-    }
-
-    .exp-period{
-      font-family:'DM Mono', monospace;
-      font-size:11px;
-      color:var(--muted);
-      letter-spacing:.04em;
-    }
-
-    .exp-group{ margin-bottom:14px; }
-    .exp-group-label{
-      font-size:11px;
-      font-weight:600;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color:var(--accent3);
-      margin-bottom:6px;
-      padding-bottom:4px;
-      border-bottom:1px solid var(--line2);
-    }
-
-    .exp-entry ul{ list-style:none; padding:0; }
-
-    .exp-entry ul li{
-      position:relative;
-      padding-left:16px;
-      font-size:13.5px;
-      color:rgba(232,234,242,.80);
-      line-height:1.7;
-      margin-bottom:5px;
-    }
-    .exp-entry ul li::before{
-      content:'–';
-      position:absolute;
-      left:0;
-      color:var(--accent);
-      opacity:.5;
-    }
-
-    .sidebar{ padding-top:36px; }
-
-    .sidebar-section{ margin-bottom:32px; }
-    .sidebar-section:last-child{ margin-bottom:0; }
-
-    .sidebar-label{
-      font-family:'DM Mono', monospace;
-      font-size:10.5px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:var(--accent2);
-      margin-bottom:14px;
-      display:flex;
-      align-items:center;
-      gap:8px;
-    }
-    .sidebar-label::after{
-      content:'';
-      flex:1;
-      height:1px;
-      background:var(--line);
-    }
-
-    .skill-group{ margin-bottom:16px; }
-    .skill-group-name{
-      font-size:11px;
-      font-weight:600;
-      color:var(--muted);
-      margin-bottom:6px;
-      letter-spacing:.04em;
-    }
-
-    .skill-tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:6px;
-    }
-
-    .skill-tag{
-      font-family:'DM Mono', monospace;
-      font-size:11px;
-      padding:4px 9px;
-      border:1px solid var(--line);
-      border-radius:6px;
-      color:var(--muted);
-      background:var(--surface2);
-      white-space:nowrap;
-    }
-
-    .skill-tag.hi{
-      border-color:rgba(34,211,238,.22);
-      color:rgba(34,211,238,.75);
-      background:rgba(34,211,238,.05);
-    }
-
-    .edu-card{
-      padding:16px;
-      border:1px solid var(--line);
-      border-radius:10px;
-      background:var(--surface2);
-    }
-
-    .edu-degree{
-      font-family:'DM Serif Display', serif;
-      font-size:15px;
-      color:var(--text);
-      margin-bottom:3px;
-    }
-
-    .edu-school{
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    .fade-in{ animation: fadeIn .7s ease both; }
-    .slide-up{ animation: slideUp .65s ease both; }
-    @keyframes fadeIn{ from{opacity:0} to{opacity:1} }
-    @keyframes slideUp{ from{opacity:0; transform:translateY(22px)} to{opacity:1; transform:translateY(0)} }
-    .delay-1{ animation-delay:.08s; }
-    .delay-2{ animation-delay:.16s; }
-    .delay-3{ animation-delay:.24s; }
-    .delay-4{ animation-delay:.32s; }
-    .delay-5{ animation-delay:.40s; }
-
-    @media print{
-      body{ background:#fff; color:#111; }
-      body::before{ display:none; }
-      .nav,.download-bar{ display:none; }
-      .resume-name,.exp-org{ color:#111; }
-      .section-label,.sidebar-label,.header-eyebrow{ color:#0077aa; }
-      .exp-role{ color:#6633aa; }
-      .exp-period,.muted{ color:#555; }
-      .summary-card{ border-color:#0077aa; background:#f5faff; color:#222; }
-      a{ color:inherit; }
-      .page-wrap{ padding:0 24px 40px; }
-    }
   </style>
 </head>
 
 <body>
 
-  <header class="nav" role="navigation">
-    <div class="wide" style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+  <header class="nav" role="banner">
+    <div class="wide">
       <div class="brand">
         <div class="brand-name">
           <strong>Paola Jayme Romaguera</strong>
           <span>Climate Risk • GIS • Remote Sensing • Python</span>
         </div>
       </div>
-  
-      <nav class="nav-links" aria-label="Primary">
+      <!-- Overview / Featured / Research navigate back to index.html sections -->
+      <nav class="nav-links" aria-label="Primary navigation">
         <a class="pill" href="index.html#top">Overview</a>
-      <a class="pill" href="index.html#featured">Featured</a>
-      <a class="pill" href="index.html#research">Research</a>
+        <a class="pill" href="index.html#featured">Featured</a>
+        <a class="pill" href="index.html#research">Research</a>
         <a class="pill" href="projects.html">All Projects</a>
         <a class="pill" aria-current="page" href="resume.html">Resume</a>
         <a class="pill" href="https://www.linkedin.com/in/pjromaguera" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="pill primary" href="mailto:romaguera.pj@gmail.com">Email</a>
+        <a class="pill primary" href="/cdn-cgi/l/email-protection#6715080a06001202150649170d27000a060e0b4904080a">Email</a>
       </nav>
     </div>
   </header>
 
   <div class="page-wrap">
 
-    <header class="resume-header fade-in">
-      <div class="header-eyebrow">Curriculum Vitae</div>
+```
+<header class="resume-header fade-in">
+  <div class="header-eyebrow">Curriculum Vitae</div>
+  <h1 class="resume-name">Paola <em>Jayme</em><br>Romaguera</h1>
+  <p class="resume-title">Spatial Analyst · GIS &amp; Remote Sensing Specialist · Climate Risk Consultant</p>
 
-      <h1 class="resume-name">
-        Paola <em>Jayme</em><br>Romaguera
-      </h1>
+  <div class="contact-row">
+    <a class="contact-item" href="/cdn-cgi/l/email-protection#493b2624282e3c2c3b28673923092e24282025672a2624" aria-label="Email">
+      <svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2"></rect><polyline points="2,4 10,12 18,4"></polyline></svg>
+      <span><span class="__cf_email__" data-cfemail="fa8895979b9d8f9f889bd48a90ba9d979b9396d4999597">[email&#160;protected]</span></span>
+    </a>
+    <span class="contact-sep" aria-hidden="true">·</span>
+    <a class="contact-item" href="https://www.linkedin.com/in/pjromaguera" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <svg class="icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M4.5 6.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM3 8h3v9H3V8zm5 0h2.9v1.3C11.3 8.5 12.3 8 13.5 8 16 8 17 9.5 17 12v5h-3v-4.5c0-1.1-.4-1.8-1.4-1.8-.8 0-1.3.5-1.5 1.1-.1.2-.1.5-.1.8V17H8V8z"></path></svg>
+      <span>linkedin.com/in/pjromaguera</span>
+    </a>
+    <span class="contact-sep" aria-hidden="true">·</span>
+    <a class="contact-item" href="https://pjmromaguera.github.io/" target="_blank" rel="noopener noreferrer" aria-label="Portfolio">
+      <svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="7.5"></circle><path d="M2.5 10h15M10 2.5c-2 2.5-3 4.7-3 7.5s1 5 3 7.5M10 2.5c2 2.5 3 4.7 3 7.5s-1 5-3 7.5"></path></svg>
+      <span>pjmromaguera.github.io</span>
+    </a>
+  </div>
 
-      <p class="resume-title">Spatial Analyst · GIS &amp; Remote Sensing Specialist · Climate Risk Consultant</p>
+  <div class="download-bar">
+    <button class="pill" onclick="window.print()" aria-label="Print or save resume as PDF">↓ Print / Save as PDF</button>
+  </div>
+</header>
 
-      <div class="contact-row">
-        <a class="contact-item" href="mailto:romaguera.pj@gmail.com" aria-label="Email">
-          <svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <rect x="2" y="4" width="16" height="12" rx="2"></rect>
-            <polyline points="2,4 10,12 18,4"></polyline>
-          </svg>
-          <span>romaguera.pj@gmail.com</span>
-        </a>
-        <span class="contact-sep" aria-hidden="true">·</span>
-        <a class="contact-item" href="https://www.linkedin.com/in/pjromaguera" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <svg class="icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path d="M4.5 6.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM3 8h3v9H3V8zm5 0h2.9v1.3C11.3 8.5 12.3 8 13.5 8 16 8 17 9.5 17 12v5h-3v-4.5c0-1.1-.4-1.8-1.4-1.8-.8 0-1.3.5-1.5 1.1-.1.2-.1.5-.1.8V17H8V8z"></path>
-          </svg>
-          <span>linkedin.com/in/pjromaguera</span>
-        </a>
-        <span class="contact-sep" aria-hidden="true">·</span>
-        <a class="contact-item" href="https://pjmromaguera.github.io/" target="_blank" rel="noopener noreferrer" aria-label="Portfolio">
-          <svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <circle cx="10" cy="10" r="7.5"></circle>
-            <path d="M2.5 10h15M10 2.5c-2 2.5-3 4.7-3 7.5s1 5 3 7.5M10 2.5c2 2.5 3 4.7 3 7.5s-1 5-3 7.5"></path>
-          </svg>
-          <span>pjmromaguera.github.io</span>
-        </a>
+<div class="summary-card slide-up delay-1" role="note" aria-label="Professional summary">
+  Climate risk and geospatial analytics specialist with 5+ years of experience leading end-to-end climate risk assessments
+  and multidisciplinary hazard modeling initiatives. Demonstrated leadership in mentoring junior analysts, developing and
+  standardizing internal modeling methodologies, and optimizing geospatial workflows for scalable asset-level risk analysis
+  under multiple climate scenarios (TCFD-aligned). Combines advanced spatial analytics expertise with strong stakeholder
+  engagement and business development experience.
+</div>
+
+<div class="resume-body slide-up delay-2">
+  <main>
+    <section class="section" aria-labelledby="exp-heading">
+      <div class="section-label" id="exp-heading">Experience</div>
+
+      <!-- Tab controls -->
+      <div class="exp-tabs" role="tablist" aria-label="Experience categories">
+        <button class="exp-tab" role="tab" aria-selected="true"  aria-controls="tab-primary"   id="btn-primary">Primary</button>
+        <button class="exp-tab" role="tab" aria-selected="false" aria-controls="tab-freelance" id="btn-freelance">Freelance</button>
       </div>
 
-      <div class="download-bar">
-        <button class="pill" onclick="printResume()" aria-label="Print resume">↓ Print / Save as PDF</button>
-      </div>
-    </header>
+      <!-- Primary experience -->
+      <div class="exp-panel active" id="tab-primary" role="tabpanel" aria-labelledby="btn-primary">
 
-    <div class="summary-card slide-up delay-1" role="note" aria-label="Professional summary">
-      Climate risk and geospatial analytics specialist with 5+ years of experience leading end-to-end climate risk assessments
-      and multidisciplinary hazard modeling initiatives. Demonstrated leadership in mentoring junior analysts, developing and
-      standardizing internal modeling methodologies, and optimizing geospatial workflows for scalable asset-level risk analysis
-      under multiple climate scenarios (TCFD-aligned). Combines advanced spatial analytics expertise with strong stakeholder
-      engagement and business development experience.
-    </div>
-
-    <div class="resume-body slide-up delay-2">
-
-      <main>
-
-        <section class="section" aria-labelledby="exp-heading">
-          <div class="section-label" id="exp-heading">Experience</div>
-
-          <div class="exp-entry">
-            <div class="exp-org">SyCip Gorres Velayo &amp; Co. <span style="font-size:13px;font-style:italic;color:var(--muted);">(SGV, Ernst &amp; Young)</span></div>
-            <div class="exp-meta">
-              <span class="exp-role">Senior Associate — Climate Change &amp; Sustainability Services</span>
-              <span class="exp-period">Jan 2024 – Present</span>
-            </div>
-
-            <div class="exp-group">
-              <div class="exp-group-label">Climate Risk Modeling &amp; Assessment</div>
-              <ul>
-                <li>Led TCFD-aligned climate risk assessments for 500+ assets, quantifying exposure to floods, landslides, and extreme rainfall under multiple RCP scenarios.</li>
-                <li>Designed hazard models (hydrodynamic flood simulations; slope-stability analyses) using Python (NumPy, xarray, rasterio) and QGIS to generate forward-looking risk maps.</li>
-                <li>Automated Google Earth Engine workflows to assess turbidity and land-water change using remote-sensing indices, supporting climate-risk interpretation and exposure mapping.</li>
-              </ul>
-            </div>
-
-            <div class="exp-group">
-              <div class="exp-group-label">Business Development &amp; Client Engagement</div>
-              <ul>
-                <li>Drafted and co-authored technical proposals that supported multiple climate risk assessment engagements; facilitated vulnerability &amp; exposure workshops to align risk metrics with business impacts and adaptation strategies.</li>
-              </ul>
-            </div>
-
-            <div class="exp-group">
-              <div class="exp-group-label">Targeted Collaborations</div>
-              <ul>
-                <li>Conducted climate-risk assessment for an agricultural company with operations in the Philippines and Indonesia, integrating crop-sensitivity models with temperature and precipitation anomaly analyses.</li>
-                <li>Performed hydrometric and river-height analyses for a feasibility study, informing infrastructure siting and design.</li>
-              </ul>
-            </div>
-
-            <div class="exp-group" style="margin-bottom:0;">
-              <div class="exp-group-label">Reporting &amp; Communication</div>
-              <ul>
-                <li>Produced executive-level dashboards, technical reports, and slide decks; translated model outputs into clear recommendations for senior stakeholders.</li>
-              </ul>
-            </div>
+        <div class="exp-entry">
+          <div class="exp-org">SyCip Gorres Velayo &amp; Co. <span style="font-size:13px;font-style:italic;color:var(--muted);">(SGV, Ernst &amp; Young)</span></div>
+          <div class="exp-meta">
+            <span class="exp-role">Senior Associate — Climate Change &amp; Sustainability Services</span>
+            <span class="exp-period">Jan 2024 – Present</span>
           </div>
-
-          <div class="exp-entry">
-            <div class="exp-org">Philippine Institute of Volcanology and Seismology <span style="font-size:13px;font-style:italic;color:var(--muted);">(PHIVOLCS)</span></div>
-            <div class="exp-meta">
-              <span class="exp-role">Science Research Specialist</span>
-              <span class="exp-period">Mar 2023 – Dec 2023</span>
-            </div>
+          <div class="exp-group">
+            <div class="exp-group-label">Climate Risk Modeling &amp; Assessment</div>
             <ul>
-              <li>Developed integrated geospatial workflows to assess seismic and secondary-hazard risk, cutting data-processing time by 50%.</li>
-              <li>Built Python scripts for spatial hazard-exposure extraction, automating multi-layer overlay analyses in ArcGIS/QGIS.</li>
-              <li>Synthesized field and remote-sensing data into risk-assessment deliverables for national hazard mapping.</li>
+              <li>Led TCFD-aligned climate risk assessments for 500+ assets, quantifying exposure to floods, landslides, and extreme rainfall under multiple RCP scenarios.</li>
+              <li>Designed hazard models (hydrodynamic flood simulations; slope-stability analyses) using Python (NumPy, xarray, rasterio) and QGIS to generate forward-looking risk maps.</li>
+              <li>Automated Google Earth Engine workflows to assess turbidity and land-water change using remote-sensing indices, supporting climate-risk interpretation and exposure mapping.</li>
             </ul>
           </div>
-
-          <div class="exp-entry">
-            <div class="exp-org">University of the Philippines – Resilience Institute <span style="font-size:13px;font-style:italic;color:var(--muted);">(UPRI)</span></div>
-            <div class="exp-meta">
-              <span class="exp-role">GIS Researcher &amp; Operator</span>
-              <span class="exp-period">Aug 2020 – Feb 2023</span>
-            </div>
+          <div class="exp-group">
+            <div class="exp-group-label">Business Development &amp; Client Engagement</div>
             <ul>
-              <li>Supported scenario-based flood and volcanic hazard modeling, processing large raster datasets for baseline and future-climate runs.</li>
-              <li>Automated Ash3d volcanic dispersion simulations via Bash and Python for rapid multi-scenario outputs.</li>
-              <li>Authored scientific briefs in LaTeX to communicate hazard-risk results to multidisciplinary teams.</li>
+              <li>Drafted and co-authored technical proposals that supported multiple climate risk assessment engagements; facilitated vulnerability &amp; exposure workshops to align risk metrics with business impacts and adaptation strategies.</li>
             </ul>
           </div>
-
-        </section>
-
-      </main>
-	  
-
-
-      <aside class="sidebar" aria-label="Skills and education">
-
-        <section class="sidebar-section" aria-labelledby="edu-heading">
-          <div class="sidebar-label" id="edu-heading">Education</div>
-          <div class="edu-card">
-            <div class="edu-degree">B.S. Geology</div>
-            <div class="edu-school">University of the Philippines · 2020</div>
+          <div class="exp-group">
+            <div class="exp-group-label">Targeted Collaborations</div>
+            <ul>
+              <li>Conducted climate-risk assessment for an agricultural company with operations in the Philippines and Indonesia, integrating crop-sensitivity models with temperature and precipitation anomaly analyses.</li>
+              <li>Performed hydrometric and river-height analyses for a feasibility study, informing infrastructure siting and design.</li>
+            </ul>
           </div>
-        </section>
-
-        <section class="sidebar-section" aria-labelledby="skills-heading">
-          <div class="sidebar-label" id="skills-heading">Skills</div>
-
-          <div class="skill-group">
-            <div class="skill-group-name">Climate Risk Modeling</div>
-            <div class="skill-tags">
-              <span class="skill-tag hi">Hydrodynamic flood (FLO-2D)</span>
-              <span class="skill-tag hi">Slope-stability (TRIGRS)</span>
-              <span class="skill-tag hi">Multi-scenario exposure</span>
-              <span class="skill-tag">TCFD alignment</span>
-              <span class="skill-tag">RCP / SSP pathways</span>
-            </div>
+          <div class="exp-group" style="margin-bottom:0;">
+            <div class="exp-group-label">Reporting &amp; Communication</div>
+            <ul>
+              <li>Produced executive-level dashboards, technical reports, and slide decks; translated model outputs into clear recommendations for senior stakeholders.</li>
+            </ul>
           </div>
+        </div>
 
-          <div class="skill-group">
-            <div class="skill-group-name">Programming &amp; Automation</div>
-            <div class="skill-tags">
-              <span class="skill-tag hi">Python</span>
-              <span class="skill-tag">NumPy · Pandas</span>
-              <span class="skill-tag">xarray · rasterio</span>
-              <span class="skill-tag">geopandas</span>
-              <span class="skill-tag">Google Earth Engine</span>
-              <span class="skill-tag">Bash scripting</span>
-            </div>
+        <div class="exp-entry">
+          <div class="exp-org">Philippine Institute of Volcanology and Seismology <span style="font-size:13px;font-style:italic;color:var(--muted);">(PHIVOLCS)</span></div>
+          <div class="exp-meta">
+            <span class="exp-role">Science Research Specialist</span>
+            <span class="exp-period">Mar 2023 – Dec 2023</span>
           </div>
-
-          <div class="skill-group">
-            <div class="skill-group-name">GIS &amp; Remote Sensing</div>
-            <div class="skill-tags">
-              <span class="skill-tag hi">ArcGIS · QGIS</span>
-              <span class="skill-tag">Satellite-derived indices</span>
-              <span class="skill-tag">Spatial analysis</span>
-            </div>
-          </div>
-
-          <div class="skill-group">
-            <div class="skill-group-name">Tools &amp; Platforms</div>
-            <div class="skill-tags">
-              <span class="skill-tag">Git / GitHub</span>
-              <span class="skill-tag">Streamlit</span>
-              <span class="skill-tag">Tableau</span>
-              <span class="skill-tag">LaTeX</span>
-              <span class="skill-tag">Microsoft Office</span>
-            </div>
-          </div>
-        </section>
-
-        <section class="sidebar-section" aria-labelledby="conf-heading">
-          <div class="sidebar-label" id="conf-heading">Research &amp; Conferences</div>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
-            <li style="font-size:12.5px;color:var(--muted);line-height:1.6;">
-              <span style="display:block;font-size:11px;font-family:'DM Mono',monospace;color:var(--accent);margin-bottom:2px;">AGU Fall Meeting 2020</span>
-              A Multi-Hazard Interactions Framework for the Philippines
-            </li>
-            <li style="font-size:12.5px;color:var(--muted);line-height:1.6;">
-              <span style="display:block;font-size:11px;font-family:'DM Mono',monospace;color:var(--accent);margin-bottom:2px;">GeoCon 2023</span>
-              Enhancing Vs30 Mapping using HVSR Inversion
-            </li>
-            <li style="font-size:12.5px;color:var(--muted);line-height:1.6;">
-              <span style="display:block;font-size:11px;font-family:'DM Mono',monospace;color:var(--accent);margin-bottom:2px;">EGU General Assembly 2023</span>
-              Living with Water: Lost or Forgotten Rivers in Manila &amp; London
-            </li>
-            <li style="font-size:12.5px;color:var(--muted);line-height:1.6;">
-              <span style="display:block;font-size:11px;font-family:'DM Mono',monospace;color:var(--accent);margin-bottom:2px;">University of the Philippines Undergraduate Research 2019</span>
-              Volcanic Features within the Benham Plateau
-            </li>
+          <ul>
+            <li>Developed integrated geospatial workflows to assess seismic and secondary-hazard risk, cutting data-processing time by 50%.</li>
+            <li>Built Python scripts for spatial hazard-exposure extraction, automating multi-layer overlay analyses in ArcGIS/QGIS.</li>
+            <li>Synthesized field and remote-sensing data into risk-assessment deliverables for national hazard mapping.</li>
           </ul>
-        </section>
+        </div>
 
-          <script>
-  function printResume() {
-    const pdf = window.open("resume.pdf");
-    pdf.onload = function () {
-      pdf.print();
-    };
-  }
-  </script>
+        <div class="exp-entry">
+          <div class="exp-org">University of the Philippines – Resilience Institute <span style="font-size:13px;font-style:italic;color:var(--muted);">(UPRI)</span></div>
+          <div class="exp-meta">
+            <span class="exp-role">GIS Researcher &amp; Operator</span>
+            <span class="exp-period">Aug 2020 – Feb 2023</span>
+          </div>
+          <ul>
+            <li>Supported scenario-based flood and volcanic hazard modeling, processing large raster datasets for baseline and future-climate runs.</li>
+            <li>Automated Ash3d volcanic dispersion simulations via Bash and Python for rapid multi-scenario outputs.</li>
+            <li>Authored scientific briefs in LaTeX to communicate hazard-risk results to multidisciplinary teams.</li>
+          </ul>
+        </div>
 
-      </aside>
-    </div>
+      </div><!-- /#tab-primary -->
+
+      <!-- Freelance experience — sorted most recent first -->
+      <div class="exp-panel" id="tab-freelance" role="tabpanel" aria-labelledby="btn-freelance">
+
+        <div class="exp-entry">
+          <div class="exp-org">GIS Specialist — Nature-Based Solutions</div>
+          <div class="exp-meta">
+            <span class="exp-role">Freelance</span>
+            <span class="exp-period">Mar 2026 – Present</span>
+          </div>
+          <ul>
+            <li>Performed spatial analysis and suitability mapping to identify potential investment areas for nature-based solutions projects.</li>
+            <li>Integrated geospatial datasets (land use, terrain, environmental constraints) to support site selection and prioritization.</li>
+            <li>Developed GIS-based workflows to inform sustainable land management and climate-resilient investments.</li>
+          </ul>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-org">Sustainability Data Analyst</div>
+          <div class="exp-meta">
+            <span class="exp-role">Freelance</span>
+            <span class="exp-period">Nov 2024 – Jan 2025</span>
+          </div>
+          <ul>
+            <li>Designed and implemented a multi-criteria decision analysis (MCDA) framework using Analytic Hierarchy Process (AHP) and TOPSIS.</li>
+            <li>Constructed pairwise comparison matrices and applied normalization techniques to derive weights for SDG-aligned indicators.</li>
+            <li>Processed multi-dimensional datasets (health, climate, water, land use, economic impact) to evaluate sustainability performance.</li>
+            <li>Computed closeness coefficients and produced ranked outputs for comparative assessment of plant-based oils.</li>
+          </ul>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-org">Researcher &amp; Web Scraper</div>
+          <div class="exp-meta">
+            <span class="exp-role">Freelance</span>
+            <span class="exp-period">Nov 2024 – Jan 2025</span>
+          </div>
+          <ul>
+            <li>Developed automated web scraping workflows using Python and Selenium to extract structured data from online sources.</li>
+            <li>Collected and compiled datasets (e.g., product and market data) for analysis and downstream applications.</li>
+            <li>Performed data cleaning, structuring, and validation to ensure usability for downstream applications.</li>
+          </ul>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-org">GIS Specialist — Satellite Imagery QC</div>
+          <div class="exp-meta">
+            <span class="exp-role">Freelance</span>
+            <span class="exp-period">Jun 2024 – Nov 2024 &nbsp;·&nbsp; Dec 2022 – Feb 2023</span>
+          </div>
+          <ul>
+            <li>Conducted quality control and validation of satellite imagery datasets used for AI model training and evaluation.</li>
+            <li>Reviewed spatial accuracy, classification consistency, and feature integrity across large image datasets.</li>
+            <li>Ensured high-quality annotated inputs to support reliable machine learning outputs.</li>
+          </ul>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-org">Data &amp; GIS Analyst — NetCDF Analysis</div>
+          <div class="exp-meta">
+            <span class="exp-role">Freelance</span>
+            <span class="exp-period">May 2024 – Present</span>
+          </div>
+          <ul>
+            <li>Processed and analyzed large-scale NetCDF datasets to extract spatial and temporal patterns.</li>
+            <li>Conducted oceanographic analysis of eddies using Python-based workflows.</li>
+            <li>Automated data extraction, processing, and visualization for efficient handling of multi-dimensional datasets.</li>
+          </ul>
+        </div>
+
+      </div><!-- /#tab-freelance -->
+
+    </section>
+  </main>
+
+  <aside class="sidebar" aria-label="Skills and education">
+
+    <section class="sidebar-section" aria-labelledby="edu-heading">
+      <div class="sidebar-label" id="edu-heading">Education</div>
+      <div class="edu-card">
+        <div class="edu-degree">B.S. Geology</div>
+        <div class="edu-school">University of the Philippines · 2020</div>
+      </div>
+    </section>
+
+    <section class="sidebar-section" aria-labelledby="skills-heading">
+      <div class="sidebar-label" id="skills-heading">Skills</div>
+      <div class="skill-group">
+        <div class="skill-group-name">Climate Risk Modeling</div>
+        <div class="skill-tags">
+          <span class="skill-tag hi">Hydrodynamic flood (FLO-2D)</span>
+          <span class="skill-tag hi">Slope-stability (TRIGRS)</span>
+          <span class="skill-tag hi">Multi-scenario exposure</span>
+          <span class="skill-tag">TCFD alignment</span>
+          <span class="skill-tag">RCP / SSP pathways</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">Programming &amp; Automation</div>
+        <div class="skill-tags">
+          <span class="skill-tag hi">Python</span>
+          <span class="skill-tag">NumPy · Pandas</span>
+          <span class="skill-tag">xarray · rasterio</span>
+          <span class="skill-tag">geopandas</span>
+          <span class="skill-tag">Google Earth Engine</span>
+          <span class="skill-tag">Bash scripting</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">GIS &amp; Remote Sensing</div>
+        <div class="skill-tags">
+          <span class="skill-tag hi">ArcGIS · QGIS</span>
+          <span class="skill-tag">Satellite-derived indices</span>
+          <span class="skill-tag">Spatial analysis</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">Tools &amp; Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Git / GitHub</span>
+          <span class="skill-tag">Streamlit</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">LaTeX</span>
+          <span class="skill-tag">Microsoft Office</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="sidebar-section" aria-labelledby="conf-heading">
+      <div class="sidebar-label" id="conf-heading">Research &amp; Conferences</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
+        <li style="font-size:12.5px;color:var(--muted);line-height:1.6;">
+          <span style="display:block;font-size:11px;font-family:'DM Mono',monospace;color:var(--accent);margin-bottom:2px;">AGU Fall Meeting 2020</span>
+          A Multi-Hazard Interactions Framework for the Philippines
+        </li>
+        <li style="font-size:12.5px;color:var(--muted);line-height:1.6;">
+          <span style="display:block;font-size:11px;font-family:'DM Mono',monospace;color:var(--accent);margin-bottom:2px;">GeoCon 2023</span>
+          Enhancing Vs30 Mapping using HVSR Inversion
+        </li>
+        <li style="font-size:12.5px;color:var(--muted);line-height:1.6;">
+          <span style="display:block;font-size:11px;font-family:'DM Mono',monospace;color:var(--accent);margin-bottom:2px;">EGU General Assembly 2023</span>
+          Living with Water: Lost or Forgotten Rivers in Manila &amp; London
+        </li>
+        <li style="font-size:12.5px;color:var(--muted);line-height:1.6;">
+          <span style="display:block;font-size:11px;font-family:'DM Mono',monospace;color:var(--accent);margin-bottom:2px;">Research 2019</span>
+          Volcanic Features within the Benham Plateau
+        </li>
+      </ul>
+    </section>
+
+  </aside>
+</div>
+```
 
   </div>
-  
-  	      <footer class="footer">
-      <div class="wide" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;">
-        <span>© <span id="y"></span> Paola Romaguera</span>
-        <span>
-          <a href="index.html">Home</a> •
-          <a href="projects.html">Projects</a> •
-          <a href="resume.html">Resume</a> •
-          <a href="mailto:romaguera.pj@gmail.com">Contact</a>
-        </span>
-      </div>
-    </footer>
+
+  <script>
+    (function () {
+      const tabs   = document.querySelectorAll('.exp-tab');
+      const panels = document.querySelectorAll('.exp-panel');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+          panels.forEach(p => p.classList.remove('active'));
+          tab.setAttribute('aria-selected', 'true');
+          document.getElementById(tab.getAttribute('aria-controls')).classList.add('active');
+        });
+      });
+    })();
+  </script>
+
 </body>
 </html>
