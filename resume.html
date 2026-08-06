@@ -60,17 +60,7 @@
     .section:last-child{border-bottom:none;}
     .section-label{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;display:flex;align-items:center;gap:10px;}
     .section-label::after{content:'';flex:1;height:1px;background:var(--line);}
-
-```
-/* ── Experience tabs ── */
-.exp-tabs{display:flex;gap:6px;margin-bottom:28px;}
-.exp-tab{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:7px 18px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:rgba(255,255,255,.03);cursor:pointer;transition:color .18s,border-color .18s,background .18s;}
-.exp-tab:hover{color:var(--text);border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.06);}
-.exp-tab[aria-selected="true"]{color:var(--accent);border-color:rgba(34,211,238,.35);background:rgba(34,211,238,.07);}
-.exp-panel{display:none;}
-.exp-panel.active{display:block;}
-@media print{.exp-tabs{display:none;}.exp-panel{display:block!important;}}
-.exp-entry{margin-bottom:32px;}
+    .exp-entry{margin-bottom:32px;}
 .exp-entry:last-child{margin-bottom:0;}
 .exp-org{font-family:'DM Serif Display',serif;font-size:18px;letter-spacing:-.2px;color:var(--text);margin-bottom:2px;}
 .exp-meta{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin-bottom:12px;}
@@ -100,7 +90,6 @@
 @keyframes slideUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 .delay-1{animation-delay:.08s;}.delay-2{animation-delay:.16s;}.delay-3{animation-delay:.24s;}.delay-4{animation-delay:.32s;}.delay-5{animation-delay:.40s;}
 @media print{body{background:#fff;color:#111;}body::before{display:none;}.nav,.download-bar{display:none;}.resume-name,.exp-org{color:#111;}.section-label,.sidebar-label,.header-eyebrow{color:#0077aa;}.exp-role{color:#6633aa;}.exp-period{color:#555;}.summary-card{border-color:#0077aa;background:#f5faff;color:#222;}a{color:inherit;}.page-wrap{padding:0 24px 40px;}}
-```
 
   </style>
 </head>
@@ -123,23 +112,22 @@
         <a class="pill" href="projects.html">All Projects</a>
         <a class="pill" aria-current="page" href="resume.html">Resume</a>
         <a class="pill" href="https://www.linkedin.com/in/pjromaguera" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="pill primary" href="romaguera.pj@gmail.com">Email</a>
+        <a class="pill primary" href="mailto:romaguera.pj@gmail.com">Email</a>
       </nav>
     </div>
   </header>
 
   <div class="page-wrap">
 
-```
 <header class="resume-header fade-in">
   <div class="header-eyebrow">Curriculum Vitae</div>
   <h1 class="resume-name">Paola <em>Jayme</em><br>Romaguera</h1>
   <p class="resume-title">Spatial Analyst · GIS &amp; Remote Sensing Specialist · Climate Risk Consultant</p>
 
   <div class="contact-row">
-    <a class="contact-item" href="/cdn-cgi/l/email-protection#493b2624282e3c2c3b28673923092e24282025672a2624" aria-label="Email">
+    <a class="contact-item" href="mailto:romaguera.pj@gmail.com" aria-label="Email">
       <svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2"></rect><polyline points="2,4 10,12 18,4"></polyline></svg>
-      <span><span class="__cf_email__" data-cfemail="fa8895979b9d8f9f889bd48a90ba9d979b9396d4999597">[email&#160;protected]</span></span>
+      <span>romaguera.pj@gmail.com</span>
     </a>
     <span class="contact-sep" aria-hidden="true">·</span>
     <a class="contact-item" href="https://www.linkedin.com/in/pjromaguera" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -170,15 +158,6 @@
   <main>
     <section class="section" aria-labelledby="exp-heading">
       <div class="section-label" id="exp-heading">Experience</div>
-
-      <!-- Tab controls -->
-      <div class="exp-tabs" role="tablist" aria-label="Experience categories">
-        <button class="exp-tab" role="tab" aria-selected="true"  aria-controls="tab-primary"   id="btn-primary">Primary</button>
-        <button class="exp-tab" role="tab" aria-selected="false" aria-controls="tab-freelance" id="btn-freelance">Freelance</button>
-      </div>
-
-      <!-- Primary experience -->
-      <div class="exp-panel active" id="tab-primary" role="tabpanel" aria-labelledby="btn-primary">
 
         <div class="exp-entry">
           <div class="exp-org">SyCip Gorres Velayo &amp; Co. <span style="font-size:13px;font-style:italic;color:var(--muted);">(SGV, Ernst &amp; Young)</span></div>
@@ -241,17 +220,8 @@
           </ul>
         </div>
 
-      </div><!-- /#tab-primary -->
-
-      <!-- Freelance experience — sorted most recent first -->
-      <div class="exp-panel" id="tab-freelance" role="tabpanel" aria-labelledby="btn-freelance">
-
         <div class="exp-entry">
           <div class="exp-org">GIS Specialist — Nature-Based Solutions</div>
-          <div class="exp-meta">
-            <span class="exp-role">Freelance</span>
-            <span class="exp-period">Mar 2026 – Present</span>
-          </div>
           <ul>
             <li>Performed spatial analysis and suitability mapping to identify potential investment areas for nature-based solutions projects.</li>
             <li>Integrated geospatial datasets (land use, terrain, environmental constraints) to support site selection and prioritization.</li>
@@ -261,10 +231,6 @@
 
         <div class="exp-entry">
           <div class="exp-org">Sustainability Data Analyst</div>
-          <div class="exp-meta">
-            <span class="exp-role">Freelance</span>
-            <span class="exp-period">Nov 2024 – Jan 2025</span>
-          </div>
           <ul>
             <li>Designed and implemented a multi-criteria decision analysis (MCDA) framework using Analytic Hierarchy Process (AHP) and TOPSIS.</li>
             <li>Constructed pairwise comparison matrices and applied normalization techniques to derive weights for SDG-aligned indicators.</li>
@@ -275,10 +241,6 @@
 
         <div class="exp-entry">
           <div class="exp-org">Researcher &amp; Web Scraper</div>
-          <div class="exp-meta">
-            <span class="exp-role">Freelance</span>
-            <span class="exp-period">Nov 2024 – Jan 2025</span>
-          </div>
           <ul>
             <li>Developed automated web scraping workflows using Python and Selenium to extract structured data from online sources.</li>
             <li>Collected and compiled datasets (e.g., product and market data) for analysis and downstream applications.</li>
@@ -288,10 +250,6 @@
 
         <div class="exp-entry">
           <div class="exp-org">GIS Specialist — Satellite Imagery QC</div>
-          <div class="exp-meta">
-            <span class="exp-role">Freelance</span>
-            <span class="exp-period">Jun 2024 – Nov 2024 &nbsp;·&nbsp; Dec 2022 – Feb 2023</span>
-          </div>
           <ul>
             <li>Conducted quality control and validation of satellite imagery datasets used for AI model training and evaluation.</li>
             <li>Reviewed spatial accuracy, classification consistency, and feature integrity across large image datasets.</li>
@@ -301,18 +259,12 @@
 
         <div class="exp-entry">
           <div class="exp-org">Data &amp; GIS Analyst — NetCDF Analysis</div>
-          <div class="exp-meta">
-            <span class="exp-role">Freelance</span>
-            <span class="exp-period">May 2024 – Present</span>
-          </div>
           <ul>
             <li>Processed and analyzed large-scale NetCDF datasets to extract spatial and temporal patterns.</li>
             <li>Conducted oceanographic analysis of eddies using Python-based workflows.</li>
             <li>Automated data extraction, processing, and visualization for efficient handling of multi-dimensional datasets.</li>
           </ul>
         </div>
-
-      </div><!-- /#tab-freelance -->
 
     </section>
   </main>
@@ -348,6 +300,7 @@
           <span class="skill-tag">geopandas</span>
           <span class="skill-tag">Google Earth Engine</span>
           <span class="skill-tag">Bash scripting</span>
+          <span class="skill-tag">Web scraping (Selenium)</span>
         </div>
       </div>
       <div class="skill-group">
@@ -356,6 +309,16 @@
           <span class="skill-tag hi">ArcGIS · QGIS</span>
           <span class="skill-tag">Satellite-derived indices</span>
           <span class="skill-tag">Spatial analysis</span>
+          <span class="skill-tag">Suitability mapping</span>
+          <span class="skill-tag">Imagery QC &amp; validation</span>
+          <span class="skill-tag">NetCDF / oceanographic analysis</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">Decision Analysis</div>
+        <div class="skill-tags">
+          <span class="skill-tag">MCDA (AHP · TOPSIS)</span>
+          <span class="skill-tag">SDG-aligned indicators</span>
         </div>
       </div>
       <div class="skill-group">
@@ -394,24 +357,8 @@
 
   </aside>
 </div>
-```
 
   </div>
-
-  <script>
-    (function () {
-      const tabs   = document.querySelectorAll('.exp-tab');
-      const panels = document.querySelectorAll('.exp-panel');
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
-          panels.forEach(p => p.classList.remove('active'));
-          tab.setAttribute('aria-selected', 'true');
-          document.getElementById(tab.getAttribute('aria-controls')).classList.add('active');
-        });
-      });
-    })();
-  </script>
 
 </body>
 </html>
