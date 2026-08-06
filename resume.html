@@ -68,7 +68,13 @@
 .exp-period{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.04em;}
 .exp-group{margin-bottom:14px;}
 .exp-group-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent3);margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid var(--line2);}
-.exp-subheading{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);margin:12px 0 18px;padding-top:24px;border-top:1px solid var(--line2);}
+.exp-tabs{display:flex;gap:6px;margin-bottom:28px;}
+.exp-tab{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:7px 18px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:rgba(255,255,255,.03);cursor:pointer;transition:color .18s,border-color .18s,background .18s;}
+.exp-tab:hover{color:var(--text);border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.06);}
+.exp-tab[aria-selected="true"]{color:var(--accent);border-color:rgba(34,211,238,.35);background:rgba(34,211,238,.07);}
+.exp-panel{display:none;}
+.exp-panel.active{display:block;}
+@media print{.exp-tabs{display:none;}.exp-panel{display:block!important;}}
 .exp-entry ul{list-style:none;padding:0;}
 .exp-entry ul li{position:relative;padding-left:16px;font-size:13.5px;color:rgba(232,234,242,.80);line-height:1.7;margin-bottom:5px;}
 .exp-entry ul li::before{content:'–';position:absolute;left:0;color:var(--accent);opacity:.5;}
@@ -90,7 +96,7 @@
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes slideUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 .delay-1{animation-delay:.08s;}.delay-2{animation-delay:.16s;}.delay-3{animation-delay:.24s;}.delay-4{animation-delay:.32s;}.delay-5{animation-delay:.40s;}
-@media print{body{background:#fff;color:#111;}body::before{display:none;}.nav,.download-bar{display:none;}.resume-name,.exp-org{color:#111;}.section-label,.sidebar-label,.header-eyebrow{color:#0077aa;}.exp-role{color:#6633aa;}.exp-period{color:#555;}.summary-card{border-color:#0077aa;background:#f5faff;color:#222;}.exp-subheading{color:#6633aa;}a{color:inherit;}.page-wrap{padding:0 24px 40px;}}
+@media print{body{background:#fff;color:#111;}body::before{display:none;}.nav,.download-bar{display:none;}.resume-name,.exp-org{color:#111;}.section-label,.sidebar-label,.header-eyebrow{color:#0077aa;}.exp-role{color:#6633aa;}.exp-period{color:#555;}.summary-card{border-color:#0077aa;background:#f5faff;color:#222;}a{color:inherit;}.page-wrap{padding:0 24px 40px;}}
 
   </style>
 </head>
@@ -160,6 +166,13 @@
     <section class="section" aria-labelledby="exp-heading">
       <div class="section-label" id="exp-heading">Experience</div>
 
+      <div class="exp-tabs" role="tablist" aria-label="Experience categories">
+        <button class="exp-tab" role="tab" aria-selected="true"  aria-controls="tab-employment" id="btn-employment">Employment History</button>
+        <button class="exp-tab" role="tab" aria-selected="false" aria-controls="tab-other" id="btn-other">Other Roles</button>
+      </div>
+
+      <div class="exp-panel active" id="tab-employment" role="tabpanel" aria-labelledby="btn-employment">
+
         <div class="exp-entry">
           <div class="exp-org">SyCip Gorres Velayo &amp; Co. <span style="font-size:13px;font-style:italic;color:var(--muted);">(SGV, Ernst &amp; Young)</span></div>
           <div class="exp-meta">
@@ -221,7 +234,9 @@
           </ul>
         </div>
 
-        <div class="exp-subheading">Other Roles</div>
+      </div><!-- /#tab-employment -->
+
+      <div class="exp-panel" id="tab-other" role="tabpanel" aria-labelledby="btn-other">
 
         <div class="exp-entry">
           <div class="exp-org">GIS Specialist — Nature-Based Solutions</div>
@@ -267,6 +282,8 @@
             <li>Collected and compiled product and market datasets, then cleaned, structured, and validated them for downstream analysis.</li>
           </ul>
         </div>
+
+      </div><!-- /#tab-other -->
 
     </section>
   </main>
@@ -361,6 +378,21 @@
 </div>
 
   </div>
+
+  <script>
+    (function () {
+      const tabs   = document.querySelectorAll('.exp-tab');
+      const panels = document.querySelectorAll('.exp-panel');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+          panels.forEach(p => p.classList.remove('active'));
+          tab.setAttribute('aria-selected', 'true');
+          document.getElementById(tab.getAttribute('aria-controls')).classList.add('active');
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
