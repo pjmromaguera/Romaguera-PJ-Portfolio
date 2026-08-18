@@ -125,6 +125,11 @@
       font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
       color: var(--muted); font-weight: 600; white-space: nowrap; border-bottom: 1px solid var(--line);
     }
+    .results thead th.sortable { cursor: pointer; user-select: none; }
+    .results thead th.sortable:hover { color: var(--text); }
+    .sort-arrow { display: inline-block; width: 10px; opacity: .7; }
+    .results thead th.sort-asc .sort-arrow::after { content: '↑'; }
+    .results thead th.sort-desc .sort-arrow::after { content: '↓'; }
     .results tbody tr:last-child td { border-bottom: none; }
     .results tbody td:first-child { font-weight: 600; color: var(--text); white-space: nowrap; }
     .score-cell { display: flex; align-items: center; gap: 8px; }
@@ -320,10 +325,10 @@
           <table class="results" id="resultsTable">
             <thead>
               <tr>
-                <th>Location</th>
-                <th>Coffee</th>
-                <th>Cacao</th>
-                <th>Bamboo</th>
+                <th class="sortable" data-sort="name">Location <span class="sort-arrow"></span></th>
+                <th class="sortable" data-sort="coffee">Coffee <span class="sort-arrow"></span></th>
+                <th class="sortable" data-sort="cacao">Cacao <span class="sort-arrow"></span></th>
+                <th class="sortable" data-sort="bamboo">Bamboo <span class="sort-arrow"></span></th>
               </tr>
             </thead>
             <tbody id="resultsBody"></tbody>
@@ -440,18 +445,44 @@
       </div>`;
   }
 
-  document.getElementById('generateBtn').addEventListener('click', () => {
+  let sortKey = null;
+  let sortDir = 'desc'; // 'asc' | 'desc'
+
+  function computeRows() {
     const coffeeParams = readParams('coffee');
     const cacaoParams = readParams('cacao');
     const bambooParams = readParams('bamboo');
 
-    const rows = PROVINCES.map(p => ({
+    return PROVINCES.map(p => ({
       name: p.name,
       coffee: speciesScore(p, coffeeParams),
       cacao: speciesScore(p, cacaoParams),
       bamboo: speciesScore(p, bambooParams),
-    })).sort((a, b) => (b.coffee + b.cacao + b.bamboo) - (a.coffee + a.cacao + a.bamboo));
+    }));
+  }
 
+  function sortRows(rows) {
+    if (!sortKey) {
+      return rows.sort((a, b) => (b.coffee + b.cacao + b.bamboo) - (a.coffee + a.cacao + a.bamboo));
+    }
+    return rows.sort((a, b) => {
+      const av = a[sortKey], bv = b[sortKey];
+      const cmp = typeof av === 'string' ? av.localeCompare(bv) : av - bv;
+      return sortDir === 'asc' ? cmp : -cmp;
+    });
+  }
+
+  function updateSortHeaders() {
+    document.querySelectorAll('th.sortable').forEach(th => {
+      th.classList.remove('sort-asc', 'sort-desc');
+      if (sortKey && th.dataset.sort === sortKey) {
+        th.classList.add(sortDir === 'asc' ? 'sort-asc' : 'sort-desc');
+      }
+    });
+  }
+
+  function render() {
+    const rows = sortRows(computeRows());
     const tbody = document.getElementById('resultsBody');
     tbody.innerHTML = rows.map(r => `
       <tr>
@@ -461,9 +492,30 @@
         <td>${scoreCell(r.bamboo)}</td>
       </tr>
     `).join('');
-
+    updateSortHeaders();
     document.getElementById('resultsWrap').classList.add('show');
+  }
+
+  document.getElementById('generateBtn').addEventListener('click', render);
+
+  document.querySelectorAll('.param-card input').forEach(input => {
+    input.addEventListener('input', render);
   });
+
+  document.querySelectorAll('th.sortable').forEach(th => {
+    th.addEventListener('click', () => {
+      const key = th.dataset.sort;
+      if (sortKey === key) {
+        sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+      } else {
+        sortKey = key;
+        sortDir = key === 'name' ? 'asc' : 'desc';
+      }
+      render();
+    });
+  });
+
+  render();
 </script>
 </body>
 </html>
