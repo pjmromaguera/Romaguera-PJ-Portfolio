@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Coffee, Cacao &amp; Bamboo Suitability Explorer | Paola Jayme Romaguera</title>
+  <meta name="description" content="Interactive sample tool: enter suitability parameters and generate a ranked coffee, cacao, and bamboo restoration-suitability table for Visayas provinces." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,500;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #080e1e; --surface: rgba(15,26,43,.55); --line: rgba(255,255,255,.08); --line2: rgba(255,255,255,.04);
+      --text: #e8eaf2; --muted: #7e8ba8; --accent: #22d3ee; --accent2: #a78bfa; --accent3: #34d399;
+      --radius: 18px; --shadow: 0 8px 40px rgba(0,0,0,.45);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; font-size: 15px; line-height: 1.65; }
+    body { min-height: 100vh; background:
+      radial-gradient(ellipse 1100px 600px at 10% 5%,  rgba(34,211,238,.10), transparent 55%),
+      radial-gradient(ellipse  800px 500px at 90% 30%, rgba(167,139,250,.09), transparent 55%),
+      var(--bg); }
+    body::before { content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+    .container { position: relative; z-index: 1; }
+    .wide { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    .nav { position: sticky; top: 0; z-index: 1000; background: rgba(11,16,32,0.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); padding: 14px 0; }
+    .nav .wide { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand-name { display: flex; flex-direction: column; line-height: 1.3; }
+    .brand-name strong { font-size: 14px; font-weight: 700; color: var(--text); letter-spacing: -.01em; }
+    .brand-name span { font-size: 11px; color: var(--muted); }
+    .nav-links { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; list-style: none; }
+    .pill { display: inline-flex; align-items: center; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; font-weight: 500; color: var(--muted); background: rgba(255,255,255,.03); transition: color .18s, border-color .18s, background .18s; text-decoration: none; cursor: pointer; }
+    .pill:hover { color: var(--text); border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.06); text-decoration: none; }
+    .pill.primary { color: var(--accent); border-color: rgba(34,211,238,.25); background: rgba(34,211,238,.06); }
+    .pill.primary:hover { background: rgba(34,211,238,.12); border-color: rgba(34,211,238,.4); }
+
+    .chapter { padding: 80px 0; border-top: 1px solid rgba(255,255,255,.06); }
+    @media (max-width: 860px) { .chapter { padding: 52px 0; } }
+    #top { background:
+      radial-gradient(1200px 520px at 30% 20%, rgba(34,211,238,.14), transparent 55%),
+      radial-gradient(900px  520px at 70% 60%, rgba(167,139,250,.12), transparent 60%),
+      linear-gradient(180deg, rgba(11,16,32,.22), rgba(11,16,32,0)); }
+    #tool { background:
+      radial-gradient(1100px 520px at 60% 25%, rgba(52,211,153,.10), transparent 55%),
+      radial-gradient(900px  520px at 25% 70%, rgba(125,211,252,.08), transparent 60%),
+      linear-gradient(180deg, rgba(11,16,32,.18), rgba(11,16,32,0)); }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .75s ease, transform .75s ease; will-change: opacity, transform; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+    .sep { border: none; border-top: 1px solid var(--line); margin: 20px 0; }
+
+    .hero-panel { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); overflow: hidden; padding: 36px; }
+    .crumbs { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+    .crumbs a { color: var(--text); opacity: .8; text-decoration: none; }
+    .crumbs a:hover { opacity: 1; text-decoration: underline; }
+    .crumbs .sep-dot { opacity: .4; }
+
+    .micro { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; color: var(--muted); border: 1px solid var(--line); padding: 7px 10px; border-radius: 999px; background: rgba(255,255,255,.03); margin-bottom: 14px; align-self: flex-start; }
+    .micro .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--accent3); box-shadow: 0 0 0 4px rgba(52,211,153,.12); }
+
+    .super { font-size: clamp(34px, 5vw, 56px); line-height: 1.06; letter-spacing: -0.6px; margin: 0 0 14px; }
+    .lede2 { color: var(--muted); font-size: clamp(14px, 1.4vw, 17px); max-width: 72ch; margin: 0 0 16px; line-height: 1.75; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 4px; }
+    .tag { font-size: 12.5px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: rgba(255,255,255,.025); white-space: nowrap; }
+
+    .section-label { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .section-title { font-size: 26px; letter-spacing: -0.3px; margin: 0 0 6px; }
+
+    /* ── Parameter panels ── */
+    .param-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 28px; }
+    @media (max-width: 900px) { .param-grid { grid-template-columns: 1fr; } }
+
+    .param-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); padding: 22px; }
+    .param-card h3 { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 16px; }
+    .param-card.coffee h3 { color: var(--accent); }
+    .param-card.cacao h3 { color: var(--accent2); }
+    .param-card.bamboo h3 { color: var(--accent3); }
+
+    .field { margin-bottom: 14px; }
+    .field:last-child { margin-bottom: 0; }
+    .field label { display: block; font-size: 12.5px; color: var(--muted); margin-bottom: 6px; }
+    .field-row { display: flex; gap: 8px; align-items: center; }
+    .field-row input {
+      width: 100%;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 10px;
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+    }
+    .field-row input:focus { outline: none; border-color: var(--accent); }
+    .field-row span { color: var(--muted); font-size: 12px; white-space: nowrap; }
+
+    .generate-row { display: flex; align-items: center; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
+
+    /* ── Results table ── */
+    .results-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 2px);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      margin-top: 28px;
+      display: none;
+    }
+    .results-wrap.show { display: block; }
+    table.results { width: 100%; border-collapse: collapse; min-width: 620px; }
+    .results th, .results td { padding: 13px 16px; text-align: left; border-bottom: 1px solid var(--line2); font-size: 13.5px; }
+    .results thead th {
+      font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); font-weight: 600; white-space: nowrap; border-bottom: 1px solid var(--line);
+    }
+    .results tbody tr:last-child td { border-bottom: none; }
+    .results tbody td:first-child { font-weight: 600; color: var(--text); white-space: nowrap; }
+    .score-cell { display: flex; align-items: center; gap: 8px; }
+    .score-num { font-family: 'DM Mono', monospace; font-size: 12.5px; color: var(--muted); width: 34px; }
+    .score-bar { flex: 1; height: 6px; border-radius: 999px; background: rgba(255,255,255,.06); overflow: hidden; min-width: 60px; }
+    .score-fill { height: 100%; border-radius: 999px; }
+    .badge { font-size: 11px; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+    .badge.high { background: rgba(52,211,153,.14); color: var(--accent3); }
+    .badge.mid { background: rgba(34,211,238,.14); color: var(--accent); }
+    .badge.low { background: rgba(167,139,250,.14); color: var(--accent2); }
+    .badge.no { background: rgba(255,255,255,.04); color: var(--muted); }
+
+    .note-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); padding: 24px; border-left: 3px solid var(--accent2); margin-top: 28px; }
+    .note-card h3 { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
+    .note-card p { font-size: 14px; color: rgba(232,234,242,.75); line-height: 1.7; margin: 0; }
+
+    .footer { padding: 28px 0 40px; border-top: 1px solid var(--line2); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+    .footer-inner a { color: var(--muted); }
+    .footer-inner a:hover { color: var(--text); }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <header role="banner">
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="wide">
+        <div class="brand-name">
+          <strong>Paola Jayme Romaguera</strong>
+          <span>Data Analytics • GIS • Remote Sensing • Python</span>
+        </div>
+        <ul class="nav-links" role="list">
+          <li><a class="pill" href="index.html#top">Overview</a></li>
+          <li><a class="pill" href="index.html#expertise">Expertise</a></li>
+          <li><a class="pill" href="index.html#featured">Selected Work</a></li>
+          <li><a class="pill" href="projects.html">All Projects</a></li>
+          <li><a class="pill" href="resume.html">Resume</a></li>
+          <li><a class="pill primary" href="mailto:romaguera.pj@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="chapter" id="top" aria-labelledby="tool-heading">
+      <div class="wide">
+        <div class="hero-panel reveal">
+
+          <nav class="crumbs" aria-label="Breadcrumb">
+            <a href="projects.html">Projects</a>
+            <span class="sep-dot" aria-hidden="true">·</span>
+            <a href="project-arr-restoration-suitability.html">ARR Restoration Suitability Mapping</a>
+            <span class="sep-dot" aria-hidden="true">·</span>
+            <span>Suitability Explorer</span>
+          </nav>
+
+          <div class="micro" aria-label="Interactive sample tool · Suitability scoring">
+            <span class="dot" aria-hidden="true"></span>
+            Interactive sample tool &nbsp;·&nbsp; Suitability scoring &nbsp;·&nbsp; Visayas
+          </div>
+
+          <h1 class="super" id="tool-heading">
+            Coffee, Cacao &amp; Bamboo Suitability Explorer
+          </h1>
+
+          <p class="lede2">
+            Enter your own elevation, rainfall, and temperature parameters for each species and generate a
+            ranked restoration-suitability table across Visayas provinces. This is a companion demo for the
+            <a href="project-arr-restoration-suitability.html">ARR Restoration Suitability Mapping</a> case study —
+            adjust the defaults below to see how rankings change.
+          </p>
+
+          <div class="tags" aria-label="Tool tags">
+            <span class="tag">Multi-criteria scoring</span>
+            <span class="tag">Suitability mapping</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Interactive demo</span>
+          </div>
+
+          <hr class="sep" aria-hidden="true" />
+
+          <div class="row">
+            <a class="pill" href="project-arr-restoration-suitability.html">← Back to Case Study</a>
+            <a class="pill primary" href="mailto:romaguera.pj@gmail.com">Contact</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="tool" aria-labelledby="params-heading">
+      <div class="wide">
+
+        <div class="reveal">
+          <div class="section-label">Parameters</div>
+          <h2 class="section-title" id="params-heading">Set your suitability ranges</h2>
+          <p class="lede2" style="margin-bottom:0;">
+            Defaults below reflect commonly cited general agronomic ranges for each species — edit them to test
+            your own assumptions.
+          </p>
+        </div>
+
+        <div class="param-grid">
+
+          <div class="param-card coffee reveal">
+            <h3>Coffee</h3>
+            <div class="field">
+              <label>Elevation (masl)</label>
+              <div class="field-row">
+                <input type="number" id="coffee-elev-min" value="200" /><span>to</span>
+                <input type="number" id="coffee-elev-max" value="1200" />
+              </div>
+            </div>
+            <div class="field">
+              <label>Annual rainfall (mm)</label>
+              <div class="field-row">
+                <input type="number" id="coffee-rain-min" value="1500" /><span>to</span>
+                <input type="number" id="coffee-rain-max" value="2500" />
+              </div>
+            </div>
+            <div class="field">
+              <label>Mean temperature (°C)</label>
+              <div class="field-row">
+                <input type="number" id="coffee-temp-min" value="22" /><span>to</span>
+                <input type="number" id="coffee-temp-max" value="28" />
+              </div>
+            </div>
+          </div>
+
+          <div class="param-card cacao reveal">
+            <h3>Cacao</h3>
+            <div class="field">
+              <label>Elevation (masl)</label>
+              <div class="field-row">
+                <input type="number" id="cacao-elev-min" value="0" /><span>to</span>
+                <input type="number" id="cacao-elev-max" value="600" />
+              </div>
+            </div>
+            <div class="field">
+              <label>Annual rainfall (mm)</label>
+              <div class="field-row">
+                <input type="number" id="cacao-rain-min" value="1500" /><span>to</span>
+                <input type="number" id="cacao-rain-max" value="2500" />
+              </div>
+            </div>
+            <div class="field">
+              <label>Mean temperature (°C)</label>
+              <div class="field-row">
+                <input type="number" id="cacao-temp-min" value="21" /><span>to</span>
+                <input type="number" id="cacao-temp-max" value="32" />
+              </div>
+            </div>
+          </div>
+
+          <div class="param-card bamboo reveal">
+            <h3>Bamboo</h3>
+            <div class="field">
+              <label>Elevation (masl)</label>
+              <div class="field-row">
+                <input type="number" id="bamboo-elev-min" value="0" /><span>to</span>
+                <input type="number" id="bamboo-elev-max" value="1500" />
+              </div>
+            </div>
+            <div class="field">
+              <label>Annual rainfall (mm)</label>
+              <div class="field-row">
+                <input type="number" id="bamboo-rain-min" value="1200" /><span>to</span>
+                <input type="number" id="bamboo-rain-max" value="3000" />
+              </div>
+            </div>
+            <div class="field">
+              <label>Mean temperature (°C)</label>
+              <div class="field-row">
+                <input type="number" id="bamboo-temp-min" value="20" /><span>to</span>
+                <input type="number" id="bamboo-temp-max" value="32" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="generate-row reveal">
+          <button class="pill primary" id="generateBtn" style="border:none;font:inherit;">Generate Suitability Table →</button>
+          <span class="lede2" style="margin:0;font-size:13px;">Scores 16 Visayas provinces against the parameters above.</span>
+        </div>
+
+        <div class="results-wrap" id="resultsWrap">
+          <table class="results" id="resultsTable">
+            <thead>
+              <tr>
+                <th>Province</th>
+                <th>Coffee</th>
+                <th>Cacao</th>
+                <th>Bamboo</th>
+              </tr>
+            </thead>
+            <tbody id="resultsBody"></tbody>
+          </table>
+        </div>
+
+        <div class="note-card reveal">
+          <h3>Sample Tool Notice</h3>
+          <p>
+            This is an illustrative demo tool. Province-level elevation, rainfall, and temperature values are
+            approximate baseline figures used for demonstration only — they have not been verified against
+            authoritative climate or terrain datasets, and should not be used for actual site-selection decisions.
+            The scoring logic (parameter-range overlap with a linear tolerance falloff) is intentionally simple so
+            the mechanics stay transparent.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wide footer-inner">
+      <span>© <span id="y"></span> Paola Romaguera</span>
+      <nav aria-label="Footer navigation">
+        <a href="projects.html">Projects</a> &nbsp;·&nbsp;
+        <a href="resume.html">Resume</a> &nbsp;·&nbsp;
+        <a href="mailto:romaguera.pj@gmail.com">romaguera.pj@gmail.com</a>
+      </nav>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  const revealIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); revealIO.unobserve(e.target); }
+    });
+  }, { threshold: 0.10, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+
+  // Illustrative baseline dataset — approximate, for demo purposes only.
+  const PROVINCES = [
+    { name: 'Cebu',              elevMax: 1013, rainfall: 1600, temp: 27.5 },
+    { name: 'Bohol',              elevMax: 870,  rainfall: 1800, temp: 27.2 },
+    { name: 'Leyte',               elevMax: 1348, rainfall: 2600, temp: 26.8 },
+    { name: 'Southern Leyte',      elevMax: 967,  rainfall: 2900, temp: 26.9 },
+    { name: 'Biliran',             elevMax: 1301, rainfall: 3200, temp: 26.5 },
+    { name: 'Eastern Samar',       elevMax: 850,  rainfall: 3100, temp: 26.9 },
+    { name: 'Northern Samar',      elevMax: 700,  rainfall: 3400, temp: 27.0 },
+    { name: 'Samar',               elevMax: 890,  rainfall: 3300, temp: 26.9 },
+    { name: 'Iloilo',              elevMax: 1200, rainfall: 1900, temp: 27.3 },
+    { name: 'Capiz',                elevMax: 1500, rainfall: 2100, temp: 27.1 },
+    { name: 'Aklan',                elevMax: 1500, rainfall: 2300, temp: 27.0 },
+    { name: 'Antique',             elevMax: 2117, rainfall: 2500, temp: 26.7 },
+    { name: 'Guimaras',            elevMax: 300,  rainfall: 1500, temp: 27.8 },
+    { name: 'Negros Occidental',   elevMax: 2435, rainfall: 1900, temp: 26.5 },
+    { name: 'Negros Oriental',     elevMax: 2435, rainfall: 1700, temp: 26.4 },
+    { name: 'Siquijor',             elevMax: 628,  rainfall: 1400, temp: 27.6 },
+  ];
+
+  function rangeScore(value, min, max, tolerance) {
+    if (value >= min && value <= max) return 100;
+    const dist = value < min ? (min - value) : (value - max);
+    const s = 100 - (dist / tolerance) * 100;
+    return Math.max(0, Math.round(s));
+  }
+
+  function elevationOverlapScore(provinceMax, cropMin, cropMax) {
+    const overlapTop = Math.min(provinceMax, cropMax);
+    const overlapBottom = Math.max(0, cropMin);
+    const overlap = Math.max(0, overlapTop - overlapBottom);
+    const cropSpan = cropMax - cropMin;
+    if (cropSpan <= 0) return 0;
+    return Math.max(0, Math.min(100, Math.round((overlap / cropSpan) * 100)));
+  }
+
+  function speciesScore(province, params) {
+    const elevScore = elevationOverlapScore(province.elevMax, params.elevMin, params.elevMax);
+    const rainScore = rangeScore(province.rainfall, params.rainMin, params.rainMax, 600);
+    const tempScore = rangeScore(province.temp, params.tempMin, params.tempMax, 3);
+    return Math.round((elevScore + rainScore + tempScore) / 3);
+  }
+
+  function categoryFor(score) {
+    if (score >= 80) return { label: 'Highly suitable', cls: 'high' };
+    if (score >= 60) return { label: 'Suitable', cls: 'mid' };
+    if (score >= 40) return { label: 'Marginal', cls: 'low' };
+    return { label: 'Not suitable', cls: 'no' };
+  }
+
+  function readParams(prefix) {
+    return {
+      elevMin: parseFloat(document.getElementById(`${prefix}-elev-min`).value) || 0,
+      elevMax: parseFloat(document.getElementById(`${prefix}-elev-max`).value) || 0,
+      rainMin: parseFloat(document.getElementById(`${prefix}-rain-min`).value) || 0,
+      rainMax: parseFloat(document.getElementById(`${prefix}-rain-max`).value) || 0,
+      tempMin: parseFloat(document.getElementById(`${prefix}-temp-min`).value) || 0,
+      tempMax: parseFloat(document.getElementById(`${prefix}-temp-max`).value) || 0,
+    };
+  }
+
+  function scoreCell(score) {
+    const cat = categoryFor(score);
+    const fillColor = cat.cls === 'high' ? 'var(--accent3)' : cat.cls === 'mid' ? 'var(--accent)' : cat.cls === 'low' ? 'var(--accent2)' : 'var(--muted)';
+    return `
+      <div class="score-cell">
+        <span class="score-num">${score}</span>
+        <span class="score-bar"><span class="score-fill" style="width:${score}%;background:${fillColor};"></span></span>
+        <span class="badge ${cat.cls}">${cat.label}</span>
+      </div>`;
+  }
+
+  document.getElementById('generateBtn').addEventListener('click', () => {
+    const coffeeParams = readParams('coffee');
+    const cacaoParams = readParams('cacao');
+    const bambooParams = readParams('bamboo');
+
+    const rows = PROVINCES.map(p => ({
+      name: p.name,
+      coffee: speciesScore(p, coffeeParams),
+      cacao: speciesScore(p, cacaoParams),
+      bamboo: speciesScore(p, bambooParams),
+    })).sort((a, b) => (b.coffee + b.cacao + b.bamboo) - (a.coffee + a.cacao + a.bamboo));
+
+    const tbody = document.getElementById('resultsBody');
+    tbody.innerHTML = rows.map(r => `
+      <tr>
+        <td>${r.name}</td>
+        <td>${scoreCell(r.coffee)}</td>
+        <td>${scoreCell(r.cacao)}</td>
+        <td>${scoreCell(r.bamboo)}</td>
+      </tr>
+    `).join('');
+
+    document.getElementById('resultsWrap').classList.add('show');
+  });
+</script>
+</body>
+</html>
