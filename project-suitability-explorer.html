@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Coffee, Cacao &amp; Bamboo Suitability Explorer | Paola Jayme Romaguera</title>
-  <meta name="description" content="Interactive sample tool: enter suitability parameters and generate a ranked coffee, cacao, and bamboo restoration-suitability table for Visayas provinces." />
+  <meta name="description" content="Interactive sample tool: enter suitability parameters and generate a ranked coffee, cacao, and bamboo restoration-suitability table across 16 anonymized sample locations." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -186,7 +186,7 @@
 
           <div class="micro" aria-label="Interactive sample tool · Suitability scoring">
             <span class="dot" aria-hidden="true"></span>
-            Interactive sample tool &nbsp;·&nbsp; Suitability scoring &nbsp;·&nbsp; Visayas
+            Interactive sample tool &nbsp;·&nbsp; Suitability scoring &nbsp;·&nbsp; Logic demonstration
           </div>
 
           <h1 class="super" id="tool-heading">
@@ -195,9 +195,11 @@
 
           <p class="lede2">
             Enter your own elevation, rainfall, and temperature parameters for each species and generate a
-            ranked restoration-suitability table across Visayas provinces. This is a companion demo for the
-            <a href="project-arr-restoration-suitability.html">ARR Restoration Suitability Mapping</a> case study —
-            adjust the defaults below to see how rankings change.
+            ranked restoration-suitability table across 16 anonymized sample locations (Location A–P). This
+            tool exists to demonstrate the scoring logic and process behind this kind of assessment, not to
+            report on any real place — it's a companion demo for the
+            <a href="project-arr-restoration-suitability.html">ARR Restoration Suitability Mapping</a> case study.
+            Adjust the defaults below to see how rankings change.
           </p>
 
           <div class="tags" aria-label="Tool tags">
@@ -311,14 +313,14 @@
 
         <div class="generate-row reveal">
           <button class="pill primary" id="generateBtn" style="border:none;font:inherit;">Generate Suitability Table →</button>
-          <span class="lede2" style="margin:0;font-size:13px;">Scores 16 Visayas provinces against the parameters above.</span>
+          <span class="lede2" style="margin:0;font-size:13px;">Scores 16 anonymized sample locations against the parameters above.</span>
         </div>
 
         <div class="results-wrap" id="resultsWrap">
           <table class="results" id="resultsTable">
             <thead>
               <tr>
-                <th>Province</th>
+                <th>Location</th>
                 <th>Coffee</th>
                 <th>Cacao</th>
                 <th>Bamboo</th>
@@ -331,11 +333,11 @@
         <div class="note-card reveal">
           <h3>Sample Tool Notice</h3>
           <p>
-            This is an illustrative demo tool. Province-level elevation, rainfall, and temperature values are
-            approximate baseline figures used for demonstration only — they have not been verified against
-            authoritative climate or terrain datasets, and should not be used for actual site-selection decisions.
-            The scoring logic (parameter-range overlap with a linear tolerance falloff) is intentionally simple so
-            the mechanics stay transparent.
+            This is an illustrative demo tool, not a real-world assessment. The 16 locations are anonymized
+            (Location A–P) and their elevation, rainfall, and temperature values are synthetic figures invented
+            for demonstration only — they don't correspond to any real place. The point of this tool is to show
+            the scoring logic and process behind this kind of suitability assessment: parameter-range overlap
+            with a linear tolerance falloff, intentionally kept simple so the mechanics stay transparent.
           </p>
         </div>
 
@@ -368,22 +370,22 @@
 
   // Illustrative baseline dataset — approximate, for demo purposes only.
   const PROVINCES = [
-    { name: 'Cebu',              elevMax: 1013, rainfall: 1600, temp: 27.5 },
-    { name: 'Bohol',              elevMax: 870,  rainfall: 1800, temp: 27.2 },
-    { name: 'Leyte',               elevMax: 1348, rainfall: 2600, temp: 26.8 },
-    { name: 'Southern Leyte',      elevMax: 967,  rainfall: 2900, temp: 26.9 },
-    { name: 'Biliran',             elevMax: 1301, rainfall: 3200, temp: 26.5 },
-    { name: 'Eastern Samar',       elevMax: 850,  rainfall: 3100, temp: 26.9 },
-    { name: 'Northern Samar',      elevMax: 700,  rainfall: 3400, temp: 27.0 },
-    { name: 'Samar',               elevMax: 890,  rainfall: 3300, temp: 26.9 },
-    { name: 'Iloilo',              elevMax: 1200, rainfall: 1900, temp: 27.3 },
-    { name: 'Capiz',                elevMax: 1500, rainfall: 2100, temp: 27.1 },
-    { name: 'Aklan',                elevMax: 1500, rainfall: 2300, temp: 27.0 },
-    { name: 'Antique',             elevMax: 2117, rainfall: 2500, temp: 26.7 },
-    { name: 'Guimaras',            elevMax: 300,  rainfall: 1500, temp: 27.8 },
-    { name: 'Negros Occidental',   elevMax: 2435, rainfall: 1900, temp: 26.5 },
-    { name: 'Negros Oriental',     elevMax: 2435, rainfall: 1700, temp: 26.4 },
-    { name: 'Siquijor',             elevMax: 628,  rainfall: 1400, temp: 27.6 },
+    { name: 'Location A', elevMax: 1013, rainfall: 1600, temp: 27.5 },
+    { name: 'Location B', elevMax: 870,  rainfall: 1800, temp: 27.2 },
+    { name: 'Location C', elevMax: 1348, rainfall: 2600, temp: 26.8 },
+    { name: 'Location D', elevMax: 967,  rainfall: 2900, temp: 26.9 },
+    { name: 'Location E', elevMax: 1301, rainfall: 3200, temp: 26.5 },
+    { name: 'Location F', elevMax: 850,  rainfall: 3100, temp: 26.9 },
+    { name: 'Location G', elevMax: 700,  rainfall: 3400, temp: 27.0 },
+    { name: 'Location H', elevMax: 890,  rainfall: 3300, temp: 26.9 },
+    { name: 'Location I', elevMax: 1200, rainfall: 1900, temp: 27.3 },
+    { name: 'Location J', elevMax: 1500, rainfall: 2100, temp: 27.1 },
+    { name: 'Location K', elevMax: 1500, rainfall: 2300, temp: 27.0 },
+    { name: 'Location L', elevMax: 2117, rainfall: 2500, temp: 26.7 },
+    { name: 'Location M', elevMax: 300,  rainfall: 1500, temp: 27.8 },
+    { name: 'Location N', elevMax: 2435, rainfall: 1900, temp: 26.5 },
+    { name: 'Location O', elevMax: 2435, rainfall: 1700, temp: 26.4 },
+    { name: 'Location P', elevMax: 628,  rainfall: 1400, temp: 27.6 },
   ];
 
   function rangeScore(value, min, max, tolerance) {
