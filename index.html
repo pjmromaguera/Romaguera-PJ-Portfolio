@@ -187,6 +187,75 @@
       linear-gradient(180deg, rgba(11,16,32,.22), rgba(11,16,32,0));
     }
 
+    #skills{ --scene-bg:
+      radial-gradient(1100px 520px at 25% 20%, rgba(34,211,238,.12), transparent 55%),
+      radial-gradient(900px 520px at 80% 65%, rgba(52,211,153,.10), transparent 60%),
+      linear-gradient(180deg, rgba(11,16,32,.18), rgba(11,16,32,0));
+    }
+
+    .skills-matrix-wrap{
+      overflow-x:auto;
+      border:1px solid var(--line);
+      border-radius:calc(var(--radius) + 2px);
+      background:var(--surface);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+    }
+    table.skills-matrix{
+      width:100%;
+      border-collapse:collapse;
+      min-width:640px;
+    }
+    .skills-matrix th, .skills-matrix td{
+      padding:14px 18px;
+      text-align:left;
+      border-bottom:1px solid var(--line2);
+      font-size:14px;
+      vertical-align:middle;
+    }
+    .skills-matrix thead th{
+      font-family:'DM Mono', monospace;
+      font-size:11px;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:var(--muted);
+      font-weight:600;
+      white-space:nowrap;
+      border-bottom:1px solid var(--line);
+    }
+    .skills-matrix tbody td:first-child{
+      font-weight:600;
+      color:var(--text);
+      white-space:nowrap;
+    }
+    .skills-matrix .tools{ color:var(--muted); font-size:13.5px; }
+    .skills-matrix tbody tr:last-child td{ border-bottom:none; }
+    .skills-matrix .check{ text-align:center; }
+    .matrix-dot{
+      display:inline-flex;
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      align-items:center;
+      justify-content:center;
+      font-size:13px;
+      font-weight:700;
+    }
+    .matrix-dot.yes-data{ background:rgba(34,211,238,.14); color:var(--accent); }
+    .matrix-dot.yes-gis{ background:rgba(167,139,250,.16); color:var(--accent2); }
+    .matrix-dot.no{ background:rgba(255,255,255,.03); color:var(--muted); opacity:.5; }
+
+    .matrix-legend{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      margin-bottom:16px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .matrix-legend span{ display:inline-flex; align-items:center; gap:7px; }
+
     #featured{ --scene-bg:
       radial-gradient(1100px 520px at 60% 25%, rgba(52,211,153,.12), transparent 55%),
       radial-gradient(900px 520px at 25% 70%, rgba(125,211,252,.10), transparent 60%),
@@ -568,6 +637,7 @@
 
     <nav class="nav-links" aria-label="Primary">
       <a class="pill" href="#top">Overview</a>
+      <a class="pill" href="#skills">Skills</a>
       <a class="pill" href="#featured">Featured</a>
       <a class="pill" href="#research">Research</a>
       <a class="pill" href="projects.html">All Projects</a>
@@ -674,6 +744,90 @@
       </div>
     </section>
 
+
+      <section class="chapter" id="skills" aria-labelledby="skills-matrix-heading">
+        <div class="wide">
+
+          <div class="section-head reveal">
+            <h2 id="skills-matrix-heading">Skills Matrix</h2>
+            <a class="pill" href="resume.html">Full resume</a>
+          </div>
+          <p class="lede2 reveal" style="margin-bottom:22px;">
+            Core competencies mapped across two tracks — general data analysis and GIS/geospatial analysis —
+            showing where the work is directly transferable versus specialized.
+          </p>
+
+          <div class="matrix-legend reveal">
+            <span><span class="matrix-dot yes-data" style="width:16px;height:16px;font-size:10px;">✓</span> Data Analyst</span>
+            <span><span class="matrix-dot yes-gis" style="width:16px;height:16px;font-size:10px;">✓</span> GIS / Geospatial Analyst</span>
+            <span><span class="matrix-dot no" style="width:16px;height:16px;font-size:10px;">–</span> Not core to this track</span>
+          </div>
+
+          <div class="skills-matrix-wrap reveal">
+            <table class="skills-matrix">
+              <thead>
+                <tr>
+                  <th>Skill area</th>
+                  <th>Core tools</th>
+                  <th class="check">Data Analyst</th>
+                  <th class="check">GIS Analyst</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data analysis &amp; statistics</td>
+                  <td class="tools">Python (pandas, NumPy), SQL, exploratory &amp; statistical analysis</td>
+                  <td class="check"><span class="matrix-dot yes-data">✓</span></td>
+                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                </tr>
+                <tr>
+                  <td>Data visualization &amp; dashboards</td>
+                  <td class="tools">Tableau, Streamlit, executive reporting</td>
+                  <td class="check"><span class="matrix-dot yes-data">✓</span></td>
+                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                </tr>
+                <tr>
+                  <td>Automation &amp; scripting</td>
+                  <td class="tools">Python, Bash, Selenium web scraping, workflow automation</td>
+                  <td class="check"><span class="matrix-dot yes-data">✓</span></td>
+                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                </tr>
+                <tr>
+                  <td>Data QC &amp; validation</td>
+                  <td class="tools">Data cleaning, imagery / ML training-data QC, structuring</td>
+                  <td class="check"><span class="matrix-dot yes-data">✓</span></td>
+                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                </tr>
+                <tr>
+                  <td>Decision &amp; risk analytics</td>
+                  <td class="tools">MCDA (AHP · TOPSIS), scenario modeling, exposure metrics</td>
+                  <td class="check"><span class="matrix-dot yes-data">✓</span></td>
+                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                </tr>
+                <tr>
+                  <td>GIS &amp; spatial analysis</td>
+                  <td class="tools">QGIS, ArcGIS, spatial analysis, suitability mapping</td>
+                  <td class="check"><span class="matrix-dot no">–</span></td>
+                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                </tr>
+                <tr>
+                  <td>Remote sensing &amp; earth observation</td>
+                  <td class="tools">Google Earth Engine, satellite-derived indices, NetCDF</td>
+                  <td class="check"><span class="matrix-dot no">–</span></td>
+                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                </tr>
+                <tr>
+                  <td>Climate &amp; hazard modeling</td>
+                  <td class="tools">FLO-2D, hazard/slope-stability modeling, TCFD, RCP/SSP scenarios</td>
+                  <td class="check"><span class="matrix-dot no">–</span></td>
+                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </section>
 
       <section class="chapter" id="featured" aria-labelledby="featured-heading">
         <div class="wide">
