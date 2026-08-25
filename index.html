@@ -209,42 +209,6 @@
         background:linear-gradient(to right, transparent, var(--surface));
       }
     }
-    /* Below 701px: table becomes a stacked card list instead of a horizontal-scroll table */
-    @media (max-width:700px){
-      .skills-matrix-wrap{ overflow-x:visible; border:none; box-shadow:none; background:transparent; }
-      table.skills-matrix{ min-width:0; border-collapse:separate; border-spacing:0; }
-      .skills-matrix thead{ display:none; }
-      .skills-matrix tbody{ display:flex; flex-direction:column; gap:12px; }
-      .skills-matrix tbody tr{
-        display:block;
-        border:1px solid var(--line);
-        border-radius:var(--radius);
-        background:var(--surface);
-        box-shadow:var(--shadow);
-        padding:16px 18px;
-      }
-      .skills-matrix tbody td{
-        display:block;
-        border-bottom:none;
-        padding:5px 0;
-        white-space:normal;
-        font-size:14px;
-      }
-      .skills-matrix tbody td[data-label]::before{
-        content:attr(data-label);
-        display:block;
-        font-family:'DM Mono', monospace;
-        font-size:10px;
-        letter-spacing:.08em;
-        text-transform:uppercase;
-        color:var(--accent);
-        margin-bottom:2px;
-      }
-      .skills-matrix tbody td:first-child{ font-size:16px; padding-top:0; }
-      .skills-matrix tbody td:first-child::before{ display:none; }
-      .skills-matrix tbody td.check{ display:flex; align-items:center; gap:10px; text-align:left; }
-      .skills-matrix tbody td.check::before{ display:inline; margin-bottom:0; min-width:82px; flex-shrink:0; }
-    }
     table.skills-matrix{
       width:100%;
       border-collapse:collapse;
@@ -298,6 +262,43 @@
       color:var(--muted);
     }
     .matrix-legend span{ display:inline-flex; align-items:center; gap:7px; }
+
+    /* Below 701px: table becomes a stacked card list instead of a horizontal-scroll table */
+    @media (max-width:700px){
+      .skills-matrix-wrap{ overflow-x:visible; border:none; box-shadow:none; background:transparent; }
+      table.skills-matrix{ min-width:0; border-collapse:separate; border-spacing:0; }
+      .skills-matrix thead{ display:none; }
+      .skills-matrix tbody{ display:flex; flex-direction:column; gap:12px; }
+      .skills-matrix tbody tr{
+        display:block;
+        border:1px solid var(--line);
+        border-radius:var(--radius);
+        background:var(--surface);
+        box-shadow:var(--shadow);
+        padding:16px 18px;
+      }
+      .skills-matrix tbody td{
+        display:block;
+        border-bottom:none;
+        padding:5px 0;
+        white-space:normal;
+        font-size:14px;
+      }
+      .skills-matrix tbody td[data-label]::before{
+        content:attr(data-label);
+        display:block;
+        font-family:'DM Mono', monospace;
+        font-size:10px;
+        letter-spacing:.08em;
+        text-transform:uppercase;
+        color:var(--accent);
+        margin-bottom:2px;
+      }
+      .skills-matrix tbody td:first-child{ font-size:16px; padding-top:0; }
+      .skills-matrix tbody td:first-child::before{ display:none; }
+      .skills-matrix tbody td.check{ display:flex; align-items:center; gap:10px; text-align:left; }
+      .skills-matrix tbody td.check::before{ display:inline; margin-bottom:0; min-width:82px; flex-shrink:0; }
+    }
 
 
     /* ── Hero (single block) ── */
