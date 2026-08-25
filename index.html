@@ -194,7 +194,7 @@
       margin-bottom:8px;
       font-weight:600;
     }
-    @media (max-width:700px){
+    @media (min-width:701px){
       .matrix-scroll-hint{ display:block; }
       .skills-matrix-wrap::after{
         content:'';
@@ -208,6 +208,42 @@
         pointer-events:none;
         background:linear-gradient(to right, transparent, var(--surface));
       }
+    }
+    /* Below 701px: table becomes a stacked card list instead of a horizontal-scroll table */
+    @media (max-width:700px){
+      .skills-matrix-wrap{ overflow-x:visible; border:none; box-shadow:none; background:transparent; }
+      table.skills-matrix{ min-width:0; border-collapse:separate; border-spacing:0; }
+      .skills-matrix thead{ display:none; }
+      .skills-matrix tbody{ display:flex; flex-direction:column; gap:12px; }
+      .skills-matrix tbody tr{
+        display:block;
+        border:1px solid var(--line);
+        border-radius:var(--radius);
+        background:var(--surface);
+        box-shadow:var(--shadow);
+        padding:16px 18px;
+      }
+      .skills-matrix tbody td{
+        display:block;
+        border-bottom:none;
+        padding:5px 0;
+        white-space:normal;
+        font-size:14px;
+      }
+      .skills-matrix tbody td[data-label]::before{
+        content:attr(data-label);
+        display:block;
+        font-family:'DM Mono', monospace;
+        font-size:10px;
+        letter-spacing:.08em;
+        text-transform:uppercase;
+        color:var(--accent);
+        margin-bottom:2px;
+      }
+      .skills-matrix tbody td:first-child{ font-size:16px; padding-top:0; }
+      .skills-matrix tbody td:first-child::before{ display:none; }
+      .skills-matrix tbody td.check{ display:flex; align-items:center; gap:10px; text-align:left; }
+      .skills-matrix tbody td.check::before{ display:inline; margin-bottom:0; min-width:82px; flex-shrink:0; }
     }
     table.skills-matrix{
       width:100%;
@@ -747,52 +783,52 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Data analysis &amp; statistics</td>
-                  <td class="tools">Python (pandas, NumPy), SQL, exploratory &amp; statistical analysis</td>
-                  <td class="check"><span class="matrix-dot yes-data">✓</span></td>
-                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                  <td data-label="Skill area">Data analysis &amp; statistics</td>
+                  <td class="tools" data-label="Core tools">Python (pandas, NumPy), SQL, exploratory &amp; statistical analysis</td>
+                  <td class="check" data-label="Data Analyst"><span class="matrix-dot yes-data">✓</span></td>
+                  <td class="check" data-label="GIS Analyst"><span class="matrix-dot yes-gis">✓</span></td>
                 </tr>
                 <tr>
-                  <td>Data visualization &amp; dashboards</td>
-                  <td class="tools">Tableau, Streamlit, executive reporting</td>
-                  <td class="check"><span class="matrix-dot yes-data">✓</span></td>
-                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                  <td data-label="Skill area">Data visualization &amp; dashboards</td>
+                  <td class="tools" data-label="Core tools">Tableau, Streamlit, executive reporting</td>
+                  <td class="check" data-label="Data Analyst"><span class="matrix-dot yes-data">✓</span></td>
+                  <td class="check" data-label="GIS Analyst"><span class="matrix-dot yes-gis">✓</span></td>
                 </tr>
                 <tr>
-                  <td>Automation &amp; scripting</td>
-                  <td class="tools">Python, Bash, Selenium web scraping, workflow automation</td>
-                  <td class="check"><span class="matrix-dot yes-data">✓</span></td>
-                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                  <td data-label="Skill area">Automation &amp; scripting</td>
+                  <td class="tools" data-label="Core tools">Python, Bash, Selenium web scraping, workflow automation</td>
+                  <td class="check" data-label="Data Analyst"><span class="matrix-dot yes-data">✓</span></td>
+                  <td class="check" data-label="GIS Analyst"><span class="matrix-dot yes-gis">✓</span></td>
                 </tr>
                 <tr>
-                  <td>Data QC &amp; validation</td>
-                  <td class="tools">Data cleaning, imagery / ML training-data QC, structuring</td>
-                  <td class="check"><span class="matrix-dot yes-data">✓</span></td>
-                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                  <td data-label="Skill area">Data QC &amp; validation</td>
+                  <td class="tools" data-label="Core tools">Data cleaning, imagery / ML training-data QC, structuring</td>
+                  <td class="check" data-label="Data Analyst"><span class="matrix-dot yes-data">✓</span></td>
+                  <td class="check" data-label="GIS Analyst"><span class="matrix-dot yes-gis">✓</span></td>
                 </tr>
                 <tr>
-                  <td>Decision &amp; risk analytics</td>
-                  <td class="tools">MCDA (AHP · TOPSIS), scenario modeling, exposure metrics</td>
-                  <td class="check"><span class="matrix-dot yes-data">✓</span></td>
-                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                  <td data-label="Skill area">Decision &amp; risk analytics</td>
+                  <td class="tools" data-label="Core tools">MCDA (AHP · TOPSIS), scenario modeling, exposure metrics</td>
+                  <td class="check" data-label="Data Analyst"><span class="matrix-dot yes-data">✓</span></td>
+                  <td class="check" data-label="GIS Analyst"><span class="matrix-dot yes-gis">✓</span></td>
                 </tr>
                 <tr>
-                  <td>GIS &amp; spatial analysis</td>
-                  <td class="tools">QGIS, ArcGIS, spatial analysis, suitability mapping</td>
-                  <td class="check"><span class="matrix-dot no">–</span></td>
-                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                  <td data-label="Skill area">GIS &amp; spatial analysis</td>
+                  <td class="tools" data-label="Core tools">QGIS, ArcGIS, spatial analysis, suitability mapping</td>
+                  <td class="check" data-label="Data Analyst"><span class="matrix-dot no">–</span></td>
+                  <td class="check" data-label="GIS Analyst"><span class="matrix-dot yes-gis">✓</span></td>
                 </tr>
                 <tr>
-                  <td>Remote sensing &amp; earth observation</td>
-                  <td class="tools">Google Earth Engine, satellite-derived indices, NetCDF</td>
-                  <td class="check"><span class="matrix-dot no">–</span></td>
-                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                  <td data-label="Skill area">Remote sensing &amp; earth observation</td>
+                  <td class="tools" data-label="Core tools">Google Earth Engine, satellite-derived indices, NetCDF</td>
+                  <td class="check" data-label="Data Analyst"><span class="matrix-dot no">–</span></td>
+                  <td class="check" data-label="GIS Analyst"><span class="matrix-dot yes-gis">✓</span></td>
                 </tr>
                 <tr>
-                  <td>Climate &amp; hazard modeling</td>
-                  <td class="tools">FLO-2D, hazard/slope-stability modeling, TCFD, RCP/SSP scenarios</td>
-                  <td class="check"><span class="matrix-dot no">–</span></td>
-                  <td class="check"><span class="matrix-dot yes-gis">✓</span></td>
+                  <td data-label="Skill area">Climate &amp; hazard modeling</td>
+                  <td class="tools" data-label="Core tools">FLO-2D, hazard/slope-stability modeling, TCFD, RCP/SSP scenarios</td>
+                  <td class="check" data-label="Data Analyst"><span class="matrix-dot no">–</span></td>
+                  <td class="check" data-label="GIS Analyst"><span class="matrix-dot yes-gis">✓</span></td>
                 </tr>
               </tbody>
             </table>
