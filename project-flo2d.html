@@ -15,17 +15,17 @@
        TOKENS
     ══════════════════════════════════════════ */
     :root {
-      --bg:      #080e1e;
-      --surface: rgba(15, 26, 43, .55);
-      --line:    rgba(255,255,255,.08);
-      --line2:   rgba(255,255,255,.04);
-      --text:    #e8eaf2;
-      --muted:   #7e8ba8;
-      --accent:  #22d3ee;
-      --accent2: #a78bfa;
-      --accent3: #34d399;
+      --bg:      #f7f8fb;
+      --surface:#ffffff;
+      --line:#e3e6ec;
+      --line2:#edeff3;
+      --text:    #1a1d29;
+      --muted:   #667085;
+      --accent:  #0891b2;
+      --accent2: #7c3aed;
+      --accent3: #059669;
       --radius:  18px;
-      --shadow:  0 8px 40px rgba(0,0,0,.45);
+      --shadow:0 2px 10px rgba(16,24,40,.06);
     }
 
     /* ══════════════════════════════════════════
@@ -45,8 +45,6 @@
     body {
       min-height: 100vh;
       background:
-        radial-gradient(ellipse 1100px 600px at 10% 5%,  rgba(34,211,238,.10), transparent 55%),
-        radial-gradient(ellipse  800px 500px at 90% 30%, rgba(167,139,250,.09), transparent 55%),
         var(--bg);
     }
 
@@ -86,9 +84,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(11,16,32,0.72);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background:#ffffff;
       border-bottom: 1px solid var(--line);
       padding: 14px 0;
     }
@@ -133,25 +129,25 @@
       font-size: 12px;
       font-weight: 500;
       color: var(--muted);
-      background: rgba(255,255,255,.03);
+      background: rgba(15,23,42,.03);
       transition: color .18s, border-color .18s, background .18s;
       text-decoration: none;
       cursor: pointer;
     }
     .pill:hover {
       color: var(--text);
-      border-color: rgba(255,255,255,.18);
-      background: rgba(255,255,255,.06);
+      border-color: rgba(15,23,42,.18);
+      background: rgba(15,23,42,.06);
       text-decoration: none;
     }
     .pill.primary {
       color: var(--accent);
-      border-color: rgba(34,211,238,.25);
-      background: rgba(34,211,238,.06);
+      border-color: rgba(8,145,178,.25);
+      background: rgba(8,145,178,.06);
     }
     .pill.primary:hover {
-      background: rgba(34,211,238,.12);
-      border-color: rgba(34,211,238,.4);
+      background: rgba(8,145,178,.12);
+      border-color: rgba(8,145,178,.4);
     }
 
     /* ══════════════════════════════════════════
@@ -159,28 +155,11 @@
     ══════════════════════════════════════════ */
     .chapter {
       padding: 80px 0;
-      border-top: 1px solid rgba(255,255,255,.06);
+      border-top: 1px solid rgba(15,23,42,.06);
     }
     @media (max-width: 860px) { .chapter { padding: 52px 0; } }
 
-    #top {
-      background:
-        radial-gradient(1200px 520px at 30% 20%, rgba(34,211,238,.14), transparent 55%),
-        radial-gradient(900px  520px at 70% 60%, rgba(167,139,250,.12), transparent 60%),
-        linear-gradient(180deg, rgba(11,16,32,.22), rgba(11,16,32,0));
-    }
-    #details {
-      background:
-        radial-gradient(1100px 520px at 60% 25%, rgba(52,211,153,.10), transparent 55%),
-        radial-gradient(900px  520px at 25% 70%, rgba(125,211,252,.08), transparent 60%),
-        linear-gradient(180deg, rgba(11,16,32,.18), rgba(11,16,32,0));
-    }
-    .module-chapter {
-      background:
-        radial-gradient(1100px 520px at 35% 25%, rgba(167,139,250,.10), transparent 55%),
-        radial-gradient(900px  520px at 75% 70%, rgba(34,211,238,.08),  transparent 60%),
-        linear-gradient(180deg, rgba(11,16,32,.16), rgba(11,16,32,0));
-    }
+
 
     /* ══════════════════════════════════════════
        SCROLL REVEAL
@@ -255,7 +234,7 @@
       border: 1px solid var(--line);
       padding: 7px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,.03);
+      background: rgba(15,23,42,.03);
       margin-bottom: 14px;
       align-self: flex-start;
     }
@@ -263,7 +242,7 @@
       width: 8px; height: 8px;
       border-radius: 999px;
       background: var(--accent3);
-      box-shadow: 0 0 0 4px rgba(52,211,153,.12);
+      box-shadow: 0 0 0 4px rgba(5,150,105,.12);
     }
 
     .super {
@@ -294,7 +273,7 @@
       border: 1px solid var(--line);
       border-radius: 999px;
       color: var(--muted);
-      background: rgba(255,255,255,.025);
+      background: rgba(15,23,42,.025);
       white-space: nowrap;
     }
 
@@ -334,7 +313,7 @@
       padding: 24px;
       transition: border-color .2s;
     }
-    .detail-card:hover { border-color: rgba(255,255,255,.16); }
+    .detail-card:hover { border-color: rgba(15,23,42,.16); }
 
     .detail-wide { grid-column: 1 / -1; }
 
@@ -355,7 +334,7 @@
     }
     .detail-card ul li {
       font-size: 14.5px;
-      color: rgba(232,234,242,.80);
+      color: rgba(26,29,41,.80);
       padding-left: 14px;
       position: relative;
       line-height: 1.6;
@@ -380,7 +359,7 @@
       padding: 32px;
       transition: border-color .2s;
     }
-    .highlight:hover { border-color: rgba(255,255,255,.14); }
+    .highlight:hover { border-color: rgba(15,23,42,.14); }
 
     .highlight-grid {
       display: grid;
@@ -431,7 +410,7 @@
     }
     .h-points li {
       font-size: 14.5px;
-      color: rgba(232,234,242,.80);
+      color: rgba(26,29,41,.80);
       padding-left: 14px;
       position: relative;
       line-height: 1.6;
@@ -488,7 +467,7 @@
 
     .note-card p {
       font-size: 14px;
-      color: rgba(232,234,242,.75);
+      color: rgba(26,29,41,.75);
       line-height: 1.7;
       margin: 0;
     }
@@ -500,8 +479,6 @@
       position: fixed;
       inset: 0;
       background: rgba(5,10,20,.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -532,14 +509,14 @@
       display: grid;
       place-items: center;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.07);
+      background: rgba(15,23,42,.07);
       color: var(--text);
       font-size: 22px;
       cursor: pointer;
       transition: background .18s, transform .18s;
     }
     .lightbox-close:hover {
-      background: rgba(255,255,255,.14);
+      background: rgba(15,23,42,.14);
       transform: scale(1.08);
     }
 
