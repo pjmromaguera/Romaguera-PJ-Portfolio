@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mangrove Restoration Suitability Mapping | Paola Jayme Romaguera</title>
-  <meta name="description" content="Sample case study: GIS-based suitability screening for mangrove restoration and blue-carbon site prioritization." />
+  <title>Mangrove Restoration Suitability &amp; Eligibility Screening | Paola Jayme Romaguera</title>
+  <meta name="description" content="GIS-based suitability screening for mangrove restoration and blue-carbon site prioritization — a confidential client methodology, plus a real, live VM0033 implementation across all 28 coastal provinces of Vietnam." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,7 +44,6 @@
     .chapter { padding: 80px 0; border-top: 1px solid rgba(15,23,42,.06); }
     @media (max-width: 860px) { .chapter { padding: 52px 0; } }
 
-
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .75s ease, transform .75s ease; will-change: opacity, transform; }
     .reveal.in { opacity: 1; transform: translateY(0); }
 
@@ -67,6 +66,7 @@
     .tag { font-size: 12.5px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: rgba(15,23,42,.025); white-space: nowrap; }
 
     .section-label { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .section-label.alt { color: var(--accent3); }
     .section-title { font-size: 26px; letter-spacing: -0.3px; margin: 0 0 6px; }
 
     .detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 28px; }
@@ -76,13 +76,29 @@
     .detail-card:hover { border-color: rgba(15,23,42,.16); }
     .detail-wide { grid-column: 1 / -1; }
     .detail-card h3 { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .detail-card.alt h3 { color: var(--accent3); }
     .detail-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
     .detail-card ul li { font-size: 14.5px; color: rgba(26,29,41,.80); padding-left: 14px; position: relative; line-height: 1.6; }
     .detail-card ul li::before { content: '–'; position: absolute; left: 0; color: var(--accent); opacity: .45; }
+    .detail-card.alt ul li::before { color: var(--accent3); }
+
+    .embed-frame { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); overflow: hidden; }
+    .embed-frame iframe { display: block; width: 100%; height: 900px; border: 0; background: #F7F8F3; }
+    @media (max-width: 640px) { .embed-frame iframe { height: 720px; } }
 
     .note-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); padding: 24px; border-left: 3px solid var(--accent2); }
     .note-card h3 { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
     .note-card p { font-size: 14px; color: rgba(26,29,41,.75); line-height: 1.7; margin: 0; }
+    .note-card.alt { border-left-color: var(--accent3); }
+    .note-card.alt h3 { color: var(--accent3); }
+
+    .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 28px; }
+    @media (max-width: 780px) { .stat-strip { grid-template-columns: repeat(2, 1fr); } }
+    .stat-box { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); padding: 20px; }
+    .stat-box .num { font-family: 'DM Serif Display', serif; font-size: 30px; color: var(--accent3); }
+    .stat-box .lbl { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+
+    .divider-band { margin-top: 56px; padding-top: 40px; border-top: 1px dashed rgba(15,23,42,.14); }
 
     .footer { padding: 28px 0 40px; border-top: 1px solid var(--line2); }
     .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
@@ -122,36 +138,39 @@
           <nav class="crumbs" aria-label="Breadcrumb">
             <a href="projects.html">Projects</a>
             <span class="sep-dot" aria-hidden="true">·</span>
-            <span>Mangrove Restoration Suitability Mapping</span>
+            <span>Mangrove Restoration Suitability &amp; Eligibility Screening</span>
           </nav>
 
-          <div class="micro" aria-label="Sample case study · Nature-based solutions · Blue carbon">
+          <div class="micro" aria-label="Sample case study + personal implementation · Blue carbon">
             <span class="dot" aria-hidden="true"></span>
-            Sample case study &nbsp;·&nbsp; Nature-based solutions &nbsp;·&nbsp; Blue carbon
+            Sample case study + real implementation &nbsp;·&nbsp; Blue carbon &nbsp;·&nbsp; VM0033
           </div>
 
           <h1 class="super" id="project-heading">
-            Mangrove Restoration Suitability Mapping
+            Mangrove Restoration Suitability &amp; Eligibility Screening
           </h1>
 
           <p class="lede2">
-            An illustrative case study demonstrating a GIS-based suitability-screening approach for identifying
-            sites where mangroves can be restored. This is a generalized methodology example for a confidential
-            client engagement — no client data, deliverables, or results are shown.
+            Two views of the same skill set. First, a generalized methodology overview for a confidential
+            client engagement — no client data, sites, or results are shown. Below that, a full real
+            implementation I built myself: a live VM0033 mangrove restoration eligibility screen across all
+            28 coastal provinces of Vietnam, computed on real public Google Earth Engine data, with an
+            interactive map you can try right on this page.
           </p>
 
           <div class="tags" aria-label="Project tags">
             <span class="tag">Suitability mapping</span>
             <span class="tag">Mangrove restoration</span>
             <span class="tag">Blue carbon</span>
+            <span class="tag">VM0033 methodology</span>
+            <span class="tag">Google Earth Engine</span>
             <span class="tag">QGIS</span>
-            <span class="tag">Nature-based solutions</span>
           </div>
 
           <hr class="sep" aria-hidden="true" />
 
           <div class="row">
-            <a class="pill" href="projects.html">← Back to Projects</a>
+            <a class="pill" href="#vietnam">Jump to the live Vietnam demo ↓</a>
             <a class="pill primary" href="mailto:romaguera.pj@gmail.com">Contact</a>
           </div>
 
@@ -163,10 +182,10 @@
       <div class="wide">
 
         <div class="reveal">
-          <div class="section-label">Overview</div>
-          <h2 class="section-title" id="details-heading">Highlights</h2>
+          <div class="section-label">Client Engagement · Methodology Overview</div>
+          <h2 class="section-title" id="details-heading">How a coastline becomes a shortlist</h2>
           <p class="lede2" style="margin-bottom:0;">
-            How a coastline gets narrowed down to a short list of restorable sites.
+            A generalized version of a confidential client engagement — the approach, not the deliverable.
           </p>
         </div>
 
@@ -204,7 +223,7 @@
             <ul>
               <li>Designed the suitability-screening workflow and criteria weighting.</li>
               <li>Produced ranked site outputs to support restoration-site prioritization.</li>
-              <li>Sample case study — illustrates methodology, not an actual client deliverable.</li>
+              <li>Generalized here to illustrate methodology, not an actual client deliverable.</li>
             </ul>
           </div>
 
@@ -222,8 +241,115 @@
         <div class="note-card reveal" style="margin-top: 24px;">
           <h3>Sample Work Notice</h3>
           <p>
-            This is a sample case study illustrating methodology and approach for a confidential client engagement.
+            This section illustrates methodology and approach for a confidential client engagement.
             It does not disclose actual client data, site locations, deliverables, or results.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="chapter divider-band" id="vietnam" aria-labelledby="vietnam-heading">
+      <div class="wide">
+
+        <div class="reveal">
+          <div class="section-label alt">Real Implementation · Vietnam</div>
+          <h2 class="section-title" id="vietnam-heading">VM0033 Mangrove Restoration Screen</h2>
+          <p class="lede2">
+            A self-directed extension of the same methodology, applied for real: VM0033 mangrove restoration
+            eligibility screening across all 28 coastal provinces of Vietnam, built end to end — from
+            authenticating Google Earth Engine to shipping the interactive map below. Not a client
+            engagement: every number and polygon here comes from open data (FAO GAUL boundaries, Global
+            Mangrove Watch, GLC-FCS30D, JRC Global Surface Water, Allen Coral Atlas, ESRI Land Cover, SRTM,
+            and CGMD-Extent30), computed live for this project.
+          </p>
+        </div>
+
+        <div class="stat-strip">
+          <div class="stat-box reveal"><div class="num">28</div><div class="lbl">Coastal provinces screened</div></div>
+          <div class="stat-box reveal"><div class="num">~255K ha</div><div class="lbl">Historical mangrove baseline</div></div>
+          <div class="stat-box reveal"><div class="num">~111K ha</div><div class="lbl">Final restorable area</div></div>
+          <div class="stat-box reveal"><div class="num">~44%</div><div class="lbl">Retention after spatial filters</div></div>
+        </div>
+
+        <div class="detail-grid">
+
+          <div class="detail-card alt reveal">
+            <h3>Objective</h3>
+            <ul>
+              <li>Apply the VM0033 mangrove restoration eligibility methodology to a real country, not a mock-up.</li>
+              <li>Identify where historically mangrove land has been lost and could realistically be restored.</li>
+              <li>Make the result explorable — not just a number, a real map you can click into.</li>
+            </ul>
+          </div>
+
+          <div class="detail-card alt reveal">
+            <h3>Approach</h3>
+            <ul>
+              <li>Union GLC-FCS30D (2000) and Global Mangrove Watch (2007–2020) into a historical mangrove baseline.</li>
+              <li>Subtract confirmed 2023 mangrove extent (CGMD-Extent30) to isolate the loss zone.</li>
+              <li>Exclude permanent water, reef/shallow habitat, built-up land, and elevation ≥ 50 m, in that order.</li>
+              <li>Repeat per province across all 28 coastal provinces, not just one example site.</li>
+            </ul>
+          </div>
+
+          <div class="detail-card alt reveal">
+            <h3>Tools</h3>
+            <ul>
+              <li>Google Earth Engine (Python API) for all raster/vector processing and analysis.</li>
+              <li>FAO GAUL administrative boundaries for the 28-province coastal AOI.</li>
+              <li>Vanilla JS/SVG front end — no mapping library, no framework, no external tile requests.</li>
+            </ul>
+          </div>
+
+          <div class="detail-card alt reveal">
+            <h3>My Role</h3>
+            <ul>
+              <li>Authenticated and ran the entire Earth Engine pipeline myself, province by province.</li>
+              <li>Caught and fixed real bugs along the way (a band-name mismatch in the GMW union step, a
+                  wrong filtering approach for a tiled dataset, an incorrect asset ID) — not just used what worked
+                  on the first try.</li>
+              <li>Designed and built the interactive front end: click-to-zoom map, manual per-layer toggles,
+                  ranked province table.</li>
+            </ul>
+          </div>
+
+          <div class="detail-card alt detail-wide reveal">
+            <h3>Key Takeaways</h3>
+            <ul>
+              <li>Cà Mau alone accounts for roughly 40% of Vietnam's national restorable mangrove area — the shortlist is not evenly spread.</li>
+              <li>Which exclusion filter matters most is regional: reef/shallow-habitat exclusion is near-irrelevant in the Mekong Delta but material in reef-adjacent provinces, while elevation exclusion barely matters anywhere on this flat coastline.</li>
+              <li>"Confirmed current extent" is a genuinely hard input to source well — the standard Global Mangrove Watch vector series stops at 2020, so getting a real 2023 baseline required finding and verifying a second, less well-known dataset.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="reveal" style="margin-top:36px;">
+          <div class="section-label alt">Try It</div>
+          <h2 class="section-title">Interactive Screening Map</h2>
+          <p class="lede2" style="margin-bottom:16px;">
+            Click into any of the 28 coastal provinces and manually step through its six real screening
+            layers — historical mask, raw restorable area, and each of the four exclusion filters. Live
+            preview below, or <a href="project-vietnam-mangrove-explorer.html">open it on its own page</a>.
+          </p>
+          <div class="embed-frame">
+            <iframe
+              src="project-vietnam-mangrove-explorer.html"
+              title="Vietnam Mangrove Restoration Screen — interactive map"
+              loading="lazy"
+              referrerpolicy="no-referrer">
+            </iframe>
+          </div>
+        </div>
+
+        <div class="note-card alt reveal" style="margin-top: 24px;">
+          <h3>Data Notice</h3>
+          <p>
+            This section is real output from public datasets, not a schematic or sample dataset — but the
+            province boundaries reflect Vietnam's pre-2025 administrative structure (63 provinces), since
+            that's what the underlying FAO GAUL boundary dataset provides. Vietnam merged to 34 provinces in
+            July 2025; this project has not yet been updated to match.
           </p>
         </div>
 
