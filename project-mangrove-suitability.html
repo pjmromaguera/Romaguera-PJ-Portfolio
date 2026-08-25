@@ -104,6 +104,18 @@
     .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
     .footer-inner a { color: var(--muted); }
     .footer-inner a:hover { color: var(--text); }
+    /* Mobile nav toggle */
+    .nav-toggle{ display:none; align-items:center; justify-content:center; width:38px; height:38px; border:1px solid var(--line); border-radius:8px; background:rgba(15,23,42,.03); color:var(--text); font-size:18px; cursor:pointer; flex-shrink:0; }
+    .nav-toggle:hover{ background:rgba(15,23,42,.06); }
+    @media (max-width:860px){
+      .nav-toggle{ display:inline-flex; }
+      .nav .wide{ flex-wrap:wrap; }
+      .nav-links{ display:none; width:100%; flex-direction:column; align-items:stretch; gap:8px; margin-top:14px; padding-top:14px; border-top:1px solid var(--line); }
+      .nav-links.nav-open{ display:flex; }
+      .nav-links li{ width:100%; list-style:none; }
+      .nav-links a.pill{ width:100%; box-sizing:border-box; justify-content:flex-start; }
+    }
+
   </style>
 </head>
 
@@ -117,6 +129,7 @@
           <strong>Paola Jayme Romaguera</strong>
           <span>Data Analytics • GIS • Remote Sensing • Python</span>
         </div>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
         <ul class="nav-links" role="list">
           <li><a class="pill" href="index.html#top">Overview</a></li>
           <li><a class="pill" href="index.html#expertise">Expertise</a></li>
@@ -395,5 +408,25 @@
   }, { threshold: 0.10, rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
 </script>
+<script>
+(function(){
+  var btn = document.getElementById('navToggle');
+  var links = document.querySelector('.nav-links');
+  if(!btn || !links) return;
+  btn.addEventListener('click', function(){
+    var open = links.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.innerHTML = open ? '&#10005;' : '&#9776;';
+  });
+  links.addEventListener('click', function(e){
+    if(e.target.closest('a')){
+      links.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded','false');
+      btn.innerHTML = '&#9776;';
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
