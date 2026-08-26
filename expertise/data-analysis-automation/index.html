@@ -106,6 +106,17 @@
       .nav-links a.pill{ width:100%; box-sizing:border-box; justify-content:flex-start; }
     }
 
+  
+    .to-top-btn{
+      position:fixed; right:24px; bottom:24px; z-index:900;
+      width:46px; height:46px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      border:1px solid var(--line); background:var(--surface); color:var(--accent);
+      font-size:20px; line-height:1; box-shadow:var(--shadow); text-decoration:none;
+      transition:transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .to-top-btn:hover{ transform:translateY(-3px); text-decoration:none; }
+    @media (max-width:600px){ .to-top-btn{ right:16px; bottom:16px; width:42px; height:42px; font-size:18px; } }
   </style>
 </head>
 
@@ -294,5 +305,6 @@
 })();
 </script>
 
+<a class="to-top-btn" href="#" aria-label="Return to top" title="Return to top">&#8593;</a>
 </body>
 </html>
