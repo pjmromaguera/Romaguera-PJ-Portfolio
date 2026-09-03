@@ -8,7 +8,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,500;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link href="https://cdn.jsdelivr.net/npm/cal-sans@1.0.1/index.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
   <style>
     :root{
@@ -17,7 +19,7 @@
       --radius:18px; --shadow:0 2px 10px rgba(16,24,40,.06);
     }
     *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
-    html{ scroll-behavior:smooth; background:var(--bg); color:var(--text); font-family:'Instrument Sans',sans-serif; font-size:15px; line-height:1.65; }
+    html{ scroll-behavior:smooth; background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; font-size:15px; line-height:1.65; }
     body{ min-height:100vh; background:
       var(--bg); }
     body::before{ content:''; position:fixed; inset:0;
@@ -57,13 +59,13 @@
     .crumbs a{ color:var(--text); opacity:.8; text-decoration:none; }
     .crumbs a:hover{ opacity:1; text-decoration:underline; }
 
-    .eyebrow-num{ font-family:'DM Mono', monospace; font-size:13px; color:var(--accent); opacity:.8; margin-bottom:10px; display:block; }
+    .eyebrow-num{ font-family:'Inter',sans-serif; font-size:13px; color:var(--accent); opacity:.8; margin-bottom:10px; display:block; }
 
-    .super{ font-size:clamp(34px, 5vw, 58px); line-height:1.06; letter-spacing:-.6px; margin:0 0 14px; }
+    .super{ font-family:'Cal Sans'; font-size:clamp(34px, 5vw, 58px); line-height:1.06; letter-spacing:-.6px; margin:0 0 14px; }
     .lede2{ color:var(--muted); font-size:clamp(14px, 1.4vw, 17px); max-width:72ch; margin:0 0 16px; line-height:1.75; }
 
-    .section-label{ font-family:'DM Mono', monospace; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
-    .section-title{ font-size:26px; letter-spacing:-.3px; margin:0 0 6px; }
+    .section-label{ font-family:'Inter',sans-serif; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+    .section-title{ font-family:'Cal Sans'; font-size:26px; letter-spacing:-.3px; margin:0 0 6px; }
 
     .practice-card{ border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); box-shadow:var(--shadow); padding:32px; margin-top:24px; }
     .practice-quote{ font-size:clamp(19px, 2.3vw, 24px); font-style:italic; color:var(--text); line-height:1.5; margin:0 0 18px; max-width:62ch; }
@@ -78,14 +80,14 @@
     .evidence-list{ display:flex; flex-direction:column; margin-top:20px; }
     .evidence-row{ display:block; padding:20px 0; border-bottom:1px solid var(--line2); text-decoration:none; color:inherit; }
     .evidence-row:last-child{ border-bottom:none; }
-    .evidence-eyebrow{ font-family:'DM Mono', monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+    .evidence-eyebrow{ font-family:'Inter',sans-serif; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
     .evidence-row h3{ font-size:18px; color:var(--text); margin:0 0 8px; letter-spacing:-.2px; }
     .evidence-link{ font-size:13.5px; font-weight:600; color:var(--accent); }
 
     .other-areas-list{ margin-top:20px; }
     .other-area-row{ display:flex; align-items:center; gap:16px; padding:16px 0; border-bottom:1px solid var(--line2); text-decoration:none; color:inherit; }
     .other-area-row:last-child{ border-bottom:none; }
-    .other-area-row .num{ font-family:'DM Mono', monospace; font-size:12px; color:var(--accent); opacity:.75; width:24px; flex-shrink:0; }
+    .other-area-row .num{ font-family:'Inter',sans-serif; font-size:12px; color:var(--accent); opacity:.75; width:24px; flex-shrink:0; }
     .other-area-row .name{ font-size:15.5px; font-weight:600; color:var(--text); flex:1; }
     .other-area-row .arrow{ color:var(--muted); opacity:.6; }
     .other-area-row:hover .name{ color:var(--accent); }

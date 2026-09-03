@@ -20,11 +20,13 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link href="https://cdn.jsdelivr.net/npm/cal-sans@1.0.1/index.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     :root{--bg:#f7f8fb;--surface:#ffffff;--surface2:#f3f4f7;--line:#e3e6ec;--line2:#edeff3;--text:#1a1d29;--muted:#667085;--accent:#0891b2;--accent2:#7c3aed;--accent3:#059669;--radius:14px;--shadow:0 2px 10px rgba(16,24,40,.06);}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;scroll-padding-top:72px;background:var(--bg);color:var(--text);font-family:'Instrument Sans',sans-serif;font-size:15px;line-height:1.65;}
+    html{scroll-behavior:smooth;scroll-padding-top:72px;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.65;}
     html,body{overflow-x:visible;}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.fade-in,.slide-up{animation:none!important;opacity:1!important;transform:none!important;}}
     a{color:var(--accent);text-decoration:none;}
@@ -45,13 +47,13 @@
     .pill.primary:hover{background:rgba(8,145,178,.12);border-color:rgba(8,145,178,.4);}
     .pill[aria-current="page"]{color:var(--text);border-color:rgba(15,23,42,.18);background:rgba(15,23,42,.06);}
     .resume-header{padding:64px 0 48px;border-bottom:1px solid var(--line);}
-    .header-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;}
+    .header-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;}
     .header-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--accent);opacity:.6;}
-    .resume-name{font-family:'DM Serif Display',serif;font-size:clamp(42px,7vw,72px);line-height:1.02;letter-spacing:-1px;color:var(--text);margin-bottom:10px;}
+    .resume-name{font-family:'Cal Sans',sans-serif;font-size:clamp(42px,7vw,72px);line-height:1.02;letter-spacing:-1px;color:var(--text);margin-bottom:10px;}
     .resume-name em{font-style:italic;color:var(--accent2);}
     .resume-title{font-size:15px;color:var(--muted);margin-bottom:28px;letter-spacing:.01em;}
     .contact-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
-    .contact-item{display:inline-flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);text-decoration:none;transition:color .18s;}
+    .contact-item{display:inline-flex;align-items:center;gap:7px;font-family:'Inter',sans-serif;font-size:12px;color:var(--muted);text-decoration:none;transition:color .18s;}
     .contact-item:hover{color:var(--accent);text-decoration:none;}
     .contact-item .icon{width:16px;height:16px;opacity:.55;flex-shrink:0;}
     .contact-sep{color:var(--line);font-size:16px;}
@@ -61,18 +63,18 @@
     @media(max-width:720px){.resume-body{grid-template-columns:1fr;}}
     .section{padding:36px 0;border-bottom:1px solid var(--line2);}
     .section:last-child{border-bottom:none;}
-    .section-label{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;display:flex;align-items:center;gap:10px;}
+    .section-label{font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;display:flex;align-items:center;gap:10px;}
     .section-label::after{content:'';flex:1;height:1px;background:var(--line);}
     .exp-entry{margin-bottom:32px;}
 .exp-entry:last-child{margin-bottom:0;}
-.exp-org{font-family:'DM Serif Display',serif;font-size:18px;letter-spacing:-.2px;color:var(--text);margin-bottom:2px;}
+.exp-org{font-family:'Cal Sans',sans-serif;font-size:18px;letter-spacing:-.2px;color:var(--text);margin-bottom:2px;}
 .exp-meta{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin-bottom:12px;}
 .exp-role{font-weight:600;font-size:13.5px;color:var(--accent2);}
-.exp-period{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.04em;}
+.exp-period{font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);letter-spacing:.04em;}
 .exp-group{margin-bottom:14px;}
 .exp-group-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent3);margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid var(--line2);}
 .exp-tabs{display:flex;gap:6px;margin-bottom:28px;}
-.exp-tab{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:7px 18px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:rgba(15,23,42,.03);cursor:pointer;transition:color .18s,border-color .18s,background .18s;}
+.exp-tab{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:7px 18px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:rgba(15,23,42,.03);cursor:pointer;transition:color .18s,border-color .18s,background .18s;}
 .exp-tab:hover{color:var(--text);border-color:rgba(15,23,42,.18);background:rgba(15,23,42,.06);}
 .exp-tab[aria-selected="true"]{color:var(--accent);border-color:rgba(8,145,178,.35);background:rgba(8,145,178,.07);}
 .exp-panel{display:none;}
@@ -84,15 +86,15 @@
 .sidebar{padding-top:36px;}
 .sidebar-section{margin-bottom:32px;}
 .sidebar-section:last-child{margin-bottom:0;}
-.sidebar-label{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.sidebar-label{font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
 .sidebar-label::after{content:'';flex:1;height:1px;background:var(--line);}
 .skill-group{margin-bottom:16px;}
 .skill-group-name{font-size:11px;font-weight:600;color:var(--muted);margin-bottom:6px;letter-spacing:.04em;}
 .skill-tags{display:flex;flex-wrap:wrap;gap:6px;}
-.skill-tag{font-family:'DM Mono',monospace;font-size:11px;padding:4px 9px;border:1px solid var(--line);border-radius:6px;color:var(--muted);background:var(--surface2);white-space:nowrap;}
+.skill-tag{font-family:'Inter',sans-serif;font-size:11px;padding:4px 9px;border:1px solid var(--line);border-radius:6px;color:var(--muted);background:var(--surface2);white-space:nowrap;}
 .skill-tag.hi{border-color:rgba(8,145,178,.22);color:rgba(8,145,178,.75);background:rgba(8,145,178,.05);}
 .edu-card{padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--surface2);}
-.edu-degree{font-family:'DM Serif Display',serif;font-size:15px;color:var(--text);margin-bottom:3px;}
+.edu-degree{font-family:'Cal Sans',sans-serif;font-size:15px;color:var(--text);margin-bottom:3px;}
 .edu-school{font-size:12px;color:var(--muted);}
 .fade-in{animation:fadeIn .7s ease both;}
 .slide-up{animation:slideUp .65s ease both;}
@@ -409,19 +411,19 @@
       <div class="sidebar-label" id="conf-heading">Research &amp; Conferences</div>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
         <li style="font-size:12.5px;color:var(--muted);line-height:1.6;">
-          <span style="display:block;font-size:11px;font-family:'DM Mono',monospace;color:var(--accent);margin-bottom:2px;">AGU Fall Meeting 2020</span>
+          <span style="display:block;font-size:11px;font-family:'Inter',sans-serif;color:var(--accent);margin-bottom:2px;">AGU Fall Meeting 2020</span>
           A Multi-Hazard Interactions Framework for the Philippines
         </li>
         <li style="font-size:12.5px;color:var(--muted);line-height:1.6;">
-          <span style="display:block;font-size:11px;font-family:'DM Mono',monospace;color:var(--accent);margin-bottom:2px;">GeoCon 2023</span>
+          <span style="display:block;font-size:11px;font-family:'Inter',sans-serif;color:var(--accent);margin-bottom:2px;">GeoCon 2023</span>
           Enhancing Vs30 Mapping using HVSR Inversion
         </li>
         <li style="font-size:12.5px;color:var(--muted);line-height:1.6;">
-          <span style="display:block;font-size:11px;font-family:'DM Mono',monospace;color:var(--accent);margin-bottom:2px;">EGU General Assembly 2023</span>
+          <span style="display:block;font-size:11px;font-family:'Inter',sans-serif;color:var(--accent);margin-bottom:2px;">EGU General Assembly 2023</span>
           Living with Water: Lost or Forgotten Rivers in Manila &amp; London
         </li>
         <li style="font-size:12.5px;color:var(--muted);line-height:1.6;">
-          <span style="display:block;font-size:11px;font-family:'DM Mono',monospace;color:var(--accent);margin-bottom:2px;">Research 2019</span>
+          <span style="display:block;font-size:11px;font-family:'Inter',sans-serif;color:var(--accent);margin-bottom:2px;">Research 2019</span>
           Volcanic Features within the Benham Plateau
         </li>
       </ul>

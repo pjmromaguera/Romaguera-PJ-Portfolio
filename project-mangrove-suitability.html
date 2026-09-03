@@ -8,7 +8,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,500;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link href="https://cdn.jsdelivr.net/npm/cal-sans@1.0.1/index.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -17,7 +19,7 @@
       --radius: 18px; --shadow:0 2px 10px rgba(16,24,40,.06);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; background: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; font-size: 15px; line-height: 1.65; }
+    html { scroll-behavior: smooth; background: var(--bg); color: var(--text); font-family:'Inter',sans-serif; font-size: 15px; line-height: 1.65; }
     body { min-height: 100vh; background:
       var(--bg); }
     body::before { content: ''; position: fixed; inset: 0;
@@ -59,15 +61,15 @@
     .micro { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; color: var(--muted); border: 1px solid var(--line); padding: 7px 10px; border-radius: 999px; background: rgba(15,23,42,.03); margin-bottom: 14px; align-self: flex-start; }
     .micro .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--accent3); box-shadow: 0 0 0 4px rgba(5,150,105,.12); }
 
-    .super { font-size: clamp(34px, 5vw, 58px); line-height: 1.06; letter-spacing: -0.6px; margin: 0 0 14px; }
+    .super { font-family:'Cal Sans'; font-size: clamp(34px, 5vw, 58px); line-height: 1.06; letter-spacing: -0.6px; margin: 0 0 14px; }
     .lede2 { color: var(--muted); font-size: clamp(14px, 1.4vw, 17px); max-width: 72ch; margin: 0 0 16px; line-height: 1.75; }
 
     .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 4px; }
     .tag { font-size: 12.5px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: rgba(15,23,42,.025); white-space: nowrap; }
 
-    .section-label { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .section-label { font-family:'Inter',sans-serif; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
     .section-label.alt { color: var(--accent3); }
-    .section-title { font-size: 26px; letter-spacing: -0.3px; margin: 0 0 6px; }
+    .section-title { font-family:'Cal Sans'; font-size: 26px; letter-spacing: -0.3px; margin: 0 0 6px; }
 
     .detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 28px; }
     @media (max-width: 720px) { .detail-grid { grid-template-columns: 1fr; } }
@@ -75,7 +77,7 @@
     .detail-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); padding: 24px; transition: border-color .2s; }
     .detail-card:hover { border-color: rgba(15,23,42,.16); }
     .detail-wide { grid-column: 1 / -1; }
-    .detail-card h3 { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .detail-card h3 { font-family:'Inter',sans-serif; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
     .detail-card.alt h3 { color: var(--accent3); }
     .detail-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
     .detail-card ul li { font-size: 14.5px; color: rgba(26,29,41,.80); padding-left: 14px; position: relative; line-height: 1.6; }
@@ -87,7 +89,7 @@
     @media (max-width: 640px) { .embed-frame iframe { height: 720px; } }
 
     .note-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); padding: 24px; border-left: 3px solid var(--accent2); }
-    .note-card h3 { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
+    .note-card h3 { font-family:'Inter',sans-serif; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
     .note-card p { font-size: 14px; color: rgba(26,29,41,.75); line-height: 1.7; margin: 0; }
     .note-card.alt { border-left-color: var(--accent3); }
     .note-card.alt h3 { color: var(--accent3); }
@@ -95,7 +97,7 @@
     .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 28px; }
     @media (max-width: 780px) { .stat-strip { grid-template-columns: repeat(2, 1fr); } }
     .stat-box { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); padding: 20px; }
-    .stat-box .num { font-family: 'DM Serif Display', serif; font-size: 30px; color: var(--accent3); }
+    .stat-box .num { font-family:'Cal Sans',sans-serif; font-size: 30px; color: var(--accent3); }
     .stat-box .lbl { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
 
     .divider-band { margin-top: 56px; padding-top: 40px; border-top: 1px dashed rgba(15,23,42,.14); }

@@ -8,7 +8,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link href="https://cdn.jsdelivr.net/npm/cal-sans@1.0.1/index.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -31,7 +33,7 @@
       scroll-behavior: smooth;
       background: var(--bg);
       color: var(--text);
-      font-family: 'Instrument Sans', sans-serif;
+      font-family:'Inter',sans-serif;
       font-size: 15px;
       line-height: 1.65;
     }
@@ -167,15 +169,15 @@
     }
     .micro .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--accent3); box-shadow: 0 0 0 4px rgba(5,150,105,.12); }
 
-    .super { font-size: clamp(34px, 5vw, 62px); line-height: 1.06; letter-spacing: -0.6px; margin: 0 0 14px; }
+    .super { font-family:'Cal Sans'; font-size: clamp(34px, 5vw, 62px); line-height: 1.06; letter-spacing: -0.6px; margin: 0 0 14px; }
     .lede2 { color: var(--muted); font-size: clamp(14px, 1.4vw, 17px); max-width: 72ch; margin: 0 0 16px; line-height: 1.75; }
 
     .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 4px; }
     .tag { font-size: 12px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: rgba(15,23,42,.025); white-space: nowrap; }
 
     /* ── Highlights grid ── */
-    .section-label { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
-    .section-title  { font-size: 26px; letter-spacing: -0.3px; margin: 0 0 6px; }
+    .section-label { font-family:'Inter',sans-serif; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .section-title  { font-family:'Cal Sans'; font-size: 26px; letter-spacing: -0.3px; margin: 0 0 6px; }
 
     .detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 28px; }
     @media (max-width: 720px) { .detail-grid { grid-template-columns: 1fr; } }
@@ -184,7 +186,7 @@
     .detail-card:hover { border-color: rgba(15,23,42,.16); }
     .detail-wide { grid-column: 1 / -1; }
 
-    .detail-card h3 { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .detail-card h3 { font-family:'Inter',sans-serif; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
     .detail-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
     .detail-card ul li { font-size: 14.5px; color: rgba(26,29,41,.80); padding-left: 14px; position: relative; line-height: 1.6; }
     .detail-card ul li::before { content: '–'; position: absolute; left: 0; color: var(--accent); opacity: .45; }
@@ -199,7 +201,7 @@
     .highlight-grid.flipped { direction: rtl; }
     .highlight-grid.flipped > * { direction: ltr; }
 
-    .module-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
+    .module-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family:'Inter',sans-serif; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
 
     .h-title {  font-size: clamp(26px, 3vw, 38px); letter-spacing: -.4px; line-height: 1.08; margin: 0 0 12px; }
     .h-desc  { color: var(--muted); font-size: clamp(14.5px, 1.2vw, 16px); line-height: 1.75; margin: 0 0 18px; max-width: 60ch; }
@@ -251,7 +253,7 @@
 
     .table-head h3 {
       margin: 0;
-      font-family: 'DM Mono', monospace;
+      font-family:'Inter',sans-serif;
       font-size: 12px;
       letter-spacing: .14em;
       text-transform: uppercase;
@@ -335,7 +337,7 @@
       padding: 24px;
       border-left: 3px solid var(--accent2);
     }
-    .note-card h3 { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
+    .note-card h3 { font-family:'Inter',sans-serif; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
     .note-card p  { font-size: 14px; color: rgba(26,29,41,.75); line-height: 1.7; margin: 0; }
 
     /* ── Lightbox ── */
