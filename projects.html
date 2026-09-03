@@ -335,13 +335,71 @@
 
           <div class="projects-grid">
 
+            <a class="project reveal" href="project-mangrove-suitability.html">
+              <div class="cover">
+                <img src="assets/mangrove-cover.png" alt="Mangrove Restoration Suitability & Eligibility Screening cover" loading="lazy">
+              </div>
+              <div class="content">
+                <h3>Can mangrove restoration be screened systematically across a country's coastline?</h3>
+                <p>Live VM0033 eligibility screening across all 28 coastal provinces of Vietnam, computed on real public Earth Engine data, plus the confidential-client methodology it's built on.</p>
+                <div class="meta">
+                  <span class="chip">Suitability mapping</span>
+                  <span class="chip">VM0033</span>
+                  <span class="chip">Google Earth Engine</span>
+                </div>
+                <div class="cta">
+                  <span class="small">Project details</span>
+                  <span class="small">→</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="project reveal" href="project-mangrove-storm-pipeline.html">
+              <div class="cover">
+                <img src="assets/mangrove-storm-shield-dashboard.png" alt="Mangrove Storm Shield Dashboard — storms ranked by mangrove exposure and provinces ranked by storm frequency" width="1005" height="540" loading="lazy" />
+              </div>
+              <div class="content">
+                <h3>Which mangroves stand between a coastline and its next storm?</h3>
+                <p>A self-directed BigQuery/dbt pipeline on historical IBTrACS storm-track data, turning raw cyclone tracks into a real cloud pipeline ranking storm exposure against mangrove cover.</p>
+                <div class="meta">
+                  <span class="chip">BigQuery</span>
+                  <span class="chip">dbt</span>
+                  <span class="chip">GCP</span>
+                </div>
+                <div class="cta">
+                  <span class="small">Project details</span>
+                  <span class="small">→</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="project reveal" href="project-arr-restoration-suitability.html">
+              <div class="cover">
+                <img src="assets/arr-cover.png" alt="ARR Restoration Suitability Mapping cover" loading="lazy">
+              </div>
+              <div class="content">
+                <h3>Which coastal sites are actually ready for ARR restoration?</h3>
+                <p>Sample methodology for screening ARR-eligible sites for coffee, cacao, or bamboo planting, with the interactive Suitability Explorer embedded right on the page to test your own parameters.</p>
+                <div class="meta">
+                  <span class="chip">ARR methodology</span>
+                  <span class="chip">Suitability mapping</span>
+                  <span class="chip">QGIS</span>
+                  <span class="chip">Interactive tool</span>
+                </div>
+                <div class="cta">
+                  <span class="small">Project details</span>
+                  <span class="small">→</span>
+                </div>
+              </div>
+            </a>
+
             <a class="project reveal" href="project-dashboard.html">
               <div class="cover">
                 <img src="assets/app-cover.png" alt="Hazard Exposure Dashboard cover" loading="lazy">
               </div>
               <div class="content">
-                <h3>Hazard Exposure Assessment Dashboard</h3>
-                <p>Personal geospatial dashboard to automate hazard exposure metrics and visualization for large asset portfolios.</p>
+                <h3>How do you track hazard exposure across hundreds of scattered assets without redoing the analysis every time?</h3>
+                <p>Built a personal Streamlit dashboard to standardize and automate hazard exposure assessments, turning a repeatable manual analysis into a self-serve tool.</p>
                 <div class="meta">
                   <span class="chip">Dashboard</span>
                   <span class="chip">GIS</span>
@@ -359,8 +417,8 @@
                 <img src="assets/method-cover.png" alt="Hazard exposure methodology cover" loading="lazy">
               </div>
               <div class="content">
-                <h3>Climate Hazard Exposure Assessment Methodology</h3>
-                <p>Standardized framework integrating local and global datasets to assess exposure under current and future climate scenarios.</p>
+                <h3>How do you compare climate hazard exposure consistently across sectors and future scenarios?</h3>
+                <p>A standardized framework integrating local and global datasets, turning inconsistent one-off assessments into a scalable, current-and-future-scenario analysis.</p>
                 <div class="meta">
                   <span class="chip">Climate risk</span>
                   <span class="chip">Methodology</span>
@@ -378,8 +436,8 @@
                 <img src="assets/turbidity.png" alt="River turbidity map cover" loading="lazy">
               </div>
               <div class="content">
-                <h3>Spatiotemporal Analysis of Monthly Rainfall Effects on River Turbidity</h3>
-                <p>Utilized Google Earth Engine, satellite imagery, and rainfall data to analyze spatiotemporal patterns of river turbidity and identify areas with potential siltation risk.</p>
+                <h3>What happens to river turbidity after heavy rain?</h3>
+                <p>A Google Earth Engine analysis linking rainfall patterns with satellite-derived turbidity, turning raw imagery into a repeatable way to flag siltation zones.</p>
                 <div class="meta">
                   <span class="chip">Remote sensing</span>
                   <span class="chip">GEE</span>
@@ -397,8 +455,8 @@
                 <img src="assets/Flood Modelling.png" alt="2D flood modeling output cover" loading="lazy">
               </div>
               <div class="content">
-                <h3>2D Flood Modeling (FLO-2D)</h3>
-                <p>Hydrodynamic simulations generating flood depth and extent maps to support hazard interpretation and planning.</p>
+                <h3>Where will floodwater actually go, and how deep will it get?</h3>
+                <p>A 2D hydrodynamic modeling workflow simulating flood behavior under different scenarios, turning terrain and rainfall inputs into depth and extent maps hazard planners can act on.</p>
                 <div class="meta">
                   <span class="chip">Flood modeling</span>
                   <span class="chip">FLO-2D</span>
@@ -416,70 +474,12 @@
                 <img src="assets/eddies.png" alt="Ocean eddy detection cover" loading="lazy">
               </div>
               <div class="content">
-                <h3>Ocean Eddy Detection</h3>
-                <p>Processed multi-year NetCDF datasets in Python to detect mesoscale eddies and track lifecycle evolution.</p>
+                <h3>Can ocean eddies be automatically tracked across years of satellite data?</h3>
+                <p>A Python-based workflow to detect and track mesoscale eddies across multi-year NetCDF data, turning large scientific datasets into spatial and temporal features analyzable at scale.</p>
                 <div class="meta">
                   <span class="chip">Python</span>
                   <span class="chip">NetCDF</span>
                   <span class="chip">Feature tracking</span>
-                </div>
-                <div class="cta">
-                  <span class="small">Project details</span>
-                  <span class="small">→</span>
-                </div>
-              </div>
-            </a>
-
-            <a class="project reveal" href="project-mangrove-suitability.html">
-              <div class="cover">
-                <img src="assets/mangrove-cover.png" alt="Mangrove Restoration Suitability & Eligibility Screening cover" loading="lazy">
-              </div>
-              <div class="content">
-                <h3>Mangrove Restoration Suitability &amp; Eligibility Screening</h3>
-                <p>A confidential-client methodology overview, plus a real, live VM0033 implementation across all 28 coastal provinces of Vietnam on Google Earth Engine.</p>
-                <div class="meta">
-                  <span class="chip">Suitability mapping</span>
-                  <span class="chip">VM0033</span>
-                  <span class="chip">Google Earth Engine</span>
-                </div>
-                <div class="cta">
-                  <span class="small">Project details</span>
-                  <span class="small">→</span>
-                </div>
-              </div>
-            </a>
-
-            <a class="project reveal" href="project-arr-restoration-suitability.html">
-              <div class="cover">
-                <img src="assets/arr-cover.png" alt="ARR Restoration Suitability Mapping cover" loading="lazy">
-              </div>
-              <div class="content">
-                <h3>ARR Restoration Suitability Mapping</h3>
-                <p>Sample case study: identifying ARR-eligible areas that can be restored by planting coffee, cacao, or bamboo, plus the interactive Suitability Explorer tool embedded right on the page.</p>
-                <div class="meta">
-                  <span class="chip">ARR methodology</span>
-                  <span class="chip">Suitability mapping</span>
-                  <span class="chip">QGIS</span>
-                  <span class="chip">Interactive tool</span>
-                </div>
-                <div class="cta">
-                  <span class="small">Project details</span>
-                  <span class="small">→</span>
-                </div>
-              </div>
-            </a>
-
-            <a class="project reveal" href="project-mangrove-storm-pipeline.html">
-              <div class="cover">
-                <img src="assets/mangrove-storm-shield-dashboard.png" alt="Mangrove Storm Shield Dashboard — storms ranked by mangrove exposure and provinces ranked by storm frequency" width="1005" height="540" loading="lazy" />
-              </div>
-              <div class="content">
-                <h3>Mangrove Storm Shield Dashboard</h3>
-                <p>Self-directed BigQuery/dbt pipeline on historical IBTrACS storm-track data, ranking storms by mangrove-hectare exposure and Vietnamese coastal provinces by historical storm frequency.</p>
-                <div class="meta">
-                  <span class="chip">BigQuery</span>
-                  <span class="chip">dbt</span>
-                  <span class="chip">GCP</span>
                 </div>
                 <div class="cta">
                   <span class="small">Project details</span>
