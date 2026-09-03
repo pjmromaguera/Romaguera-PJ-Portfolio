@@ -94,6 +94,10 @@
     .pipeline-step .steplbl { font-size: 14px; font-weight: 600; color: var(--text); }
     .pipeline-step .stepsub { font-size: 12.5px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
 
+    .embed-frame { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); overflow: hidden; margin-top:20px; }
+    .embed-frame iframe { display: block; width: 100%; height: 1400px; border: 0; background: #FAFAF7; }
+    @media (max-width: 640px) { .embed-frame iframe { height: 1800px; } }
+
     .footer { padding: 28px 0 40px; border-top: 1px solid var(--line2); }
     .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
     .footer-inner a { color: var(--muted); }
@@ -175,11 +179,11 @@
 
           <div class="tags" aria-label="Project tags">
             <span class="tag">Google Cloud Platform</span>
-            <span class="tag">BigQuery</span>
+            <span class="tag">BigQuery GIS</span>
             <span class="tag">dbt</span>
-            <span class="tag">gcloud / bq CLI</span>
+            <span class="tag">geopandas / shapely</span>
             <span class="tag">IBTrACS storm data</span>
-            <span class="tag">Coastal risk</span>
+            <span class="tag">Global Mangrove Watch</span>
           </div>
 
           <hr class="sep" aria-hidden="true" />
@@ -201,19 +205,20 @@
           <div class="section-label">Output · Mangrove Storm Shield Dashboard</div>
           <h2 class="section-title" id="dashboard-heading">What the pipeline surfaces</h2>
           <p class="lede2">
-            The BigQuery tables built by this pipeline feed the Mangrove Storm Shield Dashboard — ranking
-            historical storms by mangrove-hectare exposure within 50km of their track, and ranking Vietnamese
-            coastal provinces by how often a historical storm has passed within 50km.
+            The BigQuery tables built by this pipeline feed the Mangrove Storm Shield dashboard below — live,
+            not a screenshot. It ranks historical storms by mangrove-hectare exposure within 50km of their
+            track, and ranks Vietnamese coastal provinces by how often a historical storm has passed within
+            50km. <a href="mangrove-storm-shield-dashboard.html">Open it on its own page ↗</a>.
           </p>
         </div>
 
-        <div class="detail-card reveal" style="margin-top:20px; padding:12px;">
-          <img
-            src="assets/mangrove-storm-shield-dashboard.png"
-            alt="Mangrove Storm Shield Dashboard: left panel ranks storms by mangrove hectares exposed within 50km of their track (JOAN 1964 highest at 128,864 ha); right panel ranks Vietnamese provinces by count of historical storms within 50km (Quang Ninh highest at 114)"
-            style="width:100%; height:auto; display:block; border-radius:12px;"
+        <div class="embed-frame reveal">
+          <iframe
+            src="mangrove-storm-shield-dashboard.html"
+            title="Mangrove Storm Shield Dashboard"
             loading="lazy"
-          />
+            referrerpolicy="no-referrer">
+          </iframe>
         </div>
 
         <div class="detail-grid">
@@ -254,18 +259,18 @@
         <div class="pipeline-strip">
           <div class="pipeline-step reveal">
             <div class="stepnum">STEP 1</div>
-            <div class="steplbl">Source</div>
-            <div class="stepsub">IBTrACS historical storm-track netCDF file</div>
+            <div class="steplbl">Prototype</div>
+            <div class="stepsub">Local geopandas/shapely scripts against IBTrACS + Global Mangrove Watch polygons</div>
           </div>
           <div class="pipeline-step reveal">
             <div class="stepnum">STEP 2</div>
             <div class="steplbl">Load</div>
-            <div class="stepsub">Dataset creation &amp; data loads via gcloud/bq CLI into BigQuery</div>
+            <div class="stepsub">Flattened to CSVs and loaded into BigQuery via gcloud/bq CLI</div>
           </div>
           <div class="pipeline-step reveal">
             <div class="stepnum">STEP 3</div>
             <div class="steplbl">Transform</div>
-            <div class="stepsub">dbt models structuring raw track points into usable tables</div>
+            <div class="stepsub">dbt models rebuild the same logic in BigQuery GIS (ST_MAKELINE, ST_DWITHIN)</div>
           </div>
           <div class="pipeline-step reveal">
             <div class="stepnum">STEP 4</div>
@@ -279,51 +284,62 @@
           <div class="detail-card alt reveal">
             <h3>Objective</h3>
             <ul>
-              <li>Quantify historical tropical-storm exposure along Vietnam's coastline using IBTrACS.</li>
-              <li>Build a reproducible, testable cloud pipeline rather than a one-off local script.</li>
-              <li>Rank storms by mangrove-hectare exposure and provinces by storm frequency, surfacing where
-                  historical storm activity and mangrove cover intersect most.</li>
+              <li>Quantify which coastal mangrove ecosystems in Vietnam sit in the path of historical tropical
+                  cyclones, 1950–2025.</li>
+              <li>Classify storm intensity on Vietnam's own tropical cyclone scale (NCHMF's "cấp gió"), not
+                  Saffir-Simpson.</li>
+              <li>Prototype locally first, then port the same logic to a reproducible dbt + BigQuery pipeline.</li>
             </ul>
           </div>
 
           <div class="detail-card alt reveal">
             <h3>Approach</h3>
             <ul>
-              <li>Load the local IBTrACS historical storm-track netCDF file into a dedicated GCP project
-                  (<code>mangrove-storm-risk</code>).</li>
-              <li>Create and populate BigQuery datasets entirely through the <code>gcloud</code>/<code>bq</code>
-                  CLI, for a reproducible, scriptable setup rather than manual console clicks.</li>
-              <li>Build dbt models on top of the raw loaded data, and run dbt tests to catch data-quality issues
-                  before they propagate downstream.</li>
+              <li>NOAA IBTrACS storm tracks (758 tracks pass near Vietnam, 1950–2025) against Global Mangrove
+                  Watch v3 2020 polygons (19,633 polygons / 161,298 ha, Vietnam-only after dropping cross-border
+                  Cambodian/Chinese polygons picked up by the bounding-box clip).</li>
+              <li>v1 checked storm tracks against province boundaries (coarse); v2 replaced that with a real
+                  polygon-level join once the coarse version proved too imprecise.</li>
+              <li>Ported to BigQuery: <code>stg_storm_tracks.sql</code> assembles per-fix points into an
+                  <code>ST_MAKELINE</code> track and classifies wind speed; <code>stg_mangrove_extents.sql</code>
+                  parses mangrove WKT into <code>GEOGRAPHY</code>; <code>int_mangrove_extents_by_province.sql</code>
+                  dissolves polygons per province (<code>ST_UNION_AGG</code>); <code>fct_mangrove_storm_impact.sql</code>
+                  computes the final storm × province table with an indexed <code>ST_DWITHIN</code>.</li>
             </ul>
           </div>
 
           <div class="detail-card alt reveal">
             <h3>Tools</h3>
             <ul>
-              <li>Google Cloud Platform / BigQuery for cloud-based storage and querying.</li>
-              <li><code>gcloud</code> / <code>bq</code> CLI for project and dataset management.</li>
-              <li>dbt for transformation modeling and automated data-quality testing.</li>
+              <li>Python (geopandas, shapely) for the local prototype and spatial joins.</li>
+              <li>Google Cloud Platform / BigQuery GIS (<code>ST_MAKELINE</code>, <code>ST_DWITHIN</code>,
+                  <code>ST_UNION_AGG</code>) for the cloud version.</li>
+              <li><code>gcloud</code> / <code>bq</code> CLI for project and dataset management; dbt for
+                  transformation modeling and automated data-quality testing.</li>
             </ul>
           </div>
 
           <div class="detail-card alt reveal">
             <h3>My Role</h3>
             <ul>
-              <li>Designed and built the pipeline end to end, from the raw IBTrACS file to tested BigQuery tables.</li>
-              <li>Managed the GCP project and BigQuery datasets via CLI rather than the console, for
-                  reproducibility.</li>
-              <li>Wrote and ran dbt tests as part of the build, not as an afterthought.</li>
+              <li>Built and ran both local prototypes myself, and used the first one's shortcomings to justify
+                  the second: a naive cross join of 47,597 mangrove polygons against ~1,150 storms was too many
+                  pairwise <code>distance()</code> calls, so v2 moved to a spatial-index join instead.</li>
+              <li>Cross-checked Global Mangrove Watch's 2020 hectare figures against the VM0033 project's
+                  historical-mask numbers per province, and worked out why they didn't match (VM0033's mask is a
+                  union of GLC-FCS30D 2000 and GMW 2007-2020, the maximum-ever-mapped footprint, while GMW 2020 is
+                  a single-year snapshot after any loss).</li>
+              <li>Ported the same logic to dbt/BigQuery, writing and running the tests myself.</li>
             </ul>
           </div>
 
           <div class="detail-card alt detail-wide reveal">
             <h3>Key Takeaways</h3>
             <ul>
-              <li>Historical storm-track data is messier than it looks going in: raw track points needed real
-                  staging before they were usable for any coastline-level aggregation.</li>
-              <li>Writing dbt tests as part of the build, rather than checking data quality after the fact, made
-                  the BigQuery output something I could actually trust downstream.</li>
+              <li>The naive approach (cross join every polygon against every storm) doesn't scale: it took
+                  switching to a spatial-index join to make the polygon-level version tractable at all.</li>
+              <li>Two datasets measuring "mangrove extent" can legitimately disagree — GMW and VM0033 define
+                  the baseline differently, and the gap between them is explainable, not a data-quality bug.</li>
               <li>Exposure and frequency tell different stories: Quang Ninh sees the most storms by far, but the
                   single most mangrove-exposing storm on record (Joan, 1964) doesn't need to be the most frequent
                   visitor to do the most damage.</li>
@@ -335,10 +351,11 @@
         <div class="note-card reveal" style="margin-top: 24px;">
           <h3>Pipeline Notice</h3>
           <p>
-            This project uses IBTrACS historical storm-track data (not a live feed) and reflects a
-            self-directed data-engineering exercise built alongside my VM0033 mangrove-restoration work. The
-            dashboard above reflects two ranked views computed by the pipeline; it is not yet a combined
-            per-segment risk score. No AWS services were used in this build.
+            IBTrACS here is historical only, not a live feed — swapping in live NOAA data would mean adding a
+            scheduled cloud function instead of a one-off netCDF parse, which hasn't been built. The BigQuery
+            <code>fct_mangrove_storm_impact</code> table gives province-level granularity (28 rows), not a
+            per-polygon "storm buffering index" for a specific site — that would mean skipping the dissolve step
+            and accepting a higher BigQuery scan cost. No AWS services were used in this build.
           </p>
         </div>
 
