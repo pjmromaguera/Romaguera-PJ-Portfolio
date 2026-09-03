@@ -101,6 +101,15 @@
 
     .divider-band { margin-top: 56px; padding-top: 40px; border-top: 1px dashed rgba(15,23,42,.14); }
 
+    .page-map { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    @media (max-width: 780px) { .page-map { grid-template-columns: 1fr; } }
+    .page-map-item { display: flex; gap: 12px; align-items: flex-start; padding: 16px 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); text-decoration: none; color: inherit; transition: border-color .18s, transform .18s; }
+    .page-map-item:hover { border-color: rgba(15,23,42,.2); transform: translateY(-2px); text-decoration: none; }
+    .page-map-num { font-family:'Bricolage Grotesque',sans-serif; font-size: 20px; color: var(--accent); flex-shrink: 0; line-height: 1.1; }
+    .page-map-item.alt .page-map-num { color: var(--accent3); }
+    .page-map-text strong { display: block; font-size: 14.5px; color: var(--text); margin-bottom: 2px; }
+    .page-map-text span { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+
     .footer { padding: 28px 0 40px; border-top: 1px solid var(--line2); }
     .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
     .footer-inner a { color: var(--muted); }
@@ -199,6 +208,34 @@
             <a class="pill primary" href="mailto:romaguera.pj@gmail.com">Contact</a>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" aria-label="Page contents" style="padding-top:0; padding-bottom:24px; border-top:none;">
+      <div class="wide">
+        <div class="page-map reveal">
+          <a class="page-map-item" href="#live-demo">
+            <span class="page-map-num">1</span>
+            <span class="page-map-text">
+              <strong>Live map</strong>
+              <span>Interactive VM0033 eligibility screen, right on this page</span>
+            </span>
+          </a>
+          <a class="page-map-item" href="#details">
+            <span class="page-map-num">2</span>
+            <span class="page-map-text">
+              <strong>Sample methodology</strong>
+              <span>Generic confidential-client approach; no real data shown</span>
+            </span>
+          </a>
+          <a class="page-map-item alt" href="#vietnam">
+            <span class="page-map-num">3</span>
+            <span class="page-map-text">
+              <strong>Real implementation</strong>
+              <span>Live Vietnam results, stats, and takeaways</span>
+            </span>
+          </a>
         </div>
       </div>
     </section>
