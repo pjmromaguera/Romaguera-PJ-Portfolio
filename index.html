@@ -310,18 +310,6 @@
     /* ── Hero (single block) ── */
     .hero-single{ max-width:820px; }
 
-    .hero-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:28px;
-      margin-bottom:22px;
-    }
-    .hero-heading{ flex:1; min-width:0; }
-    @media (max-width:640px){
-      .hero-top{ flex-direction:column-reverse; gap:18px; }
-    }
-
     .header-eyebrow{
       display:inline-flex;
       align-items:center;
@@ -348,17 +336,6 @@
       color:var(--accent2);
       margin:0 0 22px;
     }
-
-    .hero-photo{
-      width:132px;
-      height:132px;
-      border-radius:22px;
-      overflow:hidden;
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      flex-shrink:0;
-    }
-    .hero-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
 
     .super{ font-family:'Bricolage Grotesque',sans-serif;
       font-size:clamp(40px, 6vw, 74px);
@@ -684,23 +661,10 @@
         <div class="wide">
           <div class="hero-single reveal">
 
-            <div class="hero-top">
-              <div class="hero-heading">
-                <div class="header-eyebrow">Data Analytics × Geospatial Science</div>
+            <div class="header-eyebrow">Data Analytics × Geospatial Science</div>
 
-                <h1 class="super" id="overview-heading">Paola Jayme Romaguera</h1>
-                <p class="role-line">Data &amp; Spatial Analyst · Climate Risk Specialist</p>
-              </div>
-
-              <div class="hero-photo">
-                <img
-                  src="assets/romaguera-headshot.jpg"
-                  alt="Headshot of Paola Romaguera"
-                  width="132" height="132"
-                  loading="eager"
-                />
-              </div>
-            </div>
+            <h1 class="super" id="overview-heading">Paola Jayme Romaguera</h1>
+            <p class="role-line">Data &amp; Spatial Analyst · Climate Risk Specialist</p>
 
             <p class="lede2">
               I transform complex and fragmented datasets into clear, decision-ready insights. Working at the
