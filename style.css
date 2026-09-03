@@ -398,7 +398,7 @@ hr.sep{
 .hcard-body{ padding:18px; }
 .hcard-body h3{
   margin:0 0 8px;
-  font-family:'Cal Sans';
+  font-family:'Bricolage Grotesque',sans-serif;
   font-size:18px;
   letter-spacing:-.2px;
 }
@@ -449,7 +449,7 @@ hr.sep{
 }
 .feature-head h2{
   margin:0;
-  font-family:'Cal Sans';
+  font-family:'Bricolage Grotesque',sans-serif;
   font-size:28px;
   letter-spacing:-.3px;
 }
@@ -491,7 +491,7 @@ hr.sep{
 
 .research-card h3{
   margin: 0;
-  font-family:'Cal Sans';
+  font-family:'Bricolage Grotesque',sans-serif;
   font-size: 18px;
   letter-spacing: -.2px;
 }
@@ -554,7 +554,7 @@ hr.sep{
 /* Title */
 .project h3{
   margin:0;
-  font-family:'Cal Sans';
+  font-family:'Bricolage Grotesque',sans-serif;
   font-size:18px;
   line-height:1.35;
 }
