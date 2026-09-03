@@ -85,6 +85,10 @@
     .note-card h3 { font-family:'Inter',sans-serif; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
     .note-card p { font-size: 14px; color: rgba(26,29,41,.75); line-height: 1.7; margin: 0; }
 
+    .embed-frame { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); overflow: hidden; }
+    .embed-frame iframe { display: block; width: 100%; height: 900px; border: 0; background: #f7f8fb; }
+    @media (max-width: 640px) { .embed-frame iframe { height: 1500px; } }
+
     .footer { padding: 28px 0 40px; border-top: 1px solid var(--line2); }
     .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
     .footer-inner a { color: var(--muted); }
@@ -248,12 +252,20 @@
 
         <div class="reveal" style="margin-top:36px;">
           <div class="section-label">Try It</div>
-          <h2 class="section-title">Suitability Explorer</h2>
+          <h2 class="section-title">Coffee, Cacao &amp; Bamboo Suitability Explorer</h2>
           <p class="lede2" style="margin-bottom:16px;">
             An interactive companion tool for this methodology: enter your own suitability parameters and
-            generate a ranked table across anonymized sample locations.
+            generate a ranked table across anonymized sample locations, right on this page, or
+            <a href="project-suitability-explorer.html">open it on its own page</a>.
           </p>
-          <a class="pill primary" href="project-suitability-explorer.html">Open the Suitability Explorer →</a>
+          <div class="embed-frame">
+            <iframe
+              src="project-suitability-explorer.html"
+              title="Coffee, Cacao & Bamboo Suitability Explorer"
+              loading="lazy"
+              referrerpolicy="no-referrer">
+            </iframe>
+          </div>
         </div>
 
         <div class="note-card reveal" style="margin-top: 24px;">
