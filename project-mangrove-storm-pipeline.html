@@ -190,7 +190,6 @@
 
           <div class="row">
             <a class="pill" href="#dashboard">Jump to the dashboard ↓</a>
-            <a class="pill" href="#pipeline">Jump to the pipeline ↓</a>
             <a class="pill" href="project-vietnam-mangrove-explorer.html">Related: VM0033 Mangrove Screen ↗</a>
             <a class="pill primary" href="mailto:romaguera.pj@gmail.com">Contact</a>
           </div>
@@ -240,122 +239,14 @@
             </ul>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="chapter" id="pipeline" aria-labelledby="pipeline-heading">
-      <div class="wide">
-
-        <div class="reveal">
-          <div class="section-label alt">Data Engineering · Self-Directed</div>
-          <h2 class="section-title" id="pipeline-heading">From a local storm-track file to a tested BigQuery pipeline</h2>
-          <p class="lede2" style="margin-bottom:0;">
-            Historical tropical-storm track data (IBTrACS) starts out as a single local netCDF file. Turning it
-            into something queryable and trustworthy meant building a real cloud pipeline around it, not just
-            loading it once and calling it done.
-          </p>
-        </div>
-
-        <div class="pipeline-strip">
-          <div class="pipeline-step reveal">
-            <div class="stepnum">STEP 1</div>
-            <div class="steplbl">Prototype</div>
-            <div class="stepsub">Local geopandas/shapely scripts against IBTrACS + Global Mangrove Watch polygons</div>
-          </div>
-          <div class="pipeline-step reveal">
-            <div class="stepnum">STEP 2</div>
-            <div class="steplbl">Load</div>
-            <div class="stepsub">Flattened to CSVs and loaded into BigQuery via gcloud/bq CLI</div>
-          </div>
-          <div class="pipeline-step reveal">
-            <div class="stepnum">STEP 3</div>
-            <div class="steplbl">Transform</div>
-            <div class="stepsub">dbt models rebuild the same logic in BigQuery GIS (ST_MAKELINE, ST_DWITHIN)</div>
-          </div>
-          <div class="pipeline-step reveal">
-            <div class="stepnum">STEP 4</div>
-            <div class="steplbl">Test</div>
-            <div class="stepsub">dbt tests validating the pipeline before results are trusted</div>
-          </div>
-        </div>
-
-        <div class="detail-grid">
-
-          <div class="detail-card alt reveal">
-            <h3>Objective</h3>
-            <ul>
-              <li>Quantify which coastal mangrove ecosystems in Vietnam sit in the path of historical tropical
-                  cyclones, 1950–2025.</li>
-              <li>Classify storm intensity on Vietnam's own tropical cyclone scale (NCHMF's "cấp gió"), not
-                  Saffir-Simpson.</li>
-              <li>Prototype locally first, then port the same logic to a reproducible dbt + BigQuery pipeline.</li>
-            </ul>
-          </div>
-
-          <div class="detail-card alt reveal">
-            <h3>Approach</h3>
-            <ul>
-              <li>NOAA IBTrACS storm tracks (758 tracks pass near Vietnam, 1950–2025) against Global Mangrove
-                  Watch v3 2020 polygons (19,633 polygons / 161,298 ha, Vietnam-only after dropping cross-border
-                  Cambodian/Chinese polygons picked up by the bounding-box clip).</li>
-              <li>v1 checked storm tracks against province boundaries (coarse); v2 replaced that with a real
-                  polygon-level join once the coarse version proved too imprecise.</li>
-              <li>Ported to BigQuery: <code>stg_storm_tracks.sql</code> assembles per-fix points into an
-                  <code>ST_MAKELINE</code> track and classifies wind speed; <code>stg_mangrove_extents.sql</code>
-                  parses mangrove WKT into <code>GEOGRAPHY</code>; <code>int_mangrove_extents_by_province.sql</code>
-                  dissolves polygons per province (<code>ST_UNION_AGG</code>); <code>fct_mangrove_storm_impact.sql</code>
-                  computes the final storm × province table with an indexed <code>ST_DWITHIN</code>.</li>
-            </ul>
-          </div>
-
-          <div class="detail-card alt reveal">
-            <h3>Tools</h3>
-            <ul>
-              <li>Python (geopandas, shapely) for the local prototype and spatial joins.</li>
-              <li>Google Cloud Platform / BigQuery GIS (<code>ST_MAKELINE</code>, <code>ST_DWITHIN</code>,
-                  <code>ST_UNION_AGG</code>) for the cloud version.</li>
-              <li><code>gcloud</code> / <code>bq</code> CLI for project and dataset management; dbt for
-                  transformation modeling and automated data-quality testing.</li>
-            </ul>
-          </div>
-
-          <div class="detail-card alt reveal">
-            <h3>My Role</h3>
-            <ul>
-              <li>Built and ran both local prototypes myself, and used the first one's shortcomings to justify
-                  the second: a naive cross join of 47,597 mangrove polygons against ~1,150 storms was too many
-                  pairwise <code>distance()</code> calls, so v2 moved to a spatial-index join instead.</li>
-              <li>Cross-checked Global Mangrove Watch's 2020 hectare figures against the VM0033 project's
-                  historical-mask numbers per province, and worked out why they didn't match (VM0033's mask is a
-                  union of GLC-FCS30D 2000 and GMW 2007-2020, the maximum-ever-mapped footprint, while GMW 2020 is
-                  a single-year snapshot after any loss).</li>
-              <li>Ported the same logic to dbt/BigQuery, writing and running the tests myself.</li>
-            </ul>
-          </div>
-
-          <div class="detail-card alt detail-wide reveal">
-            <h3>Key Takeaways</h3>
-            <ul>
-              <li>The naive approach (cross join every polygon against every storm) doesn't scale: it took
-                  switching to a spatial-index join to make the polygon-level version tractable at all.</li>
-              <li>Two datasets measuring "mangrove extent" can legitimately disagree — GMW and VM0033 define
-                  the baseline differently, and the gap between them is explainable, not a data-quality bug.</li>
-              <li>Exposure and frequency tell different stories: Quang Ninh sees the most storms by far, but the
-                  single most mangrove-exposing storm on record (Joan, 1964) doesn't need to be the most frequent
-                  visitor to do the most damage.</li>
-            </ul>
-          </div>
-
-        </div>
 
         <div class="note-card reveal" style="margin-top: 24px;">
           <h3>Pipeline Notice</h3>
           <p>
             IBTrACS here is historical only, not a live feed — swapping in live NOAA data would mean adding a
-            scheduled cloud function instead of a one-off netCDF parse, which hasn't been built. The BigQuery
-            <code>fct_mangrove_storm_impact</code> table gives province-level granularity (28 rows), not a
-            per-polygon "storm buffering index" for a specific site — that would mean skipping the dissolve step
-            and accepting a higher BigQuery scan cost. No AWS services were used in this build.
+            scheduled cloud function instead of a one-off netCDF parse, which hasn't been built. No AWS services
+            were used in this build. Full methodology, data sources, and limitations are documented inside the
+            dashboard itself.
           </p>
         </div>
 
