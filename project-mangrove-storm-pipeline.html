@@ -158,9 +158,9 @@
             <span>Mangrove Storm-Risk Pipeline</span>
           </nav>
 
-          <div class="micro" aria-label="Self-directed pipeline · Storm risk · BigQuery/dbt">
+          <div class="micro" aria-label="Mangrove Storm Shield Dashboard · Self-directed · BigQuery/dbt">
             <span class="dot" aria-hidden="true"></span>
-            Self-directed pipeline &nbsp;·&nbsp; Storm risk &nbsp;·&nbsp; BigQuery &amp; dbt
+            Mangrove Storm Shield Dashboard &nbsp;·&nbsp; Self-directed &nbsp;·&nbsp; BigQuery &amp; dbt
           </div>
 
           <h1 class="super" id="project-heading">
@@ -185,11 +185,55 @@
           <hr class="sep" aria-hidden="true" />
 
           <div class="row">
+            <a class="pill" href="#dashboard">Jump to the dashboard ↓</a>
             <a class="pill" href="#pipeline">Jump to the pipeline ↓</a>
             <a class="pill" href="project-vietnam-mangrove-explorer.html">Related: VM0033 Mangrove Screen ↗</a>
             <a class="pill primary" href="mailto:romaguera.pj@gmail.com">Contact</a>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="dashboard" aria-labelledby="dashboard-heading" style="padding-bottom:0;">
+      <div class="wide">
+        <div class="reveal">
+          <div class="section-label">Output · Mangrove Storm Shield Dashboard</div>
+          <h2 class="section-title" id="dashboard-heading">What the pipeline surfaces</h2>
+          <p class="lede2">
+            The BigQuery tables built by this pipeline feed the Mangrove Storm Shield Dashboard — ranking
+            historical storms by mangrove-hectare exposure within 50km of their track, and ranking Vietnamese
+            coastal provinces by how often a historical storm has passed within 50km.
+          </p>
+        </div>
+
+        <div class="detail-card reveal" style="margin-top:20px; padding:12px;">
+          <img
+            src="assets/mangrove-storm-shield-dashboard.png"
+            alt="Mangrove Storm Shield Dashboard: left panel ranks storms by mangrove hectares exposed within 50km of their track (JOAN 1964 highest at 128,864 ha); right panel ranks Vietnamese provinces by count of historical storms within 50km (Quang Ninh highest at 114)"
+            style="width:100%; height:auto; display:block; border-radius:12px;"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="detail-grid">
+          <div class="detail-card reveal">
+            <h3>Largest Mangrove Exposure</h3>
+            <ul>
+              <li>Storms ranked by mangrove hectares within 50km of their track.</li>
+              <li>Typhoon Joan (1964) tops the list at ~128,864 ha, ahead of Durian (2006) at ~103,355 ha and
+                  Linda (1997) at ~81,595 ha.</li>
+              <li>Several older, unnamed storms (1950, 1960, 1961) still rank in the top 10 by exposure.</li>
+            </ul>
+          </div>
+          <div class="detail-card reveal">
+            <h3>Most Frequently Exposed</h3>
+            <ul>
+              <li>Provinces ranked by count of historical storms within 50km.</li>
+              <li>Quang Ninh leads at 114 storms, well ahead of Hai Phong City (77) and Ha Tinh (75).</li>
+              <li>The top 10 spans the northern and north-central coast, from Quang Ninh down to Thua Thien-Hue.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -237,8 +281,8 @@
             <ul>
               <li>Quantify historical tropical-storm exposure along Vietnam's coastline using IBTrACS.</li>
               <li>Build a reproducible, testable cloud pipeline rather than a one-off local script.</li>
-              <li>Lay the groundwork to eventually cross-reference storm exposure against mapped mangrove extent
-                  from the VM0033 project, to surface high-exposure, low-buffer coastal segments.</li>
+              <li>Rank storms by mangrove-hectare exposure and provinces by storm frequency, surfacing where
+                  historical storm activity and mangrove cover intersect most.</li>
             </ul>
           </div>
 
@@ -280,9 +324,9 @@
                   staging before they were usable for any coastline-level aggregation.</li>
               <li>Writing dbt tests as part of the build, rather than checking data quality after the fact, made
                   the BigQuery output something I could actually trust downstream.</li>
-              <li>This pipeline is a foundation, not a finished risk score: the next step is joining it against
-                  mapped mangrove extent from the VM0033 screen to identify specific high-exposure, low-buffer
-                  coastal segments.</li>
+              <li>Exposure and frequency tell different stories: Quang Ninh sees the most storms by far, but the
+                  single most mangrove-exposing storm on record (Joan, 1964) doesn't need to be the most frequent
+                  visitor to do the most damage.</li>
             </ul>
           </div>
 
@@ -292,9 +336,9 @@
           <h3>Pipeline Notice</h3>
           <p>
             This project uses IBTrACS historical storm-track data (not a live feed) and reflects a
-            self-directed data-engineering exercise built alongside my VM0033 mangrove-restoration work. It
-            demonstrates the BigQuery/dbt pipeline itself; it does not yet publish a finished storm-risk score
-            or interactive map. No AWS services were used in this build.
+            self-directed data-engineering exercise built alongside my VM0033 mangrove-restoration work. The
+            dashboard above reflects two ranked views computed by the pipeline; it is not yet a combined
+            per-segment risk score. No AWS services were used in this build.
           </p>
         </div>
 
