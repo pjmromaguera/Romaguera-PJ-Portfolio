@@ -374,6 +374,50 @@
       white-space:nowrap;
     }
 
+    .about-work-strip{
+      margin-top:32px;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+    }
+    .about-work-strip p{
+      font-size:14.5px;
+      line-height:1.65;
+      color:rgba(26,29,41,.82);
+      max-width:68ch;
+      margin:0 0 14px;
+    }
+    .about-work-strip strong{ color:var(--text); }
+
+    .workflow-strip{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:12px;
+    }
+    @media (max-width:860px){
+      .workflow-strip{ grid-template-columns:repeat(2, 1fr); }
+    }
+    @media (max-width:520px){
+      .workflow-strip{ grid-template-columns:1fr; }
+    }
+    .workflow-step{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--surface);
+      box-shadow:var(--shadow);
+      padding:16px 18px;
+    }
+    .workflow-label{
+      font-family:'Bricolage Grotesque',sans-serif;
+      font-size:16px;
+      color:var(--accent);
+      margin-bottom:6px;
+    }
+    .workflow-tools{
+      font-size:12.5px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
     .row{
       display:flex;
       gap:10px;
@@ -667,13 +711,10 @@
             <p class="role-line">Data &amp; Spatial Analyst · Climate Risk Specialist</p>
 
             <p class="lede2">
-              I transform complex and fragmented datasets into clear, decision-ready insights. Working at the
-              intersection of data analytics, geospatial science, and climate risk, I combine statistical and
-              spatial analysis, remote sensing, scenario-based modeling, and workflow automation to uncover
-              patterns, assess risk, and communicate insights for planning, investment, and policy decisions.
-              I leverage AI as a thought partner throughout my workstream, integrating AI-assisted development
-              to build and optimize bespoke geospatial algorithms and automation scripts, and pursue self-directed
-              projects exploring AI's applications within GIS and climate-risk analytics.
+              I turn geospatial and climate data into decision-ready risk insights, from hazard modeling and
+              satellite analysis to automated data pipelines and spatial analytics. My toolkit spans Python, SQL,
+              Google Earth Engine, and BigQuery/dbt, and I use AI as a thought partner throughout to move faster
+              from raw data to answer.
             </p>
 
             <div class="tags" aria-label="Skills and tools">
@@ -687,6 +728,19 @@
             <div class="row" style="margin-top:22px;">
               <a class="pill primary" href="#expertise">Explore expertise</a>
               <a class="pill" href="resume.html">Résumé ↗</a>
+            </div>
+
+            <div class="about-work-strip">
+              <p>
+                <strong>5+ years</strong> working across geospatial analytics, natural-hazard modeling, and physical
+                climate risk, with experience spanning consulting, research, and applied data analysis.
+              </p>
+              <div class="tags" aria-label="Focus areas">
+                <span class="tag">Climate Risk</span>
+                <span class="tag">Geospatial Analytics</span>
+                <span class="tag">Data Engineering</span>
+                <span class="tag">Hazard Modeling</span>
+              </div>
             </div>
 
           </div>
@@ -768,7 +822,30 @@
             <h2 id="skills-matrix-heading">Skills Matrix</h2>
             <a class="pill" href="resume.html">Full resume</a>
           </div>
-          <p class="lede2 reveal" style="margin-bottom:22px;">
+          <p class="lede2 reveal" style="margin-bottom:24px;">
+            I work across the full spatial-data workflow, from raw data and geoprocessing to modeling, automation, and decision outputs.
+          </p>
+
+          <div class="workflow-strip reveal">
+            <div class="workflow-step">
+              <div class="workflow-label">Analyze</div>
+              <div class="workflow-tools">Python · SQL · Pandas · NumPy · R · statistics</div>
+            </div>
+            <div class="workflow-step">
+              <div class="workflow-label">Map &amp; Model</div>
+              <div class="workflow-tools">ArcGIS · QGIS · GeoPandas · GEE · remote sensing · hazard modeling</div>
+            </div>
+            <div class="workflow-step">
+              <div class="workflow-label">Build</div>
+              <div class="workflow-tools">BigQuery · dbt · GCP · Bash · workflow automation</div>
+            </div>
+            <div class="workflow-step">
+              <div class="workflow-label">Communicate</div>
+              <div class="workflow-tools">Tableau · Streamlit · technical reporting · executive presentations</div>
+            </div>
+          </div>
+
+          <p class="lede2 reveal" style="margin:28px 0 22px;">
             Core competencies mapped across two tracks: general data analysis and GIS/geospatial analysis, showing where the work is directly transferable versus specialized.
           </p>
 
@@ -868,12 +945,38 @@
 
           <div class="work-list reveal">
 
+            <a class="work-row" href="project-mangrove-suitability.html">
+              <div class="work-media">
+                <img src="assets/mangrove-cover.png" alt="VM0033 Mangrove Restoration Screen cover" width="720" height="260" loading="lazy" />
+              </div>
+              <div class="work-body">
+                <span class="work-num">01</span>
+                <div class="work-eyebrow">VM0033 · Google Earth Engine · Geospatial Analytics · BigQuery</div>
+                <h3>Can mangrove restoration be screened systematically across a country's coastline?</h3>
+                <p>Live VM0033 eligibility screening across all 28 coastal provinces of Vietnam, computed on real public Earth Engine data, click into any province and step through the actual screening layers.</p>
+                <span class="work-link">Read case study ↗</span>
+              </div>
+            </a>
+
+            <a class="work-row" href="project-mangrove-storm-pipeline.html">
+              <div class="work-media">
+                <img src="assets/mangrove-storm-shield-dashboard.png" alt="Mangrove Storm Shield Dashboard cover" width="720" height="260" loading="lazy" />
+              </div>
+              <div class="work-body">
+                <span class="work-num">02</span>
+                <div class="work-eyebrow">IBTrACS · GeoPandas · SQL/dbt · BigQuery</div>
+                <h3>Which mangroves stand between a coastline and its next storm?</h3>
+                <p>A self-directed data-engineering companion to the VM0033 work: historical cyclone tracks and mangrove extent, built into a real BigQuery/dbt pipeline, not just a one-off script.</p>
+                <span class="work-link">Read case study ↗</span>
+              </div>
+            </a>
+
             <a class="work-row" href="project-dashboard.html">
               <div class="work-media">
                 <img src="assets/app-cover.png" alt="Hazard Exposure Dashboard cover" width="720" height="260" loading="lazy" />
               </div>
               <div class="work-body">
-                <span class="work-num">01</span>
+                <span class="work-num">03</span>
                 <div class="work-eyebrow">Personal mini-app · Streamlit · GIS automation</div>
                 <h3>Hazard Exposure Assessment Dashboard</h3>
                 <p>Personal dashboard to automate exposure metrics and visualization for distributed portfolios.</p>
@@ -886,7 +989,7 @@
                 <img src="assets/method-cover.png" alt="Methodology cover" width="720" height="260" loading="lazy" />
               </div>
               <div class="work-body">
-                <span class="work-num">02</span>
+                <span class="work-num">04</span>
                 <div class="work-eyebrow">Methodology · Local + global datasets · Scenarios</div>
                 <h3>Hazard Exposure Assessment Methodology</h3>
                 <p>Standardized framework integrating local and global datasets for current and future scenarios.</p>
@@ -899,10 +1002,10 @@
                 <img src="assets/turbidity.png" alt="Turbidity cover" width="720" height="260" loading="lazy" />
               </div>
               <div class="work-body">
-                <span class="work-num">03</span>
+                <span class="work-num">05</span>
                 <div class="work-eyebrow">Remote sensing · Google Earth Engine · Water quality</div>
-                <h3>Spatiotemporal Analysis of Monthly Rainfall Effects on River Turbidity</h3>
-                <p>Mapped turbidity patterns in GEE to identify potential siltation zones.</p>
+                <h3>What happens to river turbidity after heavy rain?</h3>
+                <p>A Google Earth Engine analysis linking monthly rainfall patterns with satellite-derived turbidity to flag potential siltation zones.</p>
                 <span class="work-link">Read case study ↗</span>
               </div>
             </a>
@@ -912,7 +1015,7 @@
                 <img src="assets/Flood Modelling.png" alt="FLO-2D cover" width="720" height="260" loading="lazy" />
               </div>
               <div class="work-body">
-                <span class="work-num">04</span>
+                <span class="work-num">06</span>
                 <div class="work-eyebrow">Hydrodynamics · FLO-2D · Flood depth &amp; extent</div>
                 <h3>2D Flood Modeling (FLO-2D)</h3>
                 <p>Hydrodynamic simulations producing flood depth and extent maps.</p>
@@ -925,10 +1028,10 @@
                 <img src="assets/eddies.png" alt="Eddies cover" width="720" height="260" loading="lazy" />
               </div>
               <div class="work-body">
-                <span class="work-num">05</span>
+                <span class="work-num">07</span>
                 <div class="work-eyebrow">Python · NetCDF · Feature detection &amp; tracking</div>
-                <h3>Ocean Eddy Detection</h3>
-                <p>Processed multi-year NetCDF datasets to detect mesoscale eddies and track lifecycle evolution.</p>
+                <h3>Can ocean eddies be automatically tracked across years of satellite data?</h3>
+                <p>Built a Python-based workflow to detect and track mesoscale eddies across multi-year NetCDF data, turning large scientific datasets into spatial and temporal features analyzable at scale.</p>
                 <span class="work-link">Read case study ↗</span>
               </div>
             </a>
