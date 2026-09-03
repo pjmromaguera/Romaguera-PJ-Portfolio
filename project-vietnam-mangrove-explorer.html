@@ -351,11 +351,11 @@ var LAYERS = ["historical", "raw", "after_water", "after_reef", "after_builtup",
 
   var STAGES = [
     {key:'historical_ha', label:'Historical mangrove mask'},
-    {key:'raw_ha', label:'Restorable — raw'},
+    {key:'raw_ha', label:'Restorable (raw)'},
     {key:'after_water_ha', label:'− permanent water'},
     {key:'after_reef_ha', label:'− reef / shallow habitat'},
     {key:'after_builtup_ha', label:'− built-up areas'},
-    {key:'filtered_ha', label:'Restorable — filtered (L1)'}
+    {key:'filtered_ha', label:'Restorable, filtered (L1)'}
   ];
   var STAGE_NOTE = ['', '', 'permanent water', 'reef / shallow habitat', 'built-up land', 'elevation ≥ 50 m'];
 
@@ -373,8 +373,8 @@ var LAYERS = ["historical", "raw", "after_water", "after_reef", "after_builtup",
     var eligible = PROVINCE_DATA.filter(function(r){ return r.filtered_ha > 0; }).length;
     document.getElementById('stats').innerHTML = [
       stat('Historical baseline', fmtCompact(t.historical_ha), 'ha mapped, 2000–2020 union'),
-      stat('Restorable — raw', fmtCompact(t.raw_ha), 'before spatial filtering'),
-      stat('Restorable — filtered', fmtCompact(t.filtered_ha), 'final Level-1 product', true),
+      stat('Restorable (raw)', fmtCompact(t.raw_ha), 'before spatial filtering'),
+      stat('Restorable, filtered', fmtCompact(t.filtered_ha), 'final Level-1 product', true),
       stat('Retention rate', retained.toFixed(1) + '<small>%</small>', 'of historical baseline'),
       stat('Provinces screened', String(PROVINCE_DATA.length), eligible + ' with eligible area')
     ].join('');
@@ -525,7 +525,7 @@ var LAYERS = ["historical", "raw", "after_water", "after_reef", "after_builtup",
   COASTAL_PROVINCES_GEOJSON.features.forEach(function(f){
     var name = f.properties.ADM1_NAME;
     var d = dataByName[name];
-    var titleText = name + (d ? ' — ' + fmt(d.filtered_ha) + ' ha restorable' : '');
+    var titleText = name + (d ? ': ' + fmt(d.filtered_ha) + ' ha restorable' : '');
     svgHTML += '<path class="prov-path" data-name="' + name + '" fill-rule="evenodd" fill="' + choroplethFill(name) + '" stroke="var(--surface)" stroke-width="1" d="' + pathData(f.geometry) + '"><title>' + titleText + '</title></path>';
   });
   svg.setAttribute('viewBox', '0 0 ' + SVG_W + ' ' + SVG_H);
@@ -612,7 +612,7 @@ var LAYERS = ["historical", "raw", "after_water", "after_reef", "after_builtup",
     mapState.selected = name;
     mapState.layer = 'historical';
     document.getElementById('mapSideTitle').textContent = name;
-    document.getElementById('mapSideNote').textContent = 'Six screening layers for ' + name + '. Pick one — no autoplay.';
+    document.getElementById('mapSideNote').textContent = 'Six screening layers for ' + name + '. Pick one; no autoplay.';
     document.getElementById('mapBackBtn').classList.add('visible');
     renderLayerPicker();
     showLayerImage(name, mapState.layer);
@@ -626,7 +626,7 @@ var LAYERS = ["historical", "raw", "after_water", "after_reef", "after_builtup",
   function deselectProvince(){
     mapState.selected = null;
     clearLayerImage();
-    document.getElementById('mapSideTitle').textContent = 'Vietnam — 17 coastal provinces';
+    document.getElementById('mapSideTitle').textContent = 'Vietnam: 17 coastal provinces';
     document.getElementById('mapSideNote').textContent = 'Fill intensity = final restorable area. Click a province to see its screening layers.';
     document.getElementById('mapBackBtn').classList.remove('visible');
     renderLayerPicker();

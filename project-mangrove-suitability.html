@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Mangrove Restoration Suitability &amp; Eligibility Screening | Paola Jayme Romaguera</title>
-  <meta name="description" content="GIS-based suitability screening for mangrove restoration and blue-carbon site prioritization — a confidential client methodology, plus a real, live VM0033 implementation across all 28 coastal provinces of Vietnam." />
+  <meta name="description" content="GIS-based suitability screening for mangrove restoration and blue-carbon site prioritization: a confidential client methodology, plus a real, live VM0033 implementation across all 28 coastal provinces of Vietnam." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -177,7 +177,7 @@
 
           <p class="lede2">
             Two views of the same skill set. First, a generalized methodology overview for a confidential
-            client engagement — no client data, sites, or results are shown. Below that, a full real
+            client engagement. No client data, sites, or results are shown. Below that, a full real
             implementation I built myself: a live VM0033 mangrove restoration eligibility screen across all
             28 coastal provinces of Vietnam, computed on real public Google Earth Engine data, with an
             interactive map you can try right on this page.
@@ -211,14 +211,14 @@
           <p class="lede2" style="margin-bottom:16px;">
             Real VM0033 mangrove restoration eligibility results across all 28 coastal provinces of Vietnam,
             computed on Google Earth Engine. Click into any province and manually step through its six
-            screening layers — historical mask, raw restorable area, and each of the four exclusion filters.
+            screening layers: historical mask, raw restorable area, and each of the four exclusion filters.
             Live preview below, or <a href="project-vietnam-mangrove-explorer.html">open it on its own page</a>.
-            The full story — methodology, tools, and takeaways — is below the map.
+            The full story (methodology, tools, and takeaways) is below the map.
           </p>
           <div class="embed-frame">
             <iframe
               src="project-vietnam-mangrove-explorer.html"
-              title="Vietnam Mangrove Restoration Screen — interactive map"
+              title="Vietnam Mangrove Restoration Screen: interactive map"
               loading="lazy"
               referrerpolicy="no-referrer">
             </iframe>
@@ -234,7 +234,7 @@
           <div class="section-label">Client Engagement · Methodology Overview</div>
           <h2 class="section-title" id="details-heading">How a coastline becomes a shortlist</h2>
           <p class="lede2" style="margin-bottom:0;">
-            A generalized version of a confidential client engagement — the approach, not the deliverable.
+            A generalized version of a confidential client engagement: the approach, not the deliverable.
           </p>
         </div>
 
@@ -306,7 +306,7 @@
           <h2 class="section-title" id="vietnam-heading">VM0033 Mangrove Restoration Screen</h2>
           <p class="lede2">
             A self-directed extension of the same methodology, applied for real: VM0033 mangrove restoration
-            eligibility screening across all 28 coastal provinces of Vietnam, built end to end — from
+            eligibility screening across all 28 coastal provinces of Vietnam, built end to end, from
             authenticating Google Earth Engine to shipping the interactive map below. Not a client
             engagement: every number and polygon here comes from open data (FAO GAUL boundaries, Global
             Mangrove Watch, GLC-FCS30D, JRC Global Surface Water, Allen Coral Atlas, ESRI Land Cover, SRTM,
@@ -328,7 +328,7 @@
             <ul>
               <li>Apply the VM0033 mangrove restoration eligibility methodology to a real country, not a mock-up.</li>
               <li>Identify where historically mangrove land has been lost and could realistically be restored.</li>
-              <li>Make the result explorable — not just a number, a real map you can click into.</li>
+              <li>Make the result explorable: not just a number, a real map you can click into.</li>
             </ul>
           </div>
 
@@ -347,7 +347,7 @@
             <ul>
               <li>Google Earth Engine (Python API) for all raster/vector processing and analysis.</li>
               <li>FAO GAUL administrative boundaries for the 28-province coastal AOI.</li>
-              <li>Vanilla JS/SVG front end — no mapping library, no framework, no external tile requests.</li>
+              <li>Vanilla JS/SVG front end: no mapping library, no framework, no external tile requests.</li>
             </ul>
           </div>
 
@@ -356,7 +356,7 @@
             <ul>
               <li>Authenticated and ran the entire Earth Engine pipeline myself, province by province.</li>
               <li>Caught and fixed real bugs along the way (a band-name mismatch in the GMW union step, a
-                  wrong filtering approach for a tiled dataset, an incorrect asset ID) — not just used what worked
+                  wrong filtering approach for a tiled dataset, an incorrect asset ID) rather than just using what worked
                   on the first try.</li>
               <li>Designed and built the interactive front end: click-to-zoom map, manual per-layer toggles,
                   ranked province table.</li>
@@ -366,9 +366,9 @@
           <div class="detail-card alt detail-wide reveal">
             <h3>Key Takeaways</h3>
             <ul>
-              <li>Cà Mau alone accounts for roughly 40% of Vietnam's national restorable mangrove area — the shortlist is not evenly spread.</li>
+              <li>Cà Mau alone accounts for roughly 40% of Vietnam's national restorable mangrove area, so the shortlist is not evenly spread.</li>
               <li>Which exclusion filter matters most is regional: reef/shallow-habitat exclusion is near-irrelevant in the Mekong Delta but material in reef-adjacent provinces, while elevation exclusion barely matters anywhere on this flat coastline.</li>
-              <li>"Confirmed current extent" is a genuinely hard input to source well — the standard Global Mangrove Watch vector series stops at 2020, so getting a real 2023 baseline required finding and verifying a second, less well-known dataset.</li>
+              <li>"Confirmed current extent" is a genuinely hard input to source well: the standard Global Mangrove Watch vector series stops at 2020, so getting a real 2023 baseline required finding and verifying a second, less well-known dataset.</li>
             </ul>
           </div>
 
@@ -381,7 +381,7 @@
         <div class="note-card alt reveal" style="margin-top: 24px;">
           <h3>Data Notice</h3>
           <p>
-            This section is real output from public datasets, not a schematic or sample dataset — but the
+            This section is real output from public datasets, not a schematic or sample dataset, but the
             province boundaries reflect Vietnam's pre-2025 administrative structure (63 provinces), since
             that's what the underlying FAO GAUL boundary dataset provides. Vietnam merged to 34 provinces in
             July 2025; this project has not yet been updated to match.

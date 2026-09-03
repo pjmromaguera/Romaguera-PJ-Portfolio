@@ -202,7 +202,7 @@
           <h2 class="section-title" id="pipeline-heading">From a local storm-track file to a tested BigQuery pipeline</h2>
           <p class="lede2" style="margin-bottom:0;">
             Historical tropical-storm track data (IBTrACS) starts out as a single local netCDF file. Turning it
-            into something queryable and trustworthy meant building a real cloud pipeline around it — not just
+            into something queryable and trustworthy meant building a real cloud pipeline around it, not just
             loading it once and calling it done.
           </p>
         </div>
@@ -276,7 +276,7 @@
           <div class="detail-card alt detail-wide reveal">
             <h3>Key Takeaways</h3>
             <ul>
-              <li>Historical storm-track data is messier than it looks going in — raw track points needed real
+              <li>Historical storm-track data is messier than it looks going in: raw track points needed real
                   staging before they were usable for any coastline-level aggregation.</li>
               <li>Writing dbt tests as part of the build, rather than checking data quality after the fact, made
                   the BigQuery output something I could actually trust downstream.</li>
@@ -291,7 +291,7 @@
         <div class="note-card reveal" style="margin-top: 24px;">
           <h3>Pipeline Notice</h3>
           <p>
-            This project uses IBTrACS historical storm-track data — not a live feed — and reflects a
+            This project uses IBTrACS historical storm-track data (not a live feed) and reflects a
             self-directed data-engineering exercise built alongside my VM0033 mangrove-restoration work. It
             demonstrates the BigQuery/dbt pipeline itself; it does not yet publish a finished storm-risk score
             or interactive map. No AWS services were used in this build.
